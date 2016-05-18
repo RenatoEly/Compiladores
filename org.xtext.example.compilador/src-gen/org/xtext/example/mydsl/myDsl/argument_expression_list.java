@@ -3,7 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,66 +14,29 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.argument_expression_list#getAssignment_expression <em>Assignment expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.argument_expression_list#getArgument_expression_list2 <em>Argument expression list2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.argument_expression_list#getList <em>List</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getargument_expression_list()
  * @model
  * @generated
  */
-public interface argument_expression_list extends EObject
+public interface argument_expression_list extends postfix_expression2
 {
   /**
-   * Returns the value of the '<em><b>Assignment expression</b></em>' containment reference.
+   * Returns the value of the '<em><b>List</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.assignment_expression}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Assignment expression</em>' containment reference isn't clear,
+   * If the meaning of the '<em>List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Assignment expression</em>' containment reference.
-   * @see #setAssignment_expression(assignment_expression)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getargument_expression_list_Assignment_expression()
+   * @return the value of the '<em>List</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getargument_expression_list_List()
    * @model containment="true"
    * @generated
    */
-  assignment_expression getAssignment_expression();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.argument_expression_list#getAssignment_expression <em>Assignment expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Assignment expression</em>' containment reference.
-   * @see #getAssignment_expression()
-   * @generated
-   */
-  void setAssignment_expression(assignment_expression value);
-
-  /**
-   * Returns the value of the '<em><b>Argument expression list2</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Argument expression list2</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Argument expression list2</em>' containment reference.
-   * @see #setArgument_expression_list2(argument_expression_list2)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getargument_expression_list_Argument_expression_list2()
-   * @model containment="true"
-   * @generated
-   */
-  argument_expression_list2 getArgument_expression_list2();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.argument_expression_list#getArgument_expression_list2 <em>Argument expression list2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Argument expression list2</em>' containment reference.
-   * @see #getArgument_expression_list2()
-   * @generated
-   */
-  void setArgument_expression_list2(argument_expression_list2 value);
+  EList<assignment_expression> getList();
 
 } // argument_expression_list

@@ -3,8 +3,12 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -12,9 +16,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.generic_assoc_list;
-import org.xtext.example.mydsl.myDsl.generic_assoc_list2;
 import org.xtext.example.mydsl.myDsl.generic_association;
 
 /**
@@ -26,7 +32,7 @@ import org.xtext.example.mydsl.myDsl.generic_association;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.generic_assoc_listImpl#getGeneric_association <em>Generic association</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.generic_assoc_listImpl#getGeneric_assoc_list2 <em>Generic assoc list2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.generic_assoc_listImpl#getGeneric_list <em>Generic list</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,14 +50,14 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
   protected generic_association generic_association;
 
   /**
-   * The cached value of the '{@link #getGeneric_assoc_list2() <em>Generic assoc list2</em>}' containment reference.
+   * The cached value of the '{@link #getGeneric_list() <em>Generic list</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGeneric_assoc_list2()
+   * @see #getGeneric_list()
    * @generated
    * @ordered
    */
-  protected generic_assoc_list2 generic_assoc_list2;
+  protected EList<generic_association> generic_list;
 
   /**
    * <!-- begin-user-doc -->
@@ -127,47 +133,13 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public generic_assoc_list2 getGeneric_assoc_list2()
+  public EList<generic_association> getGeneric_list()
   {
-    return generic_assoc_list2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetGeneric_assoc_list2(generic_assoc_list2 newGeneric_assoc_list2, NotificationChain msgs)
-  {
-    generic_assoc_list2 oldGeneric_assoc_list2 = generic_assoc_list2;
-    generic_assoc_list2 = newGeneric_assoc_list2;
-    if (eNotificationRequired())
+    if (generic_list == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2, oldGeneric_assoc_list2, newGeneric_assoc_list2);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      generic_list = new EObjectContainmentEList<generic_association>(generic_association.class, this, MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_LIST);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGeneric_assoc_list2(generic_assoc_list2 newGeneric_assoc_list2)
-  {
-    if (newGeneric_assoc_list2 != generic_assoc_list2)
-    {
-      NotificationChain msgs = null;
-      if (generic_assoc_list2 != null)
-        msgs = ((InternalEObject)generic_assoc_list2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2, null, msgs);
-      if (newGeneric_assoc_list2 != null)
-        msgs = ((InternalEObject)newGeneric_assoc_list2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2, null, msgs);
-      msgs = basicSetGeneric_assoc_list2(newGeneric_assoc_list2, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2, newGeneric_assoc_list2, newGeneric_assoc_list2));
+    return generic_list;
   }
 
   /**
@@ -182,8 +154,8 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
     {
       case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOCIATION:
         return basicSetGeneric_association(null, msgs);
-      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2:
-        return basicSetGeneric_assoc_list2(null, msgs);
+      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_LIST:
+        return ((InternalEList<?>)getGeneric_list()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -200,8 +172,8 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
     {
       case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOCIATION:
         return getGeneric_association();
-      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2:
-        return getGeneric_assoc_list2();
+      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_LIST:
+        return getGeneric_list();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -211,6 +183,7 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -219,8 +192,9 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
       case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOCIATION:
         setGeneric_association((generic_association)newValue);
         return;
-      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2:
-        setGeneric_assoc_list2((generic_assoc_list2)newValue);
+      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_LIST:
+        getGeneric_list().clear();
+        getGeneric_list().addAll((Collection<? extends generic_association>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,8 +213,8 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
       case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOCIATION:
         setGeneric_association((generic_association)null);
         return;
-      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2:
-        setGeneric_assoc_list2((generic_assoc_list2)null);
+      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_LIST:
+        getGeneric_list().clear();
         return;
     }
     super.eUnset(featureID);
@@ -258,8 +232,8 @@ public class generic_assoc_listImpl extends MinimalEObjectImpl.Container impleme
     {
       case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOCIATION:
         return generic_association != null;
-      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2:
-        return generic_assoc_list2 != null;
+      case MyDslPackage.GENERIC_ASSOC_LIST__GENERIC_LIST:
+        return generic_list != null && !generic_list.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -66,40 +66,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
     switch (eClass.getClassifierID())
     {
       case MyDslPackage.MODEL: return createModel();
-      case MyDslPackage.PRIMARY_EXPRESSION: return createprimary_expression();
+      case MyDslPackage.SIMPLE_EXPRESSION: return createsimple_expression();
       case MyDslPackage.CONSTANT: return createconstant();
       case MyDslPackage.ENUMERATION_CONSTANT: return createenumeration_constant();
       case MyDslPackage.STRING_NOVA: return createstring_nova();
       case MyDslPackage.GENERIC_SELECTION: return creategeneric_selection();
       case MyDslPackage.GENERIC_ASSOC_LIST: return creategeneric_assoc_list();
-      case MyDslPackage.GENERIC_ASSOC_LIST2: return creategeneric_assoc_list2();
       case MyDslPackage.GENERIC_ASSOCIATION: return creategeneric_association();
       case MyDslPackage.POSTFIX_EXPRESSION: return createpostfix_expression();
       case MyDslPackage.POSTFIX_EXPRESSION2: return createpostfix_expression2();
       case MyDslPackage.ARGUMENT_EXPRESSION_LIST: return createargument_expression_list();
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST2: return createargument_expression_list2();
       case MyDslPackage.UNARY_EXPRESSION: return createunary_expression();
-      case MyDslPackage.CAST_EXPRESSION: return createcast_expression();
-      case MyDslPackage.MULTIPLICATIVE_EXPRESSION: return createmultiplicative_expression();
-      case MyDslPackage.MULTIPLICATIVE_EXPRESSION2: return createmultiplicative_expression2();
-      case MyDslPackage.ADDITIVE_EXPRESSION: return createadditive_expression();
-      case MyDslPackage.ADDITIVE_EXPRESSION2: return createadditive_expression2();
-      case MyDslPackage.SHIFT_EXPRESSION: return createshift_expression();
-      case MyDslPackage.SHIFT_EXPRESSION2: return createshift_expression2();
-      case MyDslPackage.RELATIONAL_EXPRESSION: return createrelational_expression();
-      case MyDslPackage.RELATIONAL_EXPRESSION2: return createrelational_expression2();
-      case MyDslPackage.EQUALITY_EXPRESSION: return createequality_expression();
-      case MyDslPackage.EQUALITY_EXPRESSION2: return createequality_expression2();
-      case MyDslPackage.AND_EXPRESSION: return createand_expression();
-      case MyDslPackage.AND_EXPRESSION2: return createand_expression2();
-      case MyDslPackage.EXCLUSIVE_OR_EXPRESSION: return createexclusive_or_expression();
-      case MyDslPackage.EXCLUSIVE_OR_EXPRESSION2: return createexclusive_or_expression2();
-      case MyDslPackage.INCLUSIVE_OR_EXPRESSION: return createinclusive_or_expression();
-      case MyDslPackage.INCLUSIVE_OR_EXPRESSION2: return createinclusive_or_expression2();
-      case MyDslPackage.LOGICAL_AND_EXPRESSION: return createlogical_and_expression();
-      case MyDslPackage.LOGICAL_AND_EXPRESSION2: return createlogical_and_expression2();
-      case MyDslPackage.LOGICAL_OR_EXPRESSION: return createlogical_or_expression();
-      case MyDslPackage.LOGICAL_OR_EXPRESSION2: return createlogical_or_expression2();
       case MyDslPackage.CONDITIONAL_EXPRESSION: return createconditional_expression();
       case MyDslPackage.ASSIGNMENT_EXPRESSION: return createassignment_expression();
       case MyDslPackage.ASSIGNMENT_OPERATOR: return createassignment_operator();
@@ -167,7 +144,30 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.FUNCTION_DEFINITION: return createfunction_definition();
       case MyDslPackage.DECLARATION_LIST: return createdeclaration_list();
       case MyDslPackage.DECLARATION_LIST2: return createdeclaration_list2();
-      case MyDslPackage.INTEGER: return createinteger();
+      case MyDslPackage.VARIABLE_REF: return createvariableRef();
+      case MyDslPackage.INT_TYPE: return createintType();
+      case MyDslPackage.FLOAT_TYPE: return createfloatType();
+      case MyDslPackage.STRING_TYPE: return createstringType();
+      case MyDslPackage.BOOLEAN_TYPE: return createbooleanType();
+      case MyDslPackage.MUL: return createMUL();
+      case MyDslPackage.ADD: return createADD();
+      case MyDslPackage.SHF: return createSHF();
+      case MyDslPackage.REL: return createREL();
+      case MyDslPackage.EQL: return createEQL();
+      case MyDslPackage.AND: return createAND();
+      case MyDslPackage.EXC_OR: return createEXC_OR();
+      case MyDslPackage.INC_OR: return createINC_OR();
+      case MyDslPackage.LOG_AND: return createLOG_AND();
+      case MyDslPackage.LOG_OR: return createLOG_OR();
+      case MyDslPackage.VOID_TYPE: return createvoidType();
+      case MyDslPackage.CHAR_TYPE: return createcharType();
+      case MyDslPackage.SHORT_TYPE: return createshortType();
+      case MyDslPackage.LONG_TYPE: return createlongType();
+      case MyDslPackage.DOUBLE_TYPE: return createdoubleType();
+      case MyDslPackage.SIGNED_TYPE: return createsignedType();
+      case MyDslPackage.UNSIGNED_TYPE: return createunsignedType();
+      case MyDslPackage.COMPLEX_TYPE: return createcomplexType();
+      case MyDslPackage.IMAGINARY_TYPE: return createimaginaryType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -189,10 +189,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public primary_expression createprimary_expression()
+  public simple_expression createsimple_expression()
   {
-    primary_expressionImpl primary_expression = new primary_expressionImpl();
-    return primary_expression;
+    simple_expressionImpl simple_expression = new simple_expressionImpl();
+    return simple_expression;
   }
 
   /**
@@ -255,17 +255,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public generic_assoc_list2 creategeneric_assoc_list2()
-  {
-    generic_assoc_list2Impl generic_assoc_list2 = new generic_assoc_list2Impl();
-    return generic_assoc_list2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public generic_association creategeneric_association()
   {
     generic_associationImpl generic_association = new generic_associationImpl();
@@ -310,252 +299,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public argument_expression_list2 createargument_expression_list2()
-  {
-    argument_expression_list2Impl argument_expression_list2 = new argument_expression_list2Impl();
-    return argument_expression_list2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public unary_expression createunary_expression()
   {
     unary_expressionImpl unary_expression = new unary_expressionImpl();
     return unary_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public cast_expression createcast_expression()
-  {
-    cast_expressionImpl cast_expression = new cast_expressionImpl();
-    return cast_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public multiplicative_expression createmultiplicative_expression()
-  {
-    multiplicative_expressionImpl multiplicative_expression = new multiplicative_expressionImpl();
-    return multiplicative_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public multiplicative_expression2 createmultiplicative_expression2()
-  {
-    multiplicative_expression2Impl multiplicative_expression2 = new multiplicative_expression2Impl();
-    return multiplicative_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public additive_expression createadditive_expression()
-  {
-    additive_expressionImpl additive_expression = new additive_expressionImpl();
-    return additive_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public additive_expression2 createadditive_expression2()
-  {
-    additive_expression2Impl additive_expression2 = new additive_expression2Impl();
-    return additive_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public shift_expression createshift_expression()
-  {
-    shift_expressionImpl shift_expression = new shift_expressionImpl();
-    return shift_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public shift_expression2 createshift_expression2()
-  {
-    shift_expression2Impl shift_expression2 = new shift_expression2Impl();
-    return shift_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public relational_expression createrelational_expression()
-  {
-    relational_expressionImpl relational_expression = new relational_expressionImpl();
-    return relational_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public relational_expression2 createrelational_expression2()
-  {
-    relational_expression2Impl relational_expression2 = new relational_expression2Impl();
-    return relational_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public equality_expression createequality_expression()
-  {
-    equality_expressionImpl equality_expression = new equality_expressionImpl();
-    return equality_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public equality_expression2 createequality_expression2()
-  {
-    equality_expression2Impl equality_expression2 = new equality_expression2Impl();
-    return equality_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public and_expression createand_expression()
-  {
-    and_expressionImpl and_expression = new and_expressionImpl();
-    return and_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public and_expression2 createand_expression2()
-  {
-    and_expression2Impl and_expression2 = new and_expression2Impl();
-    return and_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public exclusive_or_expression createexclusive_or_expression()
-  {
-    exclusive_or_expressionImpl exclusive_or_expression = new exclusive_or_expressionImpl();
-    return exclusive_or_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public exclusive_or_expression2 createexclusive_or_expression2()
-  {
-    exclusive_or_expression2Impl exclusive_or_expression2 = new exclusive_or_expression2Impl();
-    return exclusive_or_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public inclusive_or_expression createinclusive_or_expression()
-  {
-    inclusive_or_expressionImpl inclusive_or_expression = new inclusive_or_expressionImpl();
-    return inclusive_or_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public inclusive_or_expression2 createinclusive_or_expression2()
-  {
-    inclusive_or_expression2Impl inclusive_or_expression2 = new inclusive_or_expression2Impl();
-    return inclusive_or_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_and_expression createlogical_and_expression()
-  {
-    logical_and_expressionImpl logical_and_expression = new logical_and_expressionImpl();
-    return logical_and_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_and_expression2 createlogical_and_expression2()
-  {
-    logical_and_expression2Impl logical_and_expression2 = new logical_and_expression2Impl();
-    return logical_and_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_or_expression createlogical_or_expression()
-  {
-    logical_or_expressionImpl logical_or_expression = new logical_or_expressionImpl();
-    return logical_or_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_or_expression2 createlogical_or_expression2()
-  {
-    logical_or_expression2Impl logical_or_expression2 = new logical_or_expression2Impl();
-    return logical_or_expression2;
   }
 
   /**
@@ -1300,10 +1047,263 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public integer createinteger()
+  public variableRef createvariableRef()
   {
-    integerImpl integer = new integerImpl();
-    return integer;
+    variableRefImpl variableRef = new variableRefImpl();
+    return variableRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public intType createintType()
+  {
+    intTypeImpl intType = new intTypeImpl();
+    return intType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public floatType createfloatType()
+  {
+    floatTypeImpl floatType = new floatTypeImpl();
+    return floatType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public stringType createstringType()
+  {
+    stringTypeImpl stringType = new stringTypeImpl();
+    return stringType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public booleanType createbooleanType()
+  {
+    booleanTypeImpl booleanType = new booleanTypeImpl();
+    return booleanType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MUL createMUL()
+  {
+    MULImpl mul = new MULImpl();
+    return mul;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ADD createADD()
+  {
+    ADDImpl add = new ADDImpl();
+    return add;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SHF createSHF()
+  {
+    SHFImpl shf = new SHFImpl();
+    return shf;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public REL createREL()
+  {
+    RELImpl rel = new RELImpl();
+    return rel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EQL createEQL()
+  {
+    EQLImpl eql = new EQLImpl();
+    return eql;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AND createAND()
+  {
+    ANDImpl and = new ANDImpl();
+    return and;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EXC_OR createEXC_OR()
+  {
+    EXC_ORImpl exC_OR = new EXC_ORImpl();
+    return exC_OR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public INC_OR createINC_OR()
+  {
+    INC_ORImpl inC_OR = new INC_ORImpl();
+    return inC_OR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LOG_AND createLOG_AND()
+  {
+    LOG_ANDImpl loG_AND = new LOG_ANDImpl();
+    return loG_AND;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LOG_OR createLOG_OR()
+  {
+    LOG_ORImpl loG_OR = new LOG_ORImpl();
+    return loG_OR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public voidType createvoidType()
+  {
+    voidTypeImpl voidType = new voidTypeImpl();
+    return voidType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public charType createcharType()
+  {
+    charTypeImpl charType = new charTypeImpl();
+    return charType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public shortType createshortType()
+  {
+    shortTypeImpl shortType = new shortTypeImpl();
+    return shortType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public longType createlongType()
+  {
+    longTypeImpl longType = new longTypeImpl();
+    return longType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public doubleType createdoubleType()
+  {
+    doubleTypeImpl doubleType = new doubleTypeImpl();
+    return doubleType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public signedType createsignedType()
+  {
+    signedTypeImpl signedType = new signedTypeImpl();
+    return signedType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public unsignedType createunsignedType()
+  {
+    unsignedTypeImpl unsignedType = new unsignedTypeImpl();
+    return unsignedType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public complexType createcomplexType()
+  {
+    complexTypeImpl complexType = new complexTypeImpl();
+    return complexType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public imaginaryType createimaginaryType()
+  {
+    imaginaryTypeImpl imaginaryType = new imaginaryTypeImpl();
+    return imaginaryType;
   }
 
   /**

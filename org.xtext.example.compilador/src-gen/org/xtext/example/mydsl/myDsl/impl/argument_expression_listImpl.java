@@ -3,18 +3,20 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.argument_expression_list;
-import org.xtext.example.mydsl.myDsl.argument_expression_list2;
 import org.xtext.example.mydsl.myDsl.assignment_expression;
 
 /**
@@ -25,33 +27,22 @@ import org.xtext.example.mydsl.myDsl.assignment_expression;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.argument_expression_listImpl#getAssignment_expression <em>Assignment expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.argument_expression_listImpl#getArgument_expression_list2 <em>Argument expression list2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.argument_expression_listImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class argument_expression_listImpl extends MinimalEObjectImpl.Container implements argument_expression_list
+public class argument_expression_listImpl extends postfix_expression2Impl implements argument_expression_list
 {
   /**
-   * The cached value of the '{@link #getAssignment_expression() <em>Assignment expression</em>}' containment reference.
+   * The cached value of the '{@link #getList() <em>List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAssignment_expression()
+   * @see #getList()
    * @generated
    * @ordered
    */
-  protected assignment_expression assignment_expression;
-
-  /**
-   * The cached value of the '{@link #getArgument_expression_list2() <em>Argument expression list2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getArgument_expression_list2()
-   * @generated
-   * @ordered
-   */
-  protected argument_expression_list2 argument_expression_list2;
+  protected EList<assignment_expression> list;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,95 +70,13 @@ public class argument_expression_listImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
-  public assignment_expression getAssignment_expression()
+  public EList<assignment_expression> getList()
   {
-    return assignment_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetAssignment_expression(assignment_expression newAssignment_expression, NotificationChain msgs)
-  {
-    assignment_expression oldAssignment_expression = assignment_expression;
-    assignment_expression = newAssignment_expression;
-    if (eNotificationRequired())
+    if (list == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION, oldAssignment_expression, newAssignment_expression);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      list = new EObjectContainmentEList<assignment_expression>(assignment_expression.class, this, MyDslPackage.ARGUMENT_EXPRESSION_LIST__LIST);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAssignment_expression(assignment_expression newAssignment_expression)
-  {
-    if (newAssignment_expression != assignment_expression)
-    {
-      NotificationChain msgs = null;
-      if (assignment_expression != null)
-        msgs = ((InternalEObject)assignment_expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION, null, msgs);
-      if (newAssignment_expression != null)
-        msgs = ((InternalEObject)newAssignment_expression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION, null, msgs);
-      msgs = basicSetAssignment_expression(newAssignment_expression, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION, newAssignment_expression, newAssignment_expression));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public argument_expression_list2 getArgument_expression_list2()
-  {
-    return argument_expression_list2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetArgument_expression_list2(argument_expression_list2 newArgument_expression_list2, NotificationChain msgs)
-  {
-    argument_expression_list2 oldArgument_expression_list2 = argument_expression_list2;
-    argument_expression_list2 = newArgument_expression_list2;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2, oldArgument_expression_list2, newArgument_expression_list2);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setArgument_expression_list2(argument_expression_list2 newArgument_expression_list2)
-  {
-    if (newArgument_expression_list2 != argument_expression_list2)
-    {
-      NotificationChain msgs = null;
-      if (argument_expression_list2 != null)
-        msgs = ((InternalEObject)argument_expression_list2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2, null, msgs);
-      if (newArgument_expression_list2 != null)
-        msgs = ((InternalEObject)newArgument_expression_list2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2, null, msgs);
-      msgs = basicSetArgument_expression_list2(newArgument_expression_list2, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2, newArgument_expression_list2, newArgument_expression_list2));
+    return list;
   }
 
   /**
@@ -180,10 +89,8 @@ public class argument_expression_listImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION:
-        return basicSetAssignment_expression(null, msgs);
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2:
-        return basicSetArgument_expression_list2(null, msgs);
+      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__LIST:
+        return ((InternalEList<?>)getList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -198,10 +105,8 @@ public class argument_expression_listImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION:
-        return getAssignment_expression();
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2:
-        return getArgument_expression_list2();
+      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__LIST:
+        return getList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -211,16 +116,15 @@ public class argument_expression_listImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION:
-        setAssignment_expression((assignment_expression)newValue);
-        return;
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2:
-        setArgument_expression_list2((argument_expression_list2)newValue);
+      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__LIST:
+        getList().clear();
+        getList().addAll((Collection<? extends assignment_expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,11 +140,8 @@ public class argument_expression_listImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION:
-        setAssignment_expression((assignment_expression)null);
-        return;
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2:
-        setArgument_expression_list2((argument_expression_list2)null);
+      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__LIST:
+        getList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -256,10 +157,8 @@ public class argument_expression_listImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION:
-        return assignment_expression != null;
-      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2:
-        return argument_expression_list2 != null;
+      case MyDslPackage.ARGUMENT_EXPRESSION_LIST__LIST:
+        return list != null && !list.isEmpty();
     }
     return super.eIsSet(featureID);
   }

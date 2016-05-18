@@ -14,18 +14,15 @@ import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslFactory;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.abstract_declarator;
-import org.xtext.example.mydsl.myDsl.additive_expression;
-import org.xtext.example.mydsl.myDsl.additive_expression2;
 import org.xtext.example.mydsl.myDsl.alignment_specifier;
-import org.xtext.example.mydsl.myDsl.and_expression;
-import org.xtext.example.mydsl.myDsl.and_expression2;
 import org.xtext.example.mydsl.myDsl.argument_expression_list;
-import org.xtext.example.mydsl.myDsl.argument_expression_list2;
 import org.xtext.example.mydsl.myDsl.assignment_expression;
 import org.xtext.example.mydsl.myDsl.assignment_operator;
 import org.xtext.example.mydsl.myDsl.atomic_type_specifier;
 import org.xtext.example.mydsl.myDsl.block_item;
-import org.xtext.example.mydsl.myDsl.cast_expression;
+import org.xtext.example.mydsl.myDsl.booleanType;
+import org.xtext.example.mydsl.myDsl.charType;
+import org.xtext.example.mydsl.myDsl.complexType;
 import org.xtext.example.mydsl.myDsl.compound_statement;
 import org.xtext.example.mydsl.myDsl.conditional_expression;
 import org.xtext.example.mydsl.myDsl.constant;
@@ -43,45 +40,36 @@ import org.xtext.example.mydsl.myDsl.direct_abstract_declarator;
 import org.xtext.example.mydsl.myDsl.direct_abstract_declarator2;
 import org.xtext.example.mydsl.myDsl.direct_declarator;
 import org.xtext.example.mydsl.myDsl.direct_declarator2;
+import org.xtext.example.mydsl.myDsl.doubleType;
 import org.xtext.example.mydsl.myDsl.enum_specifier;
 import org.xtext.example.mydsl.myDsl.enumeration_constant;
 import org.xtext.example.mydsl.myDsl.enumerator;
 import org.xtext.example.mydsl.myDsl.enumerator_list;
 import org.xtext.example.mydsl.myDsl.enumerator_list2;
-import org.xtext.example.mydsl.myDsl.equality_expression;
-import org.xtext.example.mydsl.myDsl.equality_expression2;
-import org.xtext.example.mydsl.myDsl.exclusive_or_expression;
-import org.xtext.example.mydsl.myDsl.exclusive_or_expression2;
 import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expression2;
 import org.xtext.example.mydsl.myDsl.expression_statement;
 import org.xtext.example.mydsl.myDsl.external_declaration;
+import org.xtext.example.mydsl.myDsl.floatType;
 import org.xtext.example.mydsl.myDsl.function_definition;
 import org.xtext.example.mydsl.myDsl.function_specifier;
 import org.xtext.example.mydsl.myDsl.generic_assoc_list;
-import org.xtext.example.mydsl.myDsl.generic_assoc_list2;
 import org.xtext.example.mydsl.myDsl.generic_association;
 import org.xtext.example.mydsl.myDsl.generic_selection;
 import org.xtext.example.mydsl.myDsl.identifier_list;
 import org.xtext.example.mydsl.myDsl.identifier_list2;
-import org.xtext.example.mydsl.myDsl.inclusive_or_expression;
-import org.xtext.example.mydsl.myDsl.inclusive_or_expression2;
+import org.xtext.example.mydsl.myDsl.imaginaryType;
 import org.xtext.example.mydsl.myDsl.init_declarator;
 import org.xtext.example.mydsl.myDsl.init_declarator_list;
 import org.xtext.example.mydsl.myDsl.init_declarator_list2;
 import org.xtext.example.mydsl.myDsl.initializer;
 import org.xtext.example.mydsl.myDsl.initializer_list;
 import org.xtext.example.mydsl.myDsl.initializer_list2;
-import org.xtext.example.mydsl.myDsl.integer;
+import org.xtext.example.mydsl.myDsl.intType;
 import org.xtext.example.mydsl.myDsl.iteration_statement;
 import org.xtext.example.mydsl.myDsl.jump_statement;
 import org.xtext.example.mydsl.myDsl.labeled_statement;
-import org.xtext.example.mydsl.myDsl.logical_and_expression;
-import org.xtext.example.mydsl.myDsl.logical_and_expression2;
-import org.xtext.example.mydsl.myDsl.logical_or_expression;
-import org.xtext.example.mydsl.myDsl.logical_or_expression2;
-import org.xtext.example.mydsl.myDsl.multiplicative_expression;
-import org.xtext.example.mydsl.myDsl.multiplicative_expression2;
+import org.xtext.example.mydsl.myDsl.longType;
 import org.xtext.example.mydsl.myDsl.parameter_declaration;
 import org.xtext.example.mydsl.myDsl.parameter_list;
 import org.xtext.example.mydsl.myDsl.parameter_list2;
@@ -89,16 +77,15 @@ import org.xtext.example.mydsl.myDsl.parameter_type_list;
 import org.xtext.example.mydsl.myDsl.pointer;
 import org.xtext.example.mydsl.myDsl.postfix_expression;
 import org.xtext.example.mydsl.myDsl.postfix_expression2;
-import org.xtext.example.mydsl.myDsl.primary_expression;
-import org.xtext.example.mydsl.myDsl.relational_expression;
-import org.xtext.example.mydsl.myDsl.relational_expression2;
 import org.xtext.example.mydsl.myDsl.selection_statement;
-import org.xtext.example.mydsl.myDsl.shift_expression;
-import org.xtext.example.mydsl.myDsl.shift_expression2;
+import org.xtext.example.mydsl.myDsl.shortType;
+import org.xtext.example.mydsl.myDsl.signedType;
+import org.xtext.example.mydsl.myDsl.simple_expression;
 import org.xtext.example.mydsl.myDsl.specifier_qualifier_list;
 import org.xtext.example.mydsl.myDsl.statement;
 import org.xtext.example.mydsl.myDsl.static_assert_declaration;
 import org.xtext.example.mydsl.myDsl.storage_class_specifier;
+import org.xtext.example.mydsl.myDsl.stringType;
 import org.xtext.example.mydsl.myDsl.string_nova;
 import org.xtext.example.mydsl.myDsl.struct_declaration;
 import org.xtext.example.mydsl.myDsl.struct_declaration_list;
@@ -115,6 +102,9 @@ import org.xtext.example.mydsl.myDsl.type_qualifier_list;
 import org.xtext.example.mydsl.myDsl.type_qualifier_list2;
 import org.xtext.example.mydsl.myDsl.type_specifier;
 import org.xtext.example.mydsl.myDsl.unary_expression;
+import org.xtext.example.mydsl.myDsl.unsignedType;
+import org.xtext.example.mydsl.myDsl.variableRef;
+import org.xtext.example.mydsl.myDsl.voidType;
 
 /**
  * <!-- begin-user-doc -->
@@ -136,7 +126,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass primary_expressionEClass = null;
+  private EClass simple_expressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -178,13 +168,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass generic_assoc_list2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass generic_associationEClass = null;
 
   /**
@@ -213,161 +196,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass argument_expression_list2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass unary_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass cast_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass multiplicative_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass multiplicative_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass additive_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass additive_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass shift_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass shift_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass relational_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass relational_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass equality_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass equality_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass and_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass and_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass exclusive_or_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass exclusive_or_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass inclusive_or_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass inclusive_or_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_and_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_and_expression2EClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_or_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_or_expression2EClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -843,7 +672,168 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass integerEClass = null;
+  private EClass variableRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass intTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass floatTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mulEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass shfEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass relEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eqlEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exC_OREClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inC_OREClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass loG_ANDEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass loG_OREClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass voidTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass charTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass shortTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass longTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass doubleTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass signedTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass unsignedTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass complexTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass imaginaryTypeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -933,9 +923,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getprimary_expression()
+  public EClass getsimple_expression()
   {
-    return primary_expressionEClass;
+    return simple_expressionEClass;
   }
 
   /**
@@ -943,9 +933,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimary_expression_Identifier()
+  public EReference getsimple_expression_Type_name()
   {
-    return (EReference)primary_expressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)simple_expressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -953,39 +943,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimary_expression_Constant()
+  public EReference getsimple_expression_Cast_expression()
   {
-    return (EReference)primary_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimary_expression_String()
-  {
-    return (EReference)primary_expressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimary_expression_Expression()
-  {
-    return (EReference)primary_expressionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimary_expression_Generic_selection()
-  {
-    return (EReference)primary_expressionEClass.getEStructuralFeatures().get(4);
+    return (EReference)simple_expressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1143,39 +1103,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getgeneric_assoc_list_Generic_assoc_list2()
+  public EReference getgeneric_assoc_list_Generic_list()
   {
     return (EReference)generic_assoc_listEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getgeneric_assoc_list2()
-  {
-    return generic_assoc_list2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getgeneric_assoc_list2_Generic_association()
-  {
-    return (EReference)generic_assoc_list2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getgeneric_assoc_list2_Generic_assoc_list2()
-  {
-    return (EReference)generic_assoc_list2EClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1243,7 +1173,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getpostfix_expression_Postfix_expression2()
+  public EReference getpostfix_expression_Postifx_expres()
   {
     return (EReference)postfix_expressionEClass.getEStructuralFeatures().get(1);
   }
@@ -1283,69 +1213,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getpostfix_expression2_Expression()
+  public EReference getpostfix_expression2_Assignment_expression()
   {
     return (EReference)postfix_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getpostfix_expression2_Postfix_expression2()
-  {
-    return (EReference)postfix_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getpostfix_expression2_Argument_expression_list()
-  {
-    return (EReference)postfix_expression2EClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getpostfix_expression2_Identifier()
-  {
-    return (EAttribute)postfix_expression2EClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getpostfix_expression2_Ptr_op()
-  {
-    return (EAttribute)postfix_expression2EClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getpostfix_expression2_Inc_op()
-  {
-    return (EAttribute)postfix_expression2EClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getpostfix_expression2_Dec_op()
-  {
-    return (EAttribute)postfix_expression2EClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1363,49 +1233,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getargument_expression_list_Assignment_expression()
+  public EReference getargument_expression_list_List()
   {
     return (EReference)argument_expression_listEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getargument_expression_list_Argument_expression_list2()
-  {
-    return (EReference)argument_expression_listEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getargument_expression_list2()
-  {
-    return argument_expression_list2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getargument_expression_list2_Assignment_expression()
-  {
-    return (EReference)argument_expression_list2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getargument_expression_list2_Argument_expression_list2()
-  {
-    return (EReference)argument_expression_list2EClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1473,29 +1303,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getunary_expression_Cast_expression()
-  {
-    return (EReference)unary_expressionEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getunary_expression_Sizeof()
   {
-    return (EAttribute)unary_expressionEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getunary_expression_Type_name()
-  {
-    return (EReference)unary_expressionEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)unary_expressionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1505,737 +1315,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EAttribute getunary_expression_Alignof()
   {
-    return (EAttribute)unary_expressionEClass.getEStructuralFeatures().get(8);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getcast_expression()
-  {
-    return cast_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getcast_expression_Unary_expression()
-  {
-    return (EReference)cast_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getcast_expression_Type_name()
-  {
-    return (EReference)cast_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getcast_expression_Cast_expression()
-  {
-    return (EReference)cast_expressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getmultiplicative_expression()
-  {
-    return multiplicative_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmultiplicative_expression_Cast_expression()
-  {
-    return (EReference)multiplicative_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmultiplicative_expression_Multiplicative_expression2()
-  {
-    return (EReference)multiplicative_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getmultiplicative_expression2()
-  {
-    return multiplicative_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmultiplicative_expression2_Cast_expression()
-  {
-    return (EReference)multiplicative_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmultiplicative_expression2_Multiplicative_expression2()
-  {
-    return (EReference)multiplicative_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getadditive_expression()
-  {
-    return additive_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getadditive_expression_Multiplicative_expression()
-  {
-    return (EReference)additive_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getadditive_expression_Additive_expression2()
-  {
-    return (EReference)additive_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getadditive_expression2()
-  {
-    return additive_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getadditive_expression2_Multiplicative_expression()
-  {
-    return (EReference)additive_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getadditive_expression2_Additive_expression2()
-  {
-    return (EReference)additive_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getshift_expression()
-  {
-    return shift_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getshift_expression_Additive_expression()
-  {
-    return (EReference)shift_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getshift_expression_Shift_expression2()
-  {
-    return (EReference)shift_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getshift_expression2()
-  {
-    return shift_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getshift_expression2_Left_op()
-  {
-    return (EAttribute)shift_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getshift_expression2_Additive_expression()
-  {
-    return (EReference)shift_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getshift_expression2_Shift_expression2()
-  {
-    return (EReference)shift_expression2EClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getshift_expression2_Right_op()
-  {
-    return (EAttribute)shift_expression2EClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getrelational_expression()
-  {
-    return relational_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression_Shift_expression()
-  {
-    return (EReference)relational_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression_Relational_expression2()
-  {
-    return (EReference)relational_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getrelational_expression2()
-  {
-    return relational_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression2_Shift_expression()
-  {
-    return (EReference)relational_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression2_Relational_expression2()
-  {
-    return (EReference)relational_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression2_Relational_expression()
-  {
-    return (EReference)relational_expression2EClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getrelational_expression2_Le_op()
-  {
-    return (EAttribute)relational_expression2EClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getrelational_expression2_Ge_op()
-  {
-    return (EAttribute)relational_expression2EClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getequality_expression()
-  {
-    return equality_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getequality_expression_Relational_expression()
-  {
-    return (EReference)equality_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getequality_expression_Equality_expression2()
-  {
-    return (EReference)equality_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getequality_expression2()
-  {
-    return equality_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getequality_expression2_Eq_op()
-  {
-    return (EAttribute)equality_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getequality_expression2_Relational_expression()
-  {
-    return (EReference)equality_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getequality_expression2_Equality_expression2()
-  {
-    return (EReference)equality_expression2EClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getequality_expression2_Ne_op()
-  {
-    return (EAttribute)equality_expression2EClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getand_expression()
-  {
-    return and_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getand_expression_Equality_expression()
-  {
-    return (EReference)and_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getand_expression_And_expression2()
-  {
-    return (EReference)and_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getand_expression2()
-  {
-    return and_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getand_expression2_Equality_expression()
-  {
-    return (EReference)and_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getand_expression2_And_expression2()
-  {
-    return (EReference)and_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getexclusive_or_expression()
-  {
-    return exclusive_or_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getexclusive_or_expression_And_expression()
-  {
-    return (EReference)exclusive_or_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getexclusive_or_expression_Exclusive_or_expression2()
-  {
-    return (EReference)exclusive_or_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getexclusive_or_expression2()
-  {
-    return exclusive_or_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getexclusive_or_expression2_And_expression()
-  {
-    return (EReference)exclusive_or_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getexclusive_or_expression2_Exclusive_or_expression2()
-  {
-    return (EReference)exclusive_or_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getinclusive_or_expression()
-  {
-    return inclusive_or_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getinclusive_or_expression_Exclusive_or_expression()
-  {
-    return (EReference)inclusive_or_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getinclusive_or_expression_Inclusive_or_expression2()
-  {
-    return (EReference)inclusive_or_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getinclusive_or_expression2()
-  {
-    return inclusive_or_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getinclusive_or_expression2_Exclusive_or_expression()
-  {
-    return (EReference)inclusive_or_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getinclusive_or_expression2_Inclusive_or_expression2()
-  {
-    return (EReference)inclusive_or_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_and_expression()
-  {
-    return logical_and_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_and_expression_Inclusive_or_expression()
-  {
-    return (EReference)logical_and_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_and_expression_Logical_and_expression2()
-  {
-    return (EReference)logical_and_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_and_expression2()
-  {
-    return logical_and_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getlogical_and_expression2_And_op()
-  {
-    return (EAttribute)logical_and_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_and_expression2_Inclusive_or_expression()
-  {
-    return (EReference)logical_and_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_and_expression2_Logical_and_expression2()
-  {
-    return (EReference)logical_and_expression2EClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_or_expression()
-  {
-    return logical_or_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_or_expression_Logical_and_expression()
-  {
-    return (EReference)logical_or_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_or_expression_Logical_or_expression2()
-  {
-    return (EReference)logical_or_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_or_expression2()
-  {
-    return logical_or_expression2EClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getlogical_or_expression2_Or_op()
-  {
-    return (EAttribute)logical_or_expression2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_or_expression2_Logical_and_expression()
-  {
-    return (EReference)logical_or_expression2EClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_or_expression2_Logical_or_expression2()
-  {
-    return (EReference)logical_or_expression2EClass.getEStructuralFeatures().get(2);
+    return (EAttribute)unary_expressionEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -2253,7 +1333,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getconditional_expression_Logical_or_expression()
+  public EReference getconditional_expression_Simple_expression()
   {
     return (EReference)conditional_expressionEClass.getEStructuralFeatures().get(0);
   }
@@ -2263,7 +1343,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getconditional_expression_Expression()
+  public EReference getconditional_expression_Logical_or_expression()
   {
     return (EReference)conditional_expressionEClass.getEStructuralFeatures().get(1);
   }
@@ -2273,9 +1353,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getconditional_expression_Conditional_expression()
+  public EReference getconditional_expression_Expression()
   {
     return (EReference)conditional_expressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getconditional_expression_Conditional_expression()
+  {
+    return (EReference)conditional_expressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2453,19 +1543,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getexpression_Assignment_expression()
-  {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getexpression_Expression2()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2803,119 +1883,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute gettype_specifier_Void_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Char_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Short_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Long_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Float_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Double_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Signed_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Unsigned_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Bool_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(8);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Complex_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(9);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_specifier_Imaginary_type()
-  {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(10);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference gettype_specifier_Atomic_type_specifier()
   {
-    return (EReference)type_specifierEClass.getEStructuralFeatures().get(11);
+    return (EReference)type_specifierEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2925,7 +1895,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference gettype_specifier_Struct_or_union_specifier()
   {
-    return (EReference)type_specifierEClass.getEStructuralFeatures().get(12);
+    return (EReference)type_specifierEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2935,7 +1905,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference gettype_specifier_Enum_specifier()
   {
-    return (EReference)type_specifierEClass.getEStructuralFeatures().get(13);
+    return (EReference)type_specifierEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2945,7 +1915,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EAttribute gettype_specifier_Typedef_name()
   {
-    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(14);
+    return (EAttribute)type_specifierEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -3583,7 +2553,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getdirect_declarator_Direct_declarator2()
+  public EReference getdirect_declarator_Direct_declarators()
   {
     return (EReference)direct_declaratorEClass.getEStructuralFeatures().get(1);
   }
@@ -3613,19 +2583,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getdirect_declarator2_Direct_declarator2()
-  {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getdirect_declarator2_Static()
   {
-    return (EAttribute)direct_declarator2EClass.getEStructuralFeatures().get(1);
+    return (EAttribute)direct_declarator2EClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3635,7 +2595,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Type_qualifier_list()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(2);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3645,7 +2605,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Assignment_expression()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(3);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3655,7 +2615,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Parameter_type_list()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(4);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -3665,7 +2625,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Identifier_list()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(5);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -4023,59 +2983,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getdirect_abstract_declarator_Abstract_declarator()
-  {
-    return (EReference)direct_abstract_declaratorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getdirect_abstract_declarator_Direct_abstract_declarator2()
   {
-    return (EReference)direct_abstract_declaratorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getdirect_abstract_declarator_Static()
-  {
-    return (EAttribute)direct_abstract_declaratorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getdirect_abstract_declarator_Type_qualifier_list()
-  {
-    return (EReference)direct_abstract_declaratorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getdirect_abstract_declarator_Assignment_expression()
-  {
-    return (EReference)direct_abstract_declaratorEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getdirect_abstract_declarator_Parameter_type_list()
-  {
-    return (EReference)direct_abstract_declaratorEClass.getEStructuralFeatures().get(5);
+    return (EReference)direct_abstract_declaratorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -4093,19 +3003,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getdirect_abstract_declarator2_Direct_abstract_declarator2()
-  {
-    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getdirect_abstract_declarator2_Static()
   {
-    return (EAttribute)direct_abstract_declarator2EClass.getEStructuralFeatures().get(1);
+    return (EAttribute)direct_abstract_declarator2EClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -4115,7 +3015,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_abstract_declarator2_Type_qualifier_list()
   {
-    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(2);
+    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -4125,7 +3025,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_abstract_declarator2_Assignment_expression()
   {
-    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(3);
+    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -4135,7 +3035,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_abstract_declarator2_Parameter_type_list()
   {
-    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(4);
+    return (EReference)direct_abstract_declarator2EClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -4993,9 +3893,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getinteger()
+  public EClass getvariableRef()
   {
-    return integerEClass;
+    return variableRefEClass;
   }
 
   /**
@@ -5003,9 +3903,649 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getinteger_Int_type()
+  public EReference getvariableRef_Variable()
   {
-    return (EAttribute)integerEClass.getEStructuralFeatures().get(0);
+    return (EReference)variableRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getintType()
+  {
+    return intTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getintType_Value()
+  {
+    return (EAttribute)intTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getintType_Int_type()
+  {
+    return (EAttribute)intTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getfloatType()
+  {
+    return floatTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getfloatType_Value()
+  {
+    return (EAttribute)floatTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getfloatType_Float_type()
+  {
+    return (EAttribute)floatTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getstringType()
+  {
+    return stringTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getstringType_Value()
+  {
+    return (EReference)stringTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getbooleanType()
+  {
+    return booleanTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getbooleanType_Value()
+  {
+    return (EAttribute)booleanTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getbooleanType_Bool_type()
+  {
+    return (EAttribute)booleanTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMUL()
+  {
+    return mulEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMUL_Left()
+  {
+    return (EReference)mulEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMUL_Op()
+  {
+    return (EAttribute)mulEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMUL_Right()
+  {
+    return (EReference)mulEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getADD()
+  {
+    return addEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getADD_Left()
+  {
+    return (EReference)addEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getADD_Op()
+  {
+    return (EAttribute)addEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getADD_Right()
+  {
+    return (EReference)addEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSHF()
+  {
+    return shfEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSHF_Left()
+  {
+    return (EReference)shfEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSHF_Op()
+  {
+    return (EAttribute)shfEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSHF_Right()
+  {
+    return (EReference)shfEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getREL()
+  {
+    return relEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getREL_Left()
+  {
+    return (EReference)relEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getREL_Op()
+  {
+    return (EAttribute)relEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getREL_Right()
+  {
+    return (EReference)relEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEQL()
+  {
+    return eqlEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEQL_Left()
+  {
+    return (EReference)eqlEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEQL_Op()
+  {
+    return (EAttribute)eqlEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEQL_Right()
+  {
+    return (EReference)eqlEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAND()
+  {
+    return andEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAND_Left()
+  {
+    return (EReference)andEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAND_Right()
+  {
+    return (EReference)andEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEXC_OR()
+  {
+    return exC_OREClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEXC_OR_Left()
+  {
+    return (EReference)exC_OREClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEXC_OR_Right()
+  {
+    return (EReference)exC_OREClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getINC_OR()
+  {
+    return inC_OREClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getINC_OR_Left()
+  {
+    return (EReference)inC_OREClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getINC_OR_Right()
+  {
+    return (EReference)inC_OREClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLOG_AND()
+  {
+    return loG_ANDEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLOG_AND_Left()
+  {
+    return (EReference)loG_ANDEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLOG_AND_Right()
+  {
+    return (EReference)loG_ANDEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLOG_OR()
+  {
+    return loG_OREClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLOG_OR_Left()
+  {
+    return (EReference)loG_OREClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLOG_OR_Right()
+  {
+    return (EReference)loG_OREClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getvoidType()
+  {
+    return voidTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getvoidType_Void_type()
+  {
+    return (EAttribute)voidTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getcharType()
+  {
+    return charTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getcharType_Char_type()
+  {
+    return (EAttribute)charTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getshortType()
+  {
+    return shortTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getshortType_Short_type()
+  {
+    return (EAttribute)shortTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getlongType()
+  {
+    return longTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getlongType_Long_type()
+  {
+    return (EAttribute)longTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getdoubleType()
+  {
+    return doubleTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getdoubleType_Double_type()
+  {
+    return (EAttribute)doubleTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getsignedType()
+  {
+    return signedTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getsignedType_Signed_type()
+  {
+    return (EAttribute)signedTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getunsignedType()
+  {
+    return unsignedTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getunsignedType_Unsigned_type()
+  {
+    return (EAttribute)unsignedTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getcomplexType()
+  {
+    return complexTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getcomplexType_Complex_type()
+  {
+    return (EAttribute)complexTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getimaginaryType()
+  {
+    return imaginaryTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getimaginaryType_Imaginary_type()
+  {
+    return (EAttribute)imaginaryTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5041,12 +4581,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     modelEClass = createEClass(MODEL);
     createEReference(modelEClass, MODEL__DECLARACOES);
 
-    primary_expressionEClass = createEClass(PRIMARY_EXPRESSION);
-    createEReference(primary_expressionEClass, PRIMARY_EXPRESSION__IDENTIFIER);
-    createEReference(primary_expressionEClass, PRIMARY_EXPRESSION__CONSTANT);
-    createEReference(primary_expressionEClass, PRIMARY_EXPRESSION__STRING);
-    createEReference(primary_expressionEClass, PRIMARY_EXPRESSION__EXPRESSION);
-    createEReference(primary_expressionEClass, PRIMARY_EXPRESSION__GENERIC_SELECTION);
+    simple_expressionEClass = createEClass(SIMPLE_EXPRESSION);
+    createEReference(simple_expressionEClass, SIMPLE_EXPRESSION__TYPE_NAME);
+    createEReference(simple_expressionEClass, SIMPLE_EXPRESSION__CAST_EXPRESSION);
 
     constantEClass = createEClass(CONSTANT);
     createEAttribute(constantEClass, CONSTANT__ICONSTANT);
@@ -5067,11 +4604,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     generic_assoc_listEClass = createEClass(GENERIC_ASSOC_LIST);
     createEReference(generic_assoc_listEClass, GENERIC_ASSOC_LIST__GENERIC_ASSOCIATION);
-    createEReference(generic_assoc_listEClass, GENERIC_ASSOC_LIST__GENERIC_ASSOC_LIST2);
-
-    generic_assoc_list2EClass = createEClass(GENERIC_ASSOC_LIST2);
-    createEReference(generic_assoc_list2EClass, GENERIC_ASSOC_LIST2__GENERIC_ASSOCIATION);
-    createEReference(generic_assoc_list2EClass, GENERIC_ASSOC_LIST2__GENERIC_ASSOC_LIST2);
+    createEReference(generic_assoc_listEClass, GENERIC_ASSOC_LIST__GENERIC_LIST);
 
     generic_associationEClass = createEClass(GENERIC_ASSOCIATION);
     createEReference(generic_associationEClass, GENERIC_ASSOCIATION__TYPE_NAME);
@@ -5080,26 +4613,15 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     postfix_expressionEClass = createEClass(POSTFIX_EXPRESSION);
     createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__PRIMARY_EXPRESSION);
-    createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2);
+    createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__POSTIFX_EXPRES);
     createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__TYPE_NAME);
     createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__INITIALIZER_LIST);
 
     postfix_expression2EClass = createEClass(POSTFIX_EXPRESSION2);
-    createEReference(postfix_expression2EClass, POSTFIX_EXPRESSION2__EXPRESSION);
-    createEReference(postfix_expression2EClass, POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2);
-    createEReference(postfix_expression2EClass, POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST);
-    createEAttribute(postfix_expression2EClass, POSTFIX_EXPRESSION2__IDENTIFIER);
-    createEAttribute(postfix_expression2EClass, POSTFIX_EXPRESSION2__PTR_OP);
-    createEAttribute(postfix_expression2EClass, POSTFIX_EXPRESSION2__INC_OP);
-    createEAttribute(postfix_expression2EClass, POSTFIX_EXPRESSION2__DEC_OP);
+    createEReference(postfix_expression2EClass, POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION);
 
     argument_expression_listEClass = createEClass(ARGUMENT_EXPRESSION_LIST);
-    createEReference(argument_expression_listEClass, ARGUMENT_EXPRESSION_LIST__ASSIGNMENT_EXPRESSION);
-    createEReference(argument_expression_listEClass, ARGUMENT_EXPRESSION_LIST__ARGUMENT_EXPRESSION_LIST2);
-
-    argument_expression_list2EClass = createEClass(ARGUMENT_EXPRESSION_LIST2);
-    createEReference(argument_expression_list2EClass, ARGUMENT_EXPRESSION_LIST2__ASSIGNMENT_EXPRESSION);
-    createEReference(argument_expression_list2EClass, ARGUMENT_EXPRESSION_LIST2__ARGUMENT_EXPRESSION_LIST2);
+    createEReference(argument_expression_listEClass, ARGUMENT_EXPRESSION_LIST__LIST);
 
     unary_expressionEClass = createEClass(UNARY_EXPRESSION);
     createEReference(unary_expressionEClass, UNARY_EXPRESSION__POSTFIX_EXPRESSION);
@@ -5107,106 +4629,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(unary_expressionEClass, UNARY_EXPRESSION__UNARY_EXPRESSION);
     createEAttribute(unary_expressionEClass, UNARY_EXPRESSION__DEC_OP);
     createEAttribute(unary_expressionEClass, UNARY_EXPRESSION__UNARY_OPERATOR);
-    createEReference(unary_expressionEClass, UNARY_EXPRESSION__CAST_EXPRESSION);
     createEAttribute(unary_expressionEClass, UNARY_EXPRESSION__SIZEOF);
-    createEReference(unary_expressionEClass, UNARY_EXPRESSION__TYPE_NAME);
     createEAttribute(unary_expressionEClass, UNARY_EXPRESSION__ALIGNOF);
 
-    cast_expressionEClass = createEClass(CAST_EXPRESSION);
-    createEReference(cast_expressionEClass, CAST_EXPRESSION__UNARY_EXPRESSION);
-    createEReference(cast_expressionEClass, CAST_EXPRESSION__TYPE_NAME);
-    createEReference(cast_expressionEClass, CAST_EXPRESSION__CAST_EXPRESSION);
-
-    multiplicative_expressionEClass = createEClass(MULTIPLICATIVE_EXPRESSION);
-    createEReference(multiplicative_expressionEClass, MULTIPLICATIVE_EXPRESSION__CAST_EXPRESSION);
-    createEReference(multiplicative_expressionEClass, MULTIPLICATIVE_EXPRESSION__MULTIPLICATIVE_EXPRESSION2);
-
-    multiplicative_expression2EClass = createEClass(MULTIPLICATIVE_EXPRESSION2);
-    createEReference(multiplicative_expression2EClass, MULTIPLICATIVE_EXPRESSION2__CAST_EXPRESSION);
-    createEReference(multiplicative_expression2EClass, MULTIPLICATIVE_EXPRESSION2__MULTIPLICATIVE_EXPRESSION2);
-
-    additive_expressionEClass = createEClass(ADDITIVE_EXPRESSION);
-    createEReference(additive_expressionEClass, ADDITIVE_EXPRESSION__MULTIPLICATIVE_EXPRESSION);
-    createEReference(additive_expressionEClass, ADDITIVE_EXPRESSION__ADDITIVE_EXPRESSION2);
-
-    additive_expression2EClass = createEClass(ADDITIVE_EXPRESSION2);
-    createEReference(additive_expression2EClass, ADDITIVE_EXPRESSION2__MULTIPLICATIVE_EXPRESSION);
-    createEReference(additive_expression2EClass, ADDITIVE_EXPRESSION2__ADDITIVE_EXPRESSION2);
-
-    shift_expressionEClass = createEClass(SHIFT_EXPRESSION);
-    createEReference(shift_expressionEClass, SHIFT_EXPRESSION__ADDITIVE_EXPRESSION);
-    createEReference(shift_expressionEClass, SHIFT_EXPRESSION__SHIFT_EXPRESSION2);
-
-    shift_expression2EClass = createEClass(SHIFT_EXPRESSION2);
-    createEAttribute(shift_expression2EClass, SHIFT_EXPRESSION2__LEFT_OP);
-    createEReference(shift_expression2EClass, SHIFT_EXPRESSION2__ADDITIVE_EXPRESSION);
-    createEReference(shift_expression2EClass, SHIFT_EXPRESSION2__SHIFT_EXPRESSION2);
-    createEAttribute(shift_expression2EClass, SHIFT_EXPRESSION2__RIGHT_OP);
-
-    relational_expressionEClass = createEClass(RELATIONAL_EXPRESSION);
-    createEReference(relational_expressionEClass, RELATIONAL_EXPRESSION__SHIFT_EXPRESSION);
-    createEReference(relational_expressionEClass, RELATIONAL_EXPRESSION__RELATIONAL_EXPRESSION2);
-
-    relational_expression2EClass = createEClass(RELATIONAL_EXPRESSION2);
-    createEReference(relational_expression2EClass, RELATIONAL_EXPRESSION2__SHIFT_EXPRESSION);
-    createEReference(relational_expression2EClass, RELATIONAL_EXPRESSION2__RELATIONAL_EXPRESSION2);
-    createEReference(relational_expression2EClass, RELATIONAL_EXPRESSION2__RELATIONAL_EXPRESSION);
-    createEAttribute(relational_expression2EClass, RELATIONAL_EXPRESSION2__LE_OP);
-    createEAttribute(relational_expression2EClass, RELATIONAL_EXPRESSION2__GE_OP);
-
-    equality_expressionEClass = createEClass(EQUALITY_EXPRESSION);
-    createEReference(equality_expressionEClass, EQUALITY_EXPRESSION__RELATIONAL_EXPRESSION);
-    createEReference(equality_expressionEClass, EQUALITY_EXPRESSION__EQUALITY_EXPRESSION2);
-
-    equality_expression2EClass = createEClass(EQUALITY_EXPRESSION2);
-    createEAttribute(equality_expression2EClass, EQUALITY_EXPRESSION2__EQ_OP);
-    createEReference(equality_expression2EClass, EQUALITY_EXPRESSION2__RELATIONAL_EXPRESSION);
-    createEReference(equality_expression2EClass, EQUALITY_EXPRESSION2__EQUALITY_EXPRESSION2);
-    createEAttribute(equality_expression2EClass, EQUALITY_EXPRESSION2__NE_OP);
-
-    and_expressionEClass = createEClass(AND_EXPRESSION);
-    createEReference(and_expressionEClass, AND_EXPRESSION__EQUALITY_EXPRESSION);
-    createEReference(and_expressionEClass, AND_EXPRESSION__AND_EXPRESSION2);
-
-    and_expression2EClass = createEClass(AND_EXPRESSION2);
-    createEReference(and_expression2EClass, AND_EXPRESSION2__EQUALITY_EXPRESSION);
-    createEReference(and_expression2EClass, AND_EXPRESSION2__AND_EXPRESSION2);
-
-    exclusive_or_expressionEClass = createEClass(EXCLUSIVE_OR_EXPRESSION);
-    createEReference(exclusive_or_expressionEClass, EXCLUSIVE_OR_EXPRESSION__AND_EXPRESSION);
-    createEReference(exclusive_or_expressionEClass, EXCLUSIVE_OR_EXPRESSION__EXCLUSIVE_OR_EXPRESSION2);
-
-    exclusive_or_expression2EClass = createEClass(EXCLUSIVE_OR_EXPRESSION2);
-    createEReference(exclusive_or_expression2EClass, EXCLUSIVE_OR_EXPRESSION2__AND_EXPRESSION);
-    createEReference(exclusive_or_expression2EClass, EXCLUSIVE_OR_EXPRESSION2__EXCLUSIVE_OR_EXPRESSION2);
-
-    inclusive_or_expressionEClass = createEClass(INCLUSIVE_OR_EXPRESSION);
-    createEReference(inclusive_or_expressionEClass, INCLUSIVE_OR_EXPRESSION__EXCLUSIVE_OR_EXPRESSION);
-    createEReference(inclusive_or_expressionEClass, INCLUSIVE_OR_EXPRESSION__INCLUSIVE_OR_EXPRESSION2);
-
-    inclusive_or_expression2EClass = createEClass(INCLUSIVE_OR_EXPRESSION2);
-    createEReference(inclusive_or_expression2EClass, INCLUSIVE_OR_EXPRESSION2__EXCLUSIVE_OR_EXPRESSION);
-    createEReference(inclusive_or_expression2EClass, INCLUSIVE_OR_EXPRESSION2__INCLUSIVE_OR_EXPRESSION2);
-
-    logical_and_expressionEClass = createEClass(LOGICAL_AND_EXPRESSION);
-    createEReference(logical_and_expressionEClass, LOGICAL_AND_EXPRESSION__INCLUSIVE_OR_EXPRESSION);
-    createEReference(logical_and_expressionEClass, LOGICAL_AND_EXPRESSION__LOGICAL_AND_EXPRESSION2);
-
-    logical_and_expression2EClass = createEClass(LOGICAL_AND_EXPRESSION2);
-    createEAttribute(logical_and_expression2EClass, LOGICAL_AND_EXPRESSION2__AND_OP);
-    createEReference(logical_and_expression2EClass, LOGICAL_AND_EXPRESSION2__INCLUSIVE_OR_EXPRESSION);
-    createEReference(logical_and_expression2EClass, LOGICAL_AND_EXPRESSION2__LOGICAL_AND_EXPRESSION2);
-
-    logical_or_expressionEClass = createEClass(LOGICAL_OR_EXPRESSION);
-    createEReference(logical_or_expressionEClass, LOGICAL_OR_EXPRESSION__LOGICAL_AND_EXPRESSION);
-    createEReference(logical_or_expressionEClass, LOGICAL_OR_EXPRESSION__LOGICAL_OR_EXPRESSION2);
-
-    logical_or_expression2EClass = createEClass(LOGICAL_OR_EXPRESSION2);
-    createEAttribute(logical_or_expression2EClass, LOGICAL_OR_EXPRESSION2__OR_OP);
-    createEReference(logical_or_expression2EClass, LOGICAL_OR_EXPRESSION2__LOGICAL_AND_EXPRESSION);
-    createEReference(logical_or_expression2EClass, LOGICAL_OR_EXPRESSION2__LOGICAL_OR_EXPRESSION2);
-
     conditional_expressionEClass = createEClass(CONDITIONAL_EXPRESSION);
+    createEReference(conditional_expressionEClass, CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION);
     createEReference(conditional_expressionEClass, CONDITIONAL_EXPRESSION__LOGICAL_OR_EXPRESSION);
     createEReference(conditional_expressionEClass, CONDITIONAL_EXPRESSION__EXPRESSION);
     createEReference(conditional_expressionEClass, CONDITIONAL_EXPRESSION__CONDITIONAL_EXPRESSION);
@@ -5230,7 +4657,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEAttribute(assignment_operatorEClass, ASSIGNMENT_OPERATOR__OR_ASSIGN);
 
     expressionEClass = createEClass(EXPRESSION);
-    createEReference(expressionEClass, EXPRESSION__ASSIGNMENT_EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__EXPRESSION2);
 
     expression2EClass = createEClass(EXPRESSION2);
@@ -5274,17 +4700,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEAttribute(storage_class_specifierEClass, STORAGE_CLASS_SPECIFIER__REGISTER);
 
     type_specifierEClass = createEClass(TYPE_SPECIFIER);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__VOID_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__CHAR_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__SHORT_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__LONG_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__FLOAT_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__DOUBLE_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__SIGNED_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__UNSIGNED_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__BOOL_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__COMPLEX_TYPE);
-    createEAttribute(type_specifierEClass, TYPE_SPECIFIER__IMAGINARY_TYPE);
     createEReference(type_specifierEClass, TYPE_SPECIFIER__ATOMIC_TYPE_SPECIFIER);
     createEReference(type_specifierEClass, TYPE_SPECIFIER__STRUCT_OR_UNION_SPECIFIER);
     createEReference(type_specifierEClass, TYPE_SPECIFIER__ENUM_SPECIFIER);
@@ -5371,11 +4786,10 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     direct_declaratorEClass = createEClass(DIRECT_DECLARATOR);
     createEAttribute(direct_declaratorEClass, DIRECT_DECLARATOR__NAME);
-    createEReference(direct_declaratorEClass, DIRECT_DECLARATOR__DIRECT_DECLARATOR2);
+    createEReference(direct_declaratorEClass, DIRECT_DECLARATOR__DIRECT_DECLARATORS);
     createEReference(direct_declaratorEClass, DIRECT_DECLARATOR__DECLARATOR);
 
     direct_declarator2EClass = createEClass(DIRECT_DECLARATOR2);
-    createEReference(direct_declarator2EClass, DIRECT_DECLARATOR2__DIRECT_DECLARATOR2);
     createEAttribute(direct_declarator2EClass, DIRECT_DECLARATOR2__STATIC);
     createEReference(direct_declarator2EClass, DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST);
     createEReference(direct_declarator2EClass, DIRECT_DECLARATOR2__ASSIGNMENT_EXPRESSION);
@@ -5428,15 +4842,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(abstract_declaratorEClass, ABSTRACT_DECLARATOR__DIRECT_ABSTRACT_DECLARATOR);
 
     direct_abstract_declaratorEClass = createEClass(DIRECT_ABSTRACT_DECLARATOR);
-    createEReference(direct_abstract_declaratorEClass, DIRECT_ABSTRACT_DECLARATOR__ABSTRACT_DECLARATOR);
     createEReference(direct_abstract_declaratorEClass, DIRECT_ABSTRACT_DECLARATOR__DIRECT_ABSTRACT_DECLARATOR2);
-    createEAttribute(direct_abstract_declaratorEClass, DIRECT_ABSTRACT_DECLARATOR__STATIC);
-    createEReference(direct_abstract_declaratorEClass, DIRECT_ABSTRACT_DECLARATOR__TYPE_QUALIFIER_LIST);
-    createEReference(direct_abstract_declaratorEClass, DIRECT_ABSTRACT_DECLARATOR__ASSIGNMENT_EXPRESSION);
-    createEReference(direct_abstract_declaratorEClass, DIRECT_ABSTRACT_DECLARATOR__PARAMETER_TYPE_LIST);
 
     direct_abstract_declarator2EClass = createEClass(DIRECT_ABSTRACT_DECLARATOR2);
-    createEReference(direct_abstract_declarator2EClass, DIRECT_ABSTRACT_DECLARATOR2__DIRECT_ABSTRACT_DECLARATOR2);
     createEAttribute(direct_abstract_declarator2EClass, DIRECT_ABSTRACT_DECLARATOR2__STATIC);
     createEReference(direct_abstract_declarator2EClass, DIRECT_ABSTRACT_DECLARATOR2__TYPE_QUALIFIER_LIST);
     createEReference(direct_abstract_declarator2EClass, DIRECT_ABSTRACT_DECLARATOR2__ASSIGNMENT_EXPRESSION);
@@ -5548,8 +4956,95 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(declaration_list2EClass, DECLARATION_LIST2__DECLARATION);
     createEReference(declaration_list2EClass, DECLARATION_LIST2__DECLARATION_LIST2);
 
-    integerEClass = createEClass(INTEGER);
-    createEAttribute(integerEClass, INTEGER__INT_TYPE);
+    variableRefEClass = createEClass(VARIABLE_REF);
+    createEReference(variableRefEClass, VARIABLE_REF__VARIABLE);
+
+    intTypeEClass = createEClass(INT_TYPE);
+    createEAttribute(intTypeEClass, INT_TYPE__VALUE);
+    createEAttribute(intTypeEClass, INT_TYPE__INT_TYPE);
+
+    floatTypeEClass = createEClass(FLOAT_TYPE);
+    createEAttribute(floatTypeEClass, FLOAT_TYPE__VALUE);
+    createEAttribute(floatTypeEClass, FLOAT_TYPE__FLOAT_TYPE);
+
+    stringTypeEClass = createEClass(STRING_TYPE);
+    createEReference(stringTypeEClass, STRING_TYPE__VALUE);
+
+    booleanTypeEClass = createEClass(BOOLEAN_TYPE);
+    createEAttribute(booleanTypeEClass, BOOLEAN_TYPE__VALUE);
+    createEAttribute(booleanTypeEClass, BOOLEAN_TYPE__BOOL_TYPE);
+
+    mulEClass = createEClass(MUL);
+    createEReference(mulEClass, MUL__LEFT);
+    createEAttribute(mulEClass, MUL__OP);
+    createEReference(mulEClass, MUL__RIGHT);
+
+    addEClass = createEClass(ADD);
+    createEReference(addEClass, ADD__LEFT);
+    createEAttribute(addEClass, ADD__OP);
+    createEReference(addEClass, ADD__RIGHT);
+
+    shfEClass = createEClass(SHF);
+    createEReference(shfEClass, SHF__LEFT);
+    createEAttribute(shfEClass, SHF__OP);
+    createEReference(shfEClass, SHF__RIGHT);
+
+    relEClass = createEClass(REL);
+    createEReference(relEClass, REL__LEFT);
+    createEAttribute(relEClass, REL__OP);
+    createEReference(relEClass, REL__RIGHT);
+
+    eqlEClass = createEClass(EQL);
+    createEReference(eqlEClass, EQL__LEFT);
+    createEAttribute(eqlEClass, EQL__OP);
+    createEReference(eqlEClass, EQL__RIGHT);
+
+    andEClass = createEClass(AND);
+    createEReference(andEClass, AND__LEFT);
+    createEReference(andEClass, AND__RIGHT);
+
+    exC_OREClass = createEClass(EXC_OR);
+    createEReference(exC_OREClass, EXC_OR__LEFT);
+    createEReference(exC_OREClass, EXC_OR__RIGHT);
+
+    inC_OREClass = createEClass(INC_OR);
+    createEReference(inC_OREClass, INC_OR__LEFT);
+    createEReference(inC_OREClass, INC_OR__RIGHT);
+
+    loG_ANDEClass = createEClass(LOG_AND);
+    createEReference(loG_ANDEClass, LOG_AND__LEFT);
+    createEReference(loG_ANDEClass, LOG_AND__RIGHT);
+
+    loG_OREClass = createEClass(LOG_OR);
+    createEReference(loG_OREClass, LOG_OR__LEFT);
+    createEReference(loG_OREClass, LOG_OR__RIGHT);
+
+    voidTypeEClass = createEClass(VOID_TYPE);
+    createEAttribute(voidTypeEClass, VOID_TYPE__VOID_TYPE);
+
+    charTypeEClass = createEClass(CHAR_TYPE);
+    createEAttribute(charTypeEClass, CHAR_TYPE__CHAR_TYPE);
+
+    shortTypeEClass = createEClass(SHORT_TYPE);
+    createEAttribute(shortTypeEClass, SHORT_TYPE__SHORT_TYPE);
+
+    longTypeEClass = createEClass(LONG_TYPE);
+    createEAttribute(longTypeEClass, LONG_TYPE__LONG_TYPE);
+
+    doubleTypeEClass = createEClass(DOUBLE_TYPE);
+    createEAttribute(doubleTypeEClass, DOUBLE_TYPE__DOUBLE_TYPE);
+
+    signedTypeEClass = createEClass(SIGNED_TYPE);
+    createEAttribute(signedTypeEClass, SIGNED_TYPE__SIGNED_TYPE);
+
+    unsignedTypeEClass = createEClass(UNSIGNED_TYPE);
+    createEAttribute(unsignedTypeEClass, UNSIGNED_TYPE__UNSIGNED_TYPE);
+
+    complexTypeEClass = createEClass(COMPLEX_TYPE);
+    createEAttribute(complexTypeEClass, COMPLEX_TYPE__COMPLEX_TYPE);
+
+    imaginaryTypeEClass = createEClass(IMAGINARY_TYPE);
+    createEAttribute(imaginaryTypeEClass, IMAGINARY_TYPE__IMAGINARY_TYPE);
   }
 
   /**
@@ -5581,19 +5076,45 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    argument_expression_listEClass.getESuperTypes().add(this.getpostfix_expression2());
+    unary_expressionEClass.getESuperTypes().add(this.getsimple_expression());
+    expressionEClass.getESuperTypes().add(this.getpostfix_expression2());
     struct_or_unionEClass.getESuperTypes().add(this.getstruct_or_union_specifier());
-    integerEClass.getESuperTypes().add(this.gettype_specifier());
+    variableRefEClass.getESuperTypes().add(this.getsimple_expression());
+    intTypeEClass.getESuperTypes().add(this.getsimple_expression());
+    intTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    floatTypeEClass.getESuperTypes().add(this.getsimple_expression());
+    floatTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    stringTypeEClass.getESuperTypes().add(this.getsimple_expression());
+    booleanTypeEClass.getESuperTypes().add(this.getsimple_expression());
+    booleanTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    mulEClass.getESuperTypes().add(this.getsimple_expression());
+    addEClass.getESuperTypes().add(this.getsimple_expression());
+    shfEClass.getESuperTypes().add(this.getsimple_expression());
+    relEClass.getESuperTypes().add(this.getsimple_expression());
+    eqlEClass.getESuperTypes().add(this.getsimple_expression());
+    andEClass.getESuperTypes().add(this.getsimple_expression());
+    exC_OREClass.getESuperTypes().add(this.getsimple_expression());
+    inC_OREClass.getESuperTypes().add(this.getsimple_expression());
+    loG_ANDEClass.getESuperTypes().add(this.getsimple_expression());
+    loG_OREClass.getESuperTypes().add(this.getsimple_expression());
+    voidTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    charTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    shortTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    longTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    doubleTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    signedTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    unsignedTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    complexTypeEClass.getESuperTypes().add(this.gettype_specifier());
+    imaginaryTypeEClass.getESuperTypes().add(this.gettype_specifier());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModel_Declaracoes(), this.gettranslation_unit(), null, "declaracoes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(primary_expressionEClass, primary_expression.class, "primary_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getprimary_expression_Identifier(), this.getdirect_declarator(), null, "identifier", null, 0, 1, primary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimary_expression_Constant(), this.getconstant(), null, "constant", null, 0, 1, primary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimary_expression_String(), this.getstring_nova(), null, "string", null, 0, 1, primary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimary_expression_Expression(), this.getexpression(), null, "expression", null, 0, 1, primary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimary_expression_Generic_selection(), this.getgeneric_selection(), null, "generic_selection", null, 0, 1, primary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(simple_expressionEClass, simple_expression.class, "simple_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getsimple_expression_Type_name(), this.gettype_name(), null, "type_name", null, 0, 1, simple_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsimple_expression_Cast_expression(), this.getsimple_expression(), null, "cast_expression", null, 0, 1, simple_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constantEClass, constant.class, "constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getconstant_I_constant(), ecorePackage.getEString(), "i_constant", null, 0, 1, constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5614,11 +5135,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(generic_assoc_listEClass, generic_assoc_list.class, "generic_assoc_list", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getgeneric_assoc_list_Generic_association(), this.getgeneric_association(), null, "generic_association", null, 0, 1, generic_assoc_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getgeneric_assoc_list_Generic_assoc_list2(), this.getgeneric_assoc_list2(), null, "generic_assoc_list2", null, 0, 1, generic_assoc_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(generic_assoc_list2EClass, generic_assoc_list2.class, "generic_assoc_list2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getgeneric_assoc_list2_Generic_association(), this.getgeneric_association(), null, "generic_association", null, 0, 1, generic_assoc_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getgeneric_assoc_list2_Generic_assoc_list2(), this.getgeneric_assoc_list2(), null, "generic_assoc_list2", null, 0, 1, generic_assoc_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getgeneric_assoc_list_Generic_list(), this.getgeneric_association(), null, "generic_list", null, 0, -1, generic_assoc_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(generic_associationEClass, generic_association.class, "generic_association", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getgeneric_association_Type_name(), this.gettype_name(), null, "type_name", null, 0, 1, generic_association.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5626,27 +5143,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEAttribute(getgeneric_association_Default(), ecorePackage.getEString(), "default", null, 0, 1, generic_association.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(postfix_expressionEClass, postfix_expression.class, "postfix_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getpostfix_expression_Primary_expression(), this.getprimary_expression(), null, "primary_expression", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getpostfix_expression_Postfix_expression2(), this.getpostfix_expression2(), null, "postfix_expression2", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getpostfix_expression_Primary_expression(), this.getsimple_expression(), null, "primary_expression", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getpostfix_expression_Postifx_expres(), this.getpostfix_expression2(), null, "postifx_expres", null, 0, -1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getpostfix_expression_Type_name(), this.gettype_name(), null, "type_name", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getpostfix_expression_Initializer_list(), this.getinitializer_list(), null, "initializer_list", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(postfix_expression2EClass, postfix_expression2.class, "postfix_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getpostfix_expression2_Expression(), this.getexpression(), null, "expression", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getpostfix_expression2_Postfix_expression2(), this.getpostfix_expression2(), null, "postfix_expression2", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getpostfix_expression2_Argument_expression_list(), this.getargument_expression_list(), null, "argument_expression_list", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getpostfix_expression2_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getpostfix_expression2_Ptr_op(), ecorePackage.getEString(), "ptr_op", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getpostfix_expression2_Inc_op(), ecorePackage.getEString(), "inc_op", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getpostfix_expression2_Dec_op(), ecorePackage.getEString(), "dec_op", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getpostfix_expression2_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, postfix_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(argument_expression_listEClass, argument_expression_list.class, "argument_expression_list", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getargument_expression_list_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, argument_expression_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getargument_expression_list_Argument_expression_list2(), this.getargument_expression_list2(), null, "argument_expression_list2", null, 0, 1, argument_expression_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(argument_expression_list2EClass, argument_expression_list2.class, "argument_expression_list2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getargument_expression_list2_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, argument_expression_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getargument_expression_list2_Argument_expression_list2(), this.getargument_expression_list2(), null, "argument_expression_list2", null, 0, 1, argument_expression_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getargument_expression_list_List(), this.getassignment_expression(), null, "list", null, 0, -1, argument_expression_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(unary_expressionEClass, unary_expression.class, "unary_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getunary_expression_Postfix_expression(), this.getpostfix_expression(), null, "postfix_expression", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5654,107 +5160,12 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getunary_expression_Unary_expression(), this.getunary_expression(), null, "unary_expression", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getunary_expression_Dec_op(), ecorePackage.getEString(), "dec_op", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getunary_expression_Unary_operator(), ecorePackage.getEString(), "unary_operator", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getunary_expression_Cast_expression(), this.getcast_expression(), null, "cast_expression", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getunary_expression_Sizeof(), ecorePackage.getEString(), "sizeof", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getunary_expression_Type_name(), this.gettype_name(), null, "type_name", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getunary_expression_Alignof(), ecorePackage.getEString(), "alignof", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(cast_expressionEClass, cast_expression.class, "cast_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getcast_expression_Unary_expression(), this.getunary_expression(), null, "unary_expression", null, 0, 1, cast_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getcast_expression_Type_name(), this.gettype_name(), null, "type_name", null, 0, 1, cast_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getcast_expression_Cast_expression(), this.getcast_expression(), null, "cast_expression", null, 0, 1, cast_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(multiplicative_expressionEClass, multiplicative_expression.class, "multiplicative_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getmultiplicative_expression_Cast_expression(), this.getcast_expression(), null, "cast_expression", null, 0, 1, multiplicative_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getmultiplicative_expression_Multiplicative_expression2(), this.getmultiplicative_expression2(), null, "multiplicative_expression2", null, 0, 1, multiplicative_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(multiplicative_expression2EClass, multiplicative_expression2.class, "multiplicative_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getmultiplicative_expression2_Cast_expression(), this.getcast_expression(), null, "cast_expression", null, 0, 1, multiplicative_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getmultiplicative_expression2_Multiplicative_expression2(), this.getmultiplicative_expression2(), null, "multiplicative_expression2", null, 0, 1, multiplicative_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(additive_expressionEClass, additive_expression.class, "additive_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getadditive_expression_Multiplicative_expression(), this.getmultiplicative_expression(), null, "multiplicative_expression", null, 0, 1, additive_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getadditive_expression_Additive_expression2(), this.getadditive_expression2(), null, "additive_expression2", null, 0, 1, additive_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(additive_expression2EClass, additive_expression2.class, "additive_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getadditive_expression2_Multiplicative_expression(), this.getmultiplicative_expression(), null, "multiplicative_expression", null, 0, 1, additive_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getadditive_expression2_Additive_expression2(), this.getadditive_expression2(), null, "additive_expression2", null, 0, 1, additive_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(shift_expressionEClass, shift_expression.class, "shift_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getshift_expression_Additive_expression(), this.getadditive_expression(), null, "additive_expression", null, 0, 1, shift_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getshift_expression_Shift_expression2(), this.getshift_expression2(), null, "shift_expression2", null, 0, 1, shift_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(shift_expression2EClass, shift_expression2.class, "shift_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getshift_expression2_Left_op(), ecorePackage.getEString(), "left_op", null, 0, 1, shift_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getshift_expression2_Additive_expression(), this.getadditive_expression(), null, "additive_expression", null, 0, 1, shift_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getshift_expression2_Shift_expression2(), this.getshift_expression2(), null, "shift_expression2", null, 0, 1, shift_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getshift_expression2_Right_op(), ecorePackage.getEString(), "right_op", null, 0, 1, shift_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(relational_expressionEClass, relational_expression.class, "relational_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getrelational_expression_Shift_expression(), this.getshift_expression(), null, "shift_expression", null, 0, 1, relational_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getrelational_expression_Relational_expression2(), this.getrelational_expression2(), null, "relational_expression2", null, 0, 1, relational_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(relational_expression2EClass, relational_expression2.class, "relational_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getrelational_expression2_Shift_expression(), this.getshift_expression(), null, "shift_expression", null, 0, 1, relational_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getrelational_expression2_Relational_expression2(), this.getrelational_expression2(), null, "relational_expression2", null, 0, 1, relational_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getrelational_expression2_Relational_expression(), this.getrelational_expression2(), null, "relational_expression", null, 0, 1, relational_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getrelational_expression2_Le_op(), ecorePackage.getEString(), "le_op", null, 0, 1, relational_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getrelational_expression2_Ge_op(), ecorePackage.getEString(), "ge_op", null, 0, 1, relational_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(equality_expressionEClass, equality_expression.class, "equality_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getequality_expression_Relational_expression(), this.getrelational_expression(), null, "relational_expression", null, 0, 1, equality_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getequality_expression_Equality_expression2(), this.getequality_expression2(), null, "equality_expression2", null, 0, 1, equality_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(equality_expression2EClass, equality_expression2.class, "equality_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getequality_expression2_Eq_op(), ecorePackage.getEString(), "eq_op", null, 0, 1, equality_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getequality_expression2_Relational_expression(), this.getrelational_expression(), null, "relational_expression", null, 0, 1, equality_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getequality_expression2_Equality_expression2(), this.getequality_expression2(), null, "equality_expression2", null, 0, 1, equality_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getequality_expression2_Ne_op(), ecorePackage.getEString(), "ne_op", null, 0, 1, equality_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(and_expressionEClass, and_expression.class, "and_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getand_expression_Equality_expression(), this.getequality_expression(), null, "equality_expression", null, 0, 1, and_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getand_expression_And_expression2(), this.getand_expression2(), null, "and_expression2", null, 0, 1, and_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(and_expression2EClass, and_expression2.class, "and_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getand_expression2_Equality_expression(), this.getequality_expression(), null, "equality_expression", null, 0, 1, and_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getand_expression2_And_expression2(), this.getand_expression2(), null, "and_expression2", null, 0, 1, and_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(exclusive_or_expressionEClass, exclusive_or_expression.class, "exclusive_or_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getexclusive_or_expression_And_expression(), this.getand_expression(), null, "and_expression", null, 0, 1, exclusive_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getexclusive_or_expression_Exclusive_or_expression2(), this.getexclusive_or_expression2(), null, "exclusive_or_expression2", null, 0, 1, exclusive_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(exclusive_or_expression2EClass, exclusive_or_expression2.class, "exclusive_or_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getexclusive_or_expression2_And_expression(), this.getand_expression(), null, "and_expression", null, 0, 1, exclusive_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getexclusive_or_expression2_Exclusive_or_expression2(), this.getexclusive_or_expression2(), null, "exclusive_or_expression2", null, 0, 1, exclusive_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(inclusive_or_expressionEClass, inclusive_or_expression.class, "inclusive_or_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getinclusive_or_expression_Exclusive_or_expression(), this.getexclusive_or_expression(), null, "exclusive_or_expression", null, 0, 1, inclusive_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getinclusive_or_expression_Inclusive_or_expression2(), this.getinclusive_or_expression2(), null, "inclusive_or_expression2", null, 0, 1, inclusive_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(inclusive_or_expression2EClass, inclusive_or_expression2.class, "inclusive_or_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getinclusive_or_expression2_Exclusive_or_expression(), this.getexclusive_or_expression(), null, "exclusive_or_expression", null, 0, 1, inclusive_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getinclusive_or_expression2_Inclusive_or_expression2(), this.getinclusive_or_expression2(), null, "inclusive_or_expression2", null, 0, 1, inclusive_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_and_expressionEClass, logical_and_expression.class, "logical_and_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getlogical_and_expression_Inclusive_or_expression(), this.getinclusive_or_expression(), null, "inclusive_or_expression", null, 0, 1, logical_and_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_and_expression_Logical_and_expression2(), this.getlogical_and_expression2(), null, "logical_and_expression2", null, 0, 1, logical_and_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_and_expression2EClass, logical_and_expression2.class, "logical_and_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getlogical_and_expression2_And_op(), ecorePackage.getEString(), "and_op", null, 0, 1, logical_and_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_and_expression2_Inclusive_or_expression(), this.getinclusive_or_expression(), null, "inclusive_or_expression", null, 0, 1, logical_and_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_and_expression2_Logical_and_expression2(), this.getlogical_and_expression2(), null, "logical_and_expression2", null, 0, 1, logical_and_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_or_expressionEClass, logical_or_expression.class, "logical_or_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getlogical_or_expression_Logical_and_expression(), this.getlogical_and_expression(), null, "logical_and_expression", null, 0, 1, logical_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_or_expression_Logical_or_expression2(), this.getlogical_or_expression2(), null, "logical_or_expression2", null, 0, 1, logical_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_or_expression2EClass, logical_or_expression2.class, "logical_or_expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getlogical_or_expression2_Or_op(), ecorePackage.getEString(), "or_op", null, 0, 1, logical_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_or_expression2_Logical_and_expression(), this.getlogical_and_expression(), null, "logical_and_expression", null, 0, 1, logical_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_or_expression2_Logical_or_expression2(), this.getlogical_or_expression2(), null, "logical_or_expression2", null, 0, 1, logical_or_expression2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(conditional_expressionEClass, conditional_expression.class, "conditional_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getconditional_expression_Logical_or_expression(), this.getlogical_or_expression(), null, "logical_or_expression", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getconditional_expression_Simple_expression(), this.getsimple_expression(), null, "simple_expression", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getconditional_expression_Logical_or_expression(), this.getsimple_expression(), null, "logical_or_expression", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getconditional_expression_Expression(), this.getexpression(), null, "expression", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getconditional_expression_Conditional_expression(), this.getconditional_expression(), null, "conditional_expression", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -5777,7 +5188,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEAttribute(getassignment_operator_Or_assign(), ecorePackage.getEString(), "or_assign", null, 0, 1, assignment_operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, expression.class, "expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getexpression_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getexpression_Expression2(), this.getexpression2(), null, "expression2", null, 0, 1, expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expression2EClass, expression2.class, "expression2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -5821,17 +5231,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEAttribute(getstorage_class_specifier_Register(), ecorePackage.getEString(), "register", null, 0, 1, storage_class_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(type_specifierEClass, type_specifier.class, "type_specifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(gettype_specifier_Void_type(), ecorePackage.getEString(), "void_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Char_type(), ecorePackage.getEString(), "char_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Short_type(), ecorePackage.getEString(), "short_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Long_type(), ecorePackage.getEString(), "long_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Float_type(), ecorePackage.getEString(), "float_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Double_type(), ecorePackage.getEString(), "double_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Signed_type(), ecorePackage.getEString(), "signed_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Unsigned_type(), ecorePackage.getEString(), "unsigned_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Bool_type(), ecorePackage.getEString(), "bool_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Complex_type(), ecorePackage.getEString(), "complex_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(gettype_specifier_Imaginary_type(), ecorePackage.getEString(), "imaginary_type", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(gettype_specifier_Atomic_type_specifier(), this.getatomic_type_specifier(), null, "atomic_type_specifier", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(gettype_specifier_Struct_or_union_specifier(), this.getstruct_or_union_specifier(), null, "struct_or_union_specifier", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(gettype_specifier_Enum_specifier(), this.getenum_specifier(), null, "enum_specifier", null, 0, 1, type_specifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5918,11 +5317,10 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(direct_declaratorEClass, direct_declarator.class, "direct_declarator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getdirect_declarator_Name(), ecorePackage.getEString(), "name", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_declarator_Direct_declarator2(), this.getdirect_declarator2(), null, "direct_declarator2", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_declarator_Declarator(), this.getdeclarator(), null, "declarator", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getdirect_declarator_Direct_declarators(), this.getdirect_declarator2(), null, "direct_declarators", null, 0, -1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getdirect_declarator_Declarator(), this.getdeclarator(), null, "Declarator", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(direct_declarator2EClass, direct_declarator2.class, "direct_declarator2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getdirect_declarator2_Direct_declarator2(), this.getdirect_declarator2(), null, "direct_declarator2", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getdirect_declarator2_Static(), ecorePackage.getEString(), "static", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_declarator2_Type_qualifier_list(), this.gettype_qualifier_list(), null, "type_qualifier_list", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_declarator2_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5975,15 +5373,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getabstract_declarator_Direct_abstract_declarator(), this.getdirect_abstract_declarator(), null, "direct_abstract_declarator", null, 0, 1, abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(direct_abstract_declaratorEClass, direct_abstract_declarator.class, "direct_abstract_declarator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getdirect_abstract_declarator_Abstract_declarator(), this.getabstract_declarator(), null, "abstract_declarator", null, 0, 1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_abstract_declarator_Direct_abstract_declarator2(), this.getdirect_abstract_declarator2(), null, "direct_abstract_declarator2", null, 0, 1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getdirect_abstract_declarator_Static(), ecorePackage.getEString(), "static", null, 0, 1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_abstract_declarator_Type_qualifier_list(), this.gettype_qualifier_list(), null, "type_qualifier_list", null, 0, 1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_abstract_declarator_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_abstract_declarator_Parameter_type_list(), this.getparameter_type_list(), null, "parameter_type_list", null, 0, 1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getdirect_abstract_declarator_Direct_abstract_declarator2(), this.getdirect_abstract_declarator2(), null, "direct_abstract_declarator2", null, 0, -1, direct_abstract_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(direct_abstract_declarator2EClass, direct_abstract_declarator2.class, "direct_abstract_declarator2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getdirect_abstract_declarator2_Direct_abstract_declarator2(), this.getdirect_abstract_declarator2(), null, "direct_abstract_declarator2", null, 0, 1, direct_abstract_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getdirect_abstract_declarator2_Static(), ecorePackage.getEString(), "static", null, 0, 1, direct_abstract_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_abstract_declarator2_Type_qualifier_list(), this.gettype_qualifier_list(), null, "type_qualifier_list", null, 0, 1, direct_abstract_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_abstract_declarator2_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, direct_abstract_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6095,8 +5487,95 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getdeclaration_list2_Declaration(), this.getdeclaration(), null, "declaration", null, 0, 1, declaration_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdeclaration_list2_Declaration_list2(), this.getdeclaration_list2(), null, "declaration_list2", null, 0, 1, declaration_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(integerEClass, integer.class, "integer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getinteger_Int_type(), ecorePackage.getEString(), "int_type", null, 0, 1, integer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableRefEClass, variableRef.class, "variableRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getvariableRef_Variable(), this.getdirect_declarator(), null, "variable", null, 0, 1, variableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(intTypeEClass, intType.class, "intType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getintType_Value(), ecorePackage.getEString(), "value", null, 0, 1, intType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getintType_Int_type(), ecorePackage.getEString(), "int_type", null, 0, 1, intType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(floatTypeEClass, floatType.class, "floatType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getfloatType_Value(), ecorePackage.getEString(), "value", null, 0, 1, floatType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getfloatType_Float_type(), ecorePackage.getEString(), "float_type", null, 0, 1, floatType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringTypeEClass, stringType.class, "stringType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getstringType_Value(), this.getstring_nova(), null, "value", null, 0, 1, stringType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(booleanTypeEClass, booleanType.class, "booleanType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getbooleanType_Value(), ecorePackage.getEString(), "value", null, 0, 1, booleanType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getbooleanType_Bool_type(), ecorePackage.getEString(), "bool_type", null, 0, 1, booleanType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mulEClass, org.xtext.example.mydsl.myDsl.MUL.class, "MUL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMUL_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.MUL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMUL_Op(), ecorePackage.getEString(), "op", null, 0, 1, org.xtext.example.mydsl.myDsl.MUL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMUL_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.MUL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(addEClass, org.xtext.example.mydsl.myDsl.ADD.class, "ADD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getADD_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.ADD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getADD_Op(), ecorePackage.getEString(), "op", null, 0, 1, org.xtext.example.mydsl.myDsl.ADD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getADD_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.ADD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(shfEClass, org.xtext.example.mydsl.myDsl.SHF.class, "SHF", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSHF_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.SHF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSHF_Op(), ecorePackage.getEString(), "op", null, 0, 1, org.xtext.example.mydsl.myDsl.SHF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSHF_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.SHF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(relEClass, org.xtext.example.mydsl.myDsl.REL.class, "REL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getREL_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.REL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getREL_Op(), ecorePackage.getEString(), "op", null, 0, 1, org.xtext.example.mydsl.myDsl.REL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getREL_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.REL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eqlEClass, org.xtext.example.mydsl.myDsl.EQL.class, "EQL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEQL_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.EQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEQL_Op(), ecorePackage.getEString(), "op", null, 0, 1, org.xtext.example.mydsl.myDsl.EQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEQL_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.EQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(andEClass, org.xtext.example.mydsl.myDsl.AND.class, "AND", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAND_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.AND.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAND_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.AND.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exC_OREClass, org.xtext.example.mydsl.myDsl.EXC_OR.class, "EXC_OR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEXC_OR_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.EXC_OR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEXC_OR_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.EXC_OR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inC_OREClass, org.xtext.example.mydsl.myDsl.INC_OR.class, "INC_OR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getINC_OR_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.INC_OR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getINC_OR_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.INC_OR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(loG_ANDEClass, org.xtext.example.mydsl.myDsl.LOG_AND.class, "LOG_AND", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLOG_AND_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.LOG_AND.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLOG_AND_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.LOG_AND.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(loG_OREClass, org.xtext.example.mydsl.myDsl.LOG_OR.class, "LOG_OR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLOG_OR_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.LOG_OR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLOG_OR_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.LOG_OR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(voidTypeEClass, voidType.class, "voidType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getvoidType_Void_type(), ecorePackage.getEString(), "void_type", null, 0, 1, voidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(charTypeEClass, charType.class, "charType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getcharType_Char_type(), ecorePackage.getEString(), "char_type", null, 0, 1, charType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(shortTypeEClass, shortType.class, "shortType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getshortType_Short_type(), ecorePackage.getEString(), "short_type", null, 0, 1, shortType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(longTypeEClass, longType.class, "longType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getlongType_Long_type(), ecorePackage.getEString(), "long_type", null, 0, 1, longType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(doubleTypeEClass, doubleType.class, "doubleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getdoubleType_Double_type(), ecorePackage.getEString(), "double_type", null, 0, 1, doubleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(signedTypeEClass, signedType.class, "signedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getsignedType_Signed_type(), ecorePackage.getEString(), "signed_type", null, 0, 1, signedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(unsignedTypeEClass, unsignedType.class, "unsignedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getunsignedType_Unsigned_type(), ecorePackage.getEString(), "unsigned_type", null, 0, 1, unsignedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(complexTypeEClass, complexType.class, "complexType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getcomplexType_Complex_type(), ecorePackage.getEString(), "complex_type", null, 0, 1, complexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(imaginaryTypeEClass, imaginaryType.class, "imaginaryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getimaginaryType_Imaginary_type(), ecorePackage.getEString(), "imaginary_type", null, 0, 1, imaginaryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

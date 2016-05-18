@@ -33,13 +33,13 @@ public interface MyDslFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>primary expression</em>'.
+   * Returns a new object of class '<em>simple expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>primary expression</em>'.
+   * @return a new object of class '<em>simple expression</em>'.
    * @generated
    */
-  primary_expression createprimary_expression();
+  simple_expression createsimple_expression();
 
   /**
    * Returns a new object of class '<em>constant</em>'.
@@ -87,15 +87,6 @@ public interface MyDslFactory extends EFactory
   generic_assoc_list creategeneric_assoc_list();
 
   /**
-   * Returns a new object of class '<em>generic assoc list2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>generic assoc list2</em>'.
-   * @generated
-   */
-  generic_assoc_list2 creategeneric_assoc_list2();
-
-  /**
    * Returns a new object of class '<em>generic association</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,15 +123,6 @@ public interface MyDslFactory extends EFactory
   argument_expression_list createargument_expression_list();
 
   /**
-   * Returns a new object of class '<em>argument expression list2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>argument expression list2</em>'.
-   * @generated
-   */
-  argument_expression_list2 createargument_expression_list2();
-
-  /**
    * Returns a new object of class '<em>unary expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -148,195 +130,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   unary_expression createunary_expression();
-
-  /**
-   * Returns a new object of class '<em>cast expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>cast expression</em>'.
-   * @generated
-   */
-  cast_expression createcast_expression();
-
-  /**
-   * Returns a new object of class '<em>multiplicative expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>multiplicative expression</em>'.
-   * @generated
-   */
-  multiplicative_expression createmultiplicative_expression();
-
-  /**
-   * Returns a new object of class '<em>multiplicative expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>multiplicative expression2</em>'.
-   * @generated
-   */
-  multiplicative_expression2 createmultiplicative_expression2();
-
-  /**
-   * Returns a new object of class '<em>additive expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>additive expression</em>'.
-   * @generated
-   */
-  additive_expression createadditive_expression();
-
-  /**
-   * Returns a new object of class '<em>additive expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>additive expression2</em>'.
-   * @generated
-   */
-  additive_expression2 createadditive_expression2();
-
-  /**
-   * Returns a new object of class '<em>shift expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>shift expression</em>'.
-   * @generated
-   */
-  shift_expression createshift_expression();
-
-  /**
-   * Returns a new object of class '<em>shift expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>shift expression2</em>'.
-   * @generated
-   */
-  shift_expression2 createshift_expression2();
-
-  /**
-   * Returns a new object of class '<em>relational expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>relational expression</em>'.
-   * @generated
-   */
-  relational_expression createrelational_expression();
-
-  /**
-   * Returns a new object of class '<em>relational expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>relational expression2</em>'.
-   * @generated
-   */
-  relational_expression2 createrelational_expression2();
-
-  /**
-   * Returns a new object of class '<em>equality expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>equality expression</em>'.
-   * @generated
-   */
-  equality_expression createequality_expression();
-
-  /**
-   * Returns a new object of class '<em>equality expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>equality expression2</em>'.
-   * @generated
-   */
-  equality_expression2 createequality_expression2();
-
-  /**
-   * Returns a new object of class '<em>and expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>and expression</em>'.
-   * @generated
-   */
-  and_expression createand_expression();
-
-  /**
-   * Returns a new object of class '<em>and expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>and expression2</em>'.
-   * @generated
-   */
-  and_expression2 createand_expression2();
-
-  /**
-   * Returns a new object of class '<em>exclusive or expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>exclusive or expression</em>'.
-   * @generated
-   */
-  exclusive_or_expression createexclusive_or_expression();
-
-  /**
-   * Returns a new object of class '<em>exclusive or expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>exclusive or expression2</em>'.
-   * @generated
-   */
-  exclusive_or_expression2 createexclusive_or_expression2();
-
-  /**
-   * Returns a new object of class '<em>inclusive or expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>inclusive or expression</em>'.
-   * @generated
-   */
-  inclusive_or_expression createinclusive_or_expression();
-
-  /**
-   * Returns a new object of class '<em>inclusive or expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>inclusive or expression2</em>'.
-   * @generated
-   */
-  inclusive_or_expression2 createinclusive_or_expression2();
-
-  /**
-   * Returns a new object of class '<em>logical and expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical and expression</em>'.
-   * @generated
-   */
-  logical_and_expression createlogical_and_expression();
-
-  /**
-   * Returns a new object of class '<em>logical and expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical and expression2</em>'.
-   * @generated
-   */
-  logical_and_expression2 createlogical_and_expression2();
-
-  /**
-   * Returns a new object of class '<em>logical or expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical or expression</em>'.
-   * @generated
-   */
-  logical_or_expression createlogical_or_expression();
-
-  /**
-   * Returns a new object of class '<em>logical or expression2</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical or expression2</em>'.
-   * @generated
-   */
-  logical_or_expression2 createlogical_or_expression2();
 
   /**
    * Returns a new object of class '<em>conditional expression</em>'.
@@ -942,13 +735,220 @@ public interface MyDslFactory extends EFactory
   declaration_list2 createdeclaration_list2();
 
   /**
-   * Returns a new object of class '<em>integer</em>'.
+   * Returns a new object of class '<em>variable Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>integer</em>'.
+   * @return a new object of class '<em>variable Ref</em>'.
    * @generated
    */
-  integer createinteger();
+  variableRef createvariableRef();
+
+  /**
+   * Returns a new object of class '<em>int Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>int Type</em>'.
+   * @generated
+   */
+  intType createintType();
+
+  /**
+   * Returns a new object of class '<em>float Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>float Type</em>'.
+   * @generated
+   */
+  floatType createfloatType();
+
+  /**
+   * Returns a new object of class '<em>string Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>string Type</em>'.
+   * @generated
+   */
+  stringType createstringType();
+
+  /**
+   * Returns a new object of class '<em>boolean Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>boolean Type</em>'.
+   * @generated
+   */
+  booleanType createbooleanType();
+
+  /**
+   * Returns a new object of class '<em>MUL</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>MUL</em>'.
+   * @generated
+   */
+  MUL createMUL();
+
+  /**
+   * Returns a new object of class '<em>ADD</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>ADD</em>'.
+   * @generated
+   */
+  ADD createADD();
+
+  /**
+   * Returns a new object of class '<em>SHF</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>SHF</em>'.
+   * @generated
+   */
+  SHF createSHF();
+
+  /**
+   * Returns a new object of class '<em>REL</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>REL</em>'.
+   * @generated
+   */
+  REL createREL();
+
+  /**
+   * Returns a new object of class '<em>EQL</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>EQL</em>'.
+   * @generated
+   */
+  EQL createEQL();
+
+  /**
+   * Returns a new object of class '<em>AND</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>AND</em>'.
+   * @generated
+   */
+  AND createAND();
+
+  /**
+   * Returns a new object of class '<em>EXC OR</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>EXC OR</em>'.
+   * @generated
+   */
+  EXC_OR createEXC_OR();
+
+  /**
+   * Returns a new object of class '<em>INC OR</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>INC OR</em>'.
+   * @generated
+   */
+  INC_OR createINC_OR();
+
+  /**
+   * Returns a new object of class '<em>LOG AND</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LOG AND</em>'.
+   * @generated
+   */
+  LOG_AND createLOG_AND();
+
+  /**
+   * Returns a new object of class '<em>LOG OR</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LOG OR</em>'.
+   * @generated
+   */
+  LOG_OR createLOG_OR();
+
+  /**
+   * Returns a new object of class '<em>void Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>void Type</em>'.
+   * @generated
+   */
+  voidType createvoidType();
+
+  /**
+   * Returns a new object of class '<em>char Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>char Type</em>'.
+   * @generated
+   */
+  charType createcharType();
+
+  /**
+   * Returns a new object of class '<em>short Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>short Type</em>'.
+   * @generated
+   */
+  shortType createshortType();
+
+  /**
+   * Returns a new object of class '<em>long Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>long Type</em>'.
+   * @generated
+   */
+  longType createlongType();
+
+  /**
+   * Returns a new object of class '<em>double Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>double Type</em>'.
+   * @generated
+   */
+  doubleType createdoubleType();
+
+  /**
+   * Returns a new object of class '<em>signed Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>signed Type</em>'.
+   * @generated
+   */
+  signedType createsignedType();
+
+  /**
+   * Returns a new object of class '<em>unsigned Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>unsigned Type</em>'.
+   * @generated
+   */
+  unsignedType createunsignedType();
+
+  /**
+   * Returns a new object of class '<em>complex Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>complex Type</em>'.
+   * @generated
+   */
+  complexType createcomplexType();
+
+  /**
+   * Returns a new object of class '<em>imaginary Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>imaginary Type</em>'.
+   * @generated
+   */
+  imaginaryType createimaginaryType();
 
   /**
    * Returns the package supported by this factory.

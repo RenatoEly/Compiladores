@@ -5,7 +5,7 @@ package org.xtext.example.mydsl.validation
 
 import org.eclipse.xtext.validation.Check
 import org.xtext.example.mydsl.myDsl.declaration
-import org.xtext.example.mydsl.myDsl.integer
+import org.xtext.example.mydsl.myDsl.intType
 import org.xtext.example.mydsl.myDsl.MyDslPackage
 
 /**
@@ -28,14 +28,9 @@ class MyDslValidator extends AbstractMyDslValidator {
 	
 	@Check
 	def checkGreetingStartsWithCapital(declaration dec) {
-		if (dec.declaration_specifiers.type_specifier instanceof integer) {
-			println("passou no 1");
-			println(dec.init_declarator_list.init_declarator.initializer.assignment_expression);
-			if(!(dec.init_declarator_list.init_declarator.initializer.assignment_expression.equals("5"))){
-				println("passou no 2");
-				error('Variável não está declarada corretamente', 
+		if (dec.declaration_specifiers.type_specifier.class != dec.init_declarator_list.init_declarator.initializer.assignment_expression.conditional_expression.simple_expression.class) {
+				error('Atribuição não está de acordo com o tipo da variável',
 					null);
-				}
 		}
 	}
 }

@@ -3,6 +3,8 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarator2 <em>Direct declarator2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarators <em>Direct declarators</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDeclarator <em>Declarator</em>}</li>
  * </ul>
  *
@@ -52,30 +54,20 @@ public interface direct_declarator extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Direct declarator2</b></em>' containment reference.
+   * Returns the value of the '<em><b>Direct declarators</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.direct_declarator2}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Direct declarator2</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Direct declarators</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Direct declarator2</em>' containment reference.
-   * @see #setDirect_declarator2(direct_declarator2)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getdirect_declarator_Direct_declarator2()
+   * @return the value of the '<em>Direct declarators</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getdirect_declarator_Direct_declarators()
    * @model containment="true"
    * @generated
    */
-  direct_declarator2 getDirect_declarator2();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarator2 <em>Direct declarator2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Direct declarator2</em>' containment reference.
-   * @see #getDirect_declarator2()
-   * @generated
-   */
-  void setDirect_declarator2(direct_declarator2 value);
+  EList<direct_declarator2> getDirect_declarators();
 
   /**
    * Returns the value of the '<em><b>Declarator</b></em>' containment reference.

@@ -9,12 +9,17 @@ Model:
 //Greeting:
 	//'Ola'name=ID'!';
 
-primary_expression
-    : identifier=[direct_declarator]
-    | constant=constant
-    | string=string_nova
-    | '(' expression=expression ')'
-    | generic_selection=generic_selection
+primary_expression returns simple_expression
+    : '(' simple_expression ')'
+    | atomic2
+    ;
+    
+atomic2 returns simple_expression
+    : {variableRef} variable=[direct_declarator]
+    | {intType} value=I_CONSTANT
+    | {floatType} value=F_CONSTANT
+    | {stringType} value=string_nova
+    | {booleanType} value=("true"|"false")
     ;
    
 //TODO VER se esse enum é esse enum mesmo
@@ -38,44 +43,36 @@ generic_selection
     ;
 
 generic_assoc_list
-    : generic_association=generic_association generic_assoc_list2=generic_assoc_list2
+    : generic_association=generic_association (',' generic_list+=generic_association)*
     ;
-    
-generic_assoc_list2
-	:{generic_assoc_list2}(',' generic_association=generic_association generic_assoc_list2=generic_assoc_list2)?
-	;
+
 	
 generic_association
     : type_name=type_name ':' assignment_expression=assignment_expression
     | default=DEFAULT ':' assignment_expression=assignment_expression
     ;
 
-//TODO verificar esse type_name se precisa ser type_name=type_name
 postfix_expression
-    : primary_expression=primary_expression postfix_expression2=postfix_expression2
-    | '(' type_name=type_name ')' '{' initializer_list=initializer_list '}' postfix_expression2=postfix_expression2
-    | '(' type_name=type_name ')' '{' initializer_list=initializer_list ',' '}' postfix_expression2=postfix_expression2
-    ;
- 
- //TODO '(' argument_expression_list+=argument_expression_list ')'
- postfix_expression2:
- 	{postfix_expression2}('[' expression=expression ']' postfix_expression2=postfix_expression2
- 	| '(' ')' postfix_expression2=postfix_expression2
- 	| '(' argument_expression_list=argument_expression_list ')' postfix_expression2=postfix_expression2
- 	| '.' identifier=ID postfix_expression2=postfix_expression2
- 	| ptr_op=PTR_OP identifier=ID postfix_expression2=postfix_expression2
- 	| inc_op=INC_OP postfix_expression2=postfix_expression2
- 	| dec_op=DEC_OP postfix_expression2=postfix_expression2)?
- ;
+	: primary_expression=primary_expression postifx_expres+=postfix_expression2*
+	| '(' type_name=type_name ')' '{' initializer_list=initializer_list '}' postifx_expres+=postfix_expression2*
+	| '(' type_name=type_name ')' '{' initializer_list=initializer_list ',' '}' postifx_expres+=postfix_expression2*
+	;
+	
+postfix_expression2:
+	 '[' expression ']'
+	| '(' ')'
+	| '(' argument_expression_list ')'
+	| '.' ID
+	| PTR_OP ID
+	| INC_OP
+	| DEC_OP
+;
 
 argument_expression_list
-    : assignment_expression=assignment_expression argument_expression_list2=argument_expression_list2
+    : assignment_expression=assignment_expression (',' list+=assignment_expression)*
     ;
-    
-argument_expression_list2
-	:(',' assignment_expression=assignment_expression argument_expression_list2=argument_expression_list2)?
-	;
 
+//não vou considerar na análise semântica
 unary_expression
     : postfix_expression=postfix_expression
     | inc_op=INC_OP unary_expression=unary_expression
@@ -85,6 +82,8 @@ unary_expression
     | sizeof=SIZEOF '(' type_name=type_name ')'
     | alignof=ALIGNOF '(' type_name=type_name ')'
     ;
+    
+
 
 unary_operator
     : '&'
@@ -95,104 +94,79 @@ unary_operator
     | '!'
     ;
 
-cast_expression
-    : unary_expression=unary_expression
+//não vou considerar o cast na análise semântica
+cast_expression returns simple_expression
+    : unary_expression
     | '(' type_name=type_name ')' cast_expression=cast_expression
     ;
 
-//TODO verificar se ta certo como removeu a recursao
-multiplicative_expression
-    : cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2
+multiplicative_expression returns simple_expression
+    : primary_expression ({MUL.left=current} op=MUL_OP right=primary_expression)*
     ;
     
-multiplicative_expression2:
-	{multiplicative_expression2}('*' cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2
-	| '/' cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2
-	| '%' cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2)?
+MUL_OP:
+	'*'
+	| '/'
+	| '%'
 ;
 
-additive_expression
-    : multiplicative_expression=multiplicative_expression additive_expression2=additive_expression2
+additive_expression returns simple_expression
+    : multiplicative_expression ({ADD.left=current} op=('+'|'-') right=multiplicative_expression)*
     ;
 
-additive_expression2
-	:{additive_expression2}('+' multiplicative_expression=multiplicative_expression additive_expression2=additive_expression2
-	| '-' multiplicative_expression=multiplicative_expression additive_expression2=additive_expression2)?
-;
-
-shift_expression
-    : additive_expression=additive_expression shift_expression2=shift_expression2
+shift_expression returns simple_expression
+    : additive_expression ({SHF.left=current} op=shift_op right=additive_expression)*
     ;
     
-shift_expression2
-	: {shift_expression2}(left_op=LEFT_OP additive_expression=additive_expression shift_expression2=shift_expression2
-	| right_op=RIGHT_OP additive_expression=additive_expression shift_expression2=shift_expression2)?
+shift_op
+	: LEFT_OP
+	| RIGHT_OP
 	;
 
-relational_expression
-    : shift_expression=shift_expression relational_expression2=relational_expression2
+relational_expression returns simple_expression
+    : shift_expression ({REL.left=current} op=(relational_op) right=shift_expression)*
     ;
 
-relational_expression2
-	: {relational_expression2}('<' shift_expression=shift_expression relational_expression2=relational_expression2
-	| '>' shift_expression=shift_expression relational_expression=relational_expression2
-	| le_op=LE_OP shift_expression=shift_expression relational_expression2=relational_expression2
-	| ge_op=GE_OP shift_expression=shift_expression relational_expression2=relational_expression2)?
+relational_op
+	: L_OP
+	| G_OP
+	| LE_OP
+	| GE_OP
 	;
 
-equality_expression
-    : relational_expression=relational_expression equality_expression2=equality_expression2
-    ;
-   
-//olhar
-equality_expression2:
-	{equality_expression2}(eq_op=EQ_OP relational_expression=relational_expression equality_expression2=equality_expression2
-	| ne_op=NE_OP relational_expression=relational_expression equality_expression2=equality_expression2)?
-;
-
-and_expression
-    : equality_expression=equality_expression and_expression2=and_expression2
+equality_expression returns simple_expression
+    : relational_expression ({EQL.left=current} op=(EQ_OP|NE_OP) right=relational_expression)*
     ;
 
-and_expression2
-	: {and_expression2}('&' equality_expression=equality_expression and_expression2=and_expression2)?
-	;
-
-exclusive_or_expression
-    : and_expression=and_expression exclusive_or_expression2=exclusive_or_expression2 
+and_expression returns simple_expression
+    : equality_expression ({AND.left=current} '&' right=equality_expression)*
     ;
 
-exclusive_or_expression2
-	: {exclusive_or_expression2}('^' and_expression=and_expression exclusive_or_expression2=exclusive_or_expression2)?
-	;
-
-inclusive_or_expression
-    : exclusive_or_expression=exclusive_or_expression inclusive_or_expression2=inclusive_or_expression2
+exclusive_or_expression returns simple_expression
+    : and_expression ({EXC_OR.left=current} '^' right=and_expression)*
     ;
 
-inclusive_or_expression2:
-	{inclusive_or_expression2}('|' exclusive_or_expression=exclusive_or_expression inclusive_or_expression2=inclusive_or_expression2)?
-	;
-
-logical_and_expression
-    : inclusive_or_expression=inclusive_or_expression logical_and_expression2=logical_and_expression2
+inclusive_or_expression returns simple_expression
+    : exclusive_or_expression ({INC_OR.left=current} '|' right=exclusive_or_expression)*
     ;
+
+logical_and_expression returns simple_expression
+    : inclusive_or_expression ({LOG_AND.left=current} AND_OP right=inclusive_or_expression)*
+    ;
+
+
+logical_or_expression returns simple_expression
+    : logical_and_expression ({LOG_OR.left=current} OR_OP right=logical_and_expression)*
+    ;
+
     
-logical_and_expression2
-	: {logical_and_expression2}(and_op=AND_OP inclusive_or_expression=inclusive_or_expression logical_and_expression2=logical_and_expression2)?
-	;
+simple_expression:
+	logical_or_expression
+;    
 
-logical_or_expression
-    : logical_and_expression=logical_and_expression logical_or_expression2=logical_or_expression2
-    ;
-    
- logical_or_expression2
- 	: {logical_or_expression2}(or_op=OR_OP logical_and_expression=logical_and_expression logical_or_expression2=logical_or_expression2)?
-	;
-    
 //TODO Rever esse
 conditional_expression
-    : logical_or_expression=logical_or_expression
+    : simple_expression=simple_expression
     | logical_or_expression=logical_or_expression '?' expression=expression ':' conditional_expression=conditional_expression
     ;
 
@@ -291,18 +265,18 @@ storage_class_specifier
     ;
 	
 type_specifier
-    : void_type=VOID
-    | char_type=CHAR
-    | short_type=SHORT
-    | {integer} int_type=INTNAME
-    | long_type=LONG
-    | float_type=FLOAT
-    | double_type=DOUBLE
-    | signed_type=SIGNED
-    | unsigned_type=UNSIGNED
-    | bool_type=BOOL
-    | complex_type=COMPLEX
-    | imaginary_type=IMAGINARY          /* non-mandated extension */
+    : {voidType} void_type=VOID
+    | {charType} char_type=CHAR
+    | {shortType} short_type=SHORT
+    | {intType} int_type=INTNAME
+    | {longType}long_type=LONG
+    | {floatType} float_type=FLOAT
+    | {doubleType} double_type=DOUBLE
+    | {signedType} signed_type=SIGNED
+    | {unsignedType} unsigned_type=UNSIGNED
+    | {booleanType} bool_type=BOOL
+    | {complexType} complex_type=COMPLEX
+    | {imaginaryType} imaginary_type=IMAGINARY          /* non-mandated extension */
     | atomic_type_specifier=atomic_type_specifier
     | struct_or_union_specifier=struct_or_union_specifier
     | enum_specifier=enum_specifier
@@ -403,26 +377,27 @@ declarator
     : pointer=pointer direct_declarator=direct_declarator
     | direct_declarator=direct_declarator
     ;
-	
+
 direct_declarator
-    : name=ID direct_declarator2=direct_declarator2
-    | '(' declarator=declarator ')' direct_declarator2=direct_declarator2
-    ;
+	:name=ID direct_declarators+=direct_declarator2* 
+	|'(' Declarator=declarator ')' direct_declarators+=direct_declarator2* 
+;
 
 direct_declarator2
-	: {direct_declarator2}('[' ']' direct_declarator2=direct_declarator2
-	| '[' '*' ']' direct_declarator2=direct_declarator2
-	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
-	| '[' static=STATIC assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
-	| '[' type_qualifier_list=type_qualifier_list '*' ']' direct_declarator2=direct_declarator2
-	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
-	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
-	| '[' type_qualifier_list=type_qualifier_list ']' direct_declarator2=direct_declarator2
-	| '[' assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
-	| '(' parameter_type_list=parameter_type_list ')' direct_declarator2=direct_declarator2
-	| '(' ')' direct_declarator2=direct_declarator2
-	| '(' identifier_list=identifier_list ')' direct_declarator2=direct_declarator2)?
+	: '[' ']'
+	| '[' '*' ']'
+	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
+	| '[' static=STATIC assignment_expression=assignment_expression ']'
+	| '[' type_qualifier_list=type_qualifier_list '*' ']'
+	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
+	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
+	| '[' type_qualifier_list=type_qualifier_list ']'
+	| '[' assignment_expression=assignment_expression ']'
+	| '(' parameter_type_list=parameter_type_list ')'
+	| '(' ')'
+	| '(' identifier_list=identifier_list ')'
 	;
+
 	
 pointer
     : '*' type_qualifier_list=type_qualifier_list pointer=pointer
@@ -475,32 +450,24 @@ abstract_declarator
 	| direct_abstract_declarator=direct_abstract_declarator
 	;
 
+
+
 //TODO Olhar esse tem como refatorar ( A | B| C) direct_abstract_declarator2
 direct_abstract_declarator
-	: '(' abstract_declarator=abstract_declarator ')' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' '*' ']'	direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' type_qualifier_list=type_qualifier_list ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '(' ')' direct_abstract_declarator2=direct_abstract_declarator2
-	| '(' parameter_type_list=parameter_type_list ')' direct_abstract_declarator2=direct_abstract_declarator2
+	: direct_abstract_declarator2+=direct_abstract_declarator2+
 	;
 
 direct_abstract_declarator2
-	: {direct_abstract_declarator2}('[' ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' '*' ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' type_qualifier_list=type_qualifier_list ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '[' assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
-	| '(' ')' direct_abstract_declarator2=direct_abstract_declarator2
-	| '(' parameter_type_list=parameter_type_list ')' direct_abstract_declarator2=direct_abstract_declarator2)?
+	: '[' ']'
+	| '[' '*' ']'
+	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
+	| '[' static=STATIC assignment_expression=assignment_expression ']'
+	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
+	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
+	| '[' type_qualifier_list=type_qualifier_list ']'
+	| '[' assignment_expression=assignment_expression ']'
+	| '(' ')'
+	| '(' parameter_type_list=parameter_type_list ')'
 	;
 
 //TODO Olhar esse
@@ -890,6 +857,14 @@ terminal GE_OP:
 
 terminal LE_OP:
 	'<='
+;
+
+terminal L_OP:
+	'<'
+;
+
+terminal G_OP:
+	'>'
 ;
 
 terminal RIGHT_OP:

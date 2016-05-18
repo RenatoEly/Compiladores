@@ -13,8 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.argument_expression_list;
-import org.xtext.example.mydsl.myDsl.expression;
+import org.xtext.example.mydsl.myDsl.assignment_expression;
 import org.xtext.example.mydsl.myDsl.postfix_expression2;
 
 /**
@@ -25,13 +24,7 @@ import org.xtext.example.mydsl.myDsl.postfix_expression2;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getPostfix_expression2 <em>Postfix expression2</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getArgument_expression_list <em>Argument expression list</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getPtr_op <em>Ptr op</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getInc_op <em>Inc op</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getDec_op <em>Dec op</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expression2Impl#getAssignment_expression <em>Assignment expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,114 +32,14 @@ import org.xtext.example.mydsl.myDsl.postfix_expression2;
 public class postfix_expression2Impl extends MinimalEObjectImpl.Container implements postfix_expression2
 {
   /**
-   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+   * The cached value of the '{@link #getAssignment_expression() <em>Assignment expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpression()
+   * @see #getAssignment_expression()
    * @generated
    * @ordered
    */
-  protected expression expression;
-
-  /**
-   * The cached value of the '{@link #getPostfix_expression2() <em>Postfix expression2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPostfix_expression2()
-   * @generated
-   * @ordered
-   */
-  protected postfix_expression2 postfix_expression2;
-
-  /**
-   * The cached value of the '{@link #getArgument_expression_list() <em>Argument expression list</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getArgument_expression_list()
-   * @generated
-   * @ordered
-   */
-  protected argument_expression_list argument_expression_list;
-
-  /**
-   * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIdentifier()
-   * @generated
-   * @ordered
-   */
-  protected static final String IDENTIFIER_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIdentifier()
-   * @generated
-   * @ordered
-   */
-  protected String identifier = IDENTIFIER_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getPtr_op() <em>Ptr op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPtr_op()
-   * @generated
-   * @ordered
-   */
-  protected static final String PTR_OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPtr_op() <em>Ptr op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPtr_op()
-   * @generated
-   * @ordered
-   */
-  protected String ptr_op = PTR_OP_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getInc_op() <em>Inc op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInc_op()
-   * @generated
-   * @ordered
-   */
-  protected static final String INC_OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getInc_op() <em>Inc op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInc_op()
-   * @generated
-   * @ordered
-   */
-  protected String inc_op = INC_OP_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getDec_op() <em>Dec op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDec_op()
-   * @generated
-   * @ordered
-   */
-  protected static final String DEC_OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getDec_op() <em>Dec op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDec_op()
-   * @generated
-   * @ordered
-   */
-  protected String dec_op = DEC_OP_EDEFAULT;
+  protected assignment_expression assignment_expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -174,9 +67,9 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public expression getExpression()
+  public assignment_expression getAssignment_expression()
   {
-    return expression;
+    return assignment_expression;
   }
 
   /**
@@ -184,13 +77,13 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(expression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetAssignment_expression(assignment_expression newAssignment_expression, NotificationChain msgs)
   {
-    expression oldExpression = expression;
-    expression = newExpression;
+    assignment_expression oldAssignment_expression = assignment_expression;
+    assignment_expression = newAssignment_expression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION, oldExpression, newExpression);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION, oldAssignment_expression, newAssignment_expression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -201,208 +94,20 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(expression newExpression)
+  public void setAssignment_expression(assignment_expression newAssignment_expression)
   {
-    if (newExpression != expression)
+    if (newAssignment_expression != assignment_expression)
     {
       NotificationChain msgs = null;
-      if (expression != null)
-        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION, null, msgs);
-      if (newExpression != null)
-        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION, null, msgs);
-      msgs = basicSetExpression(newExpression, msgs);
+      if (assignment_expression != null)
+        msgs = ((InternalEObject)assignment_expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION, null, msgs);
+      if (newAssignment_expression != null)
+        msgs = ((InternalEObject)newAssignment_expression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION, null, msgs);
+      msgs = basicSetAssignment_expression(newAssignment_expression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION, newExpression, newExpression));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public postfix_expression2 getPostfix_expression2()
-  {
-    return postfix_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetPostfix_expression2(postfix_expression2 newPostfix_expression2, NotificationChain msgs)
-  {
-    postfix_expression2 oldPostfix_expression2 = postfix_expression2;
-    postfix_expression2 = newPostfix_expression2;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2, oldPostfix_expression2, newPostfix_expression2);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPostfix_expression2(postfix_expression2 newPostfix_expression2)
-  {
-    if (newPostfix_expression2 != postfix_expression2)
-    {
-      NotificationChain msgs = null;
-      if (postfix_expression2 != null)
-        msgs = ((InternalEObject)postfix_expression2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2, null, msgs);
-      if (newPostfix_expression2 != null)
-        msgs = ((InternalEObject)newPostfix_expression2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2, null, msgs);
-      msgs = basicSetPostfix_expression2(newPostfix_expression2, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2, newPostfix_expression2, newPostfix_expression2));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public argument_expression_list getArgument_expression_list()
-  {
-    return argument_expression_list;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetArgument_expression_list(argument_expression_list newArgument_expression_list, NotificationChain msgs)
-  {
-    argument_expression_list oldArgument_expression_list = argument_expression_list;
-    argument_expression_list = newArgument_expression_list;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST, oldArgument_expression_list, newArgument_expression_list);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setArgument_expression_list(argument_expression_list newArgument_expression_list)
-  {
-    if (newArgument_expression_list != argument_expression_list)
-    {
-      NotificationChain msgs = null;
-      if (argument_expression_list != null)
-        msgs = ((InternalEObject)argument_expression_list).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST, null, msgs);
-      if (newArgument_expression_list != null)
-        msgs = ((InternalEObject)newArgument_expression_list).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST, null, msgs);
-      msgs = basicSetArgument_expression_list(newArgument_expression_list, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST, newArgument_expression_list, newArgument_expression_list));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getIdentifier()
-  {
-    return identifier;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIdentifier(String newIdentifier)
-  {
-    String oldIdentifier = identifier;
-    identifier = newIdentifier;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__IDENTIFIER, oldIdentifier, identifier));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getPtr_op()
-  {
-    return ptr_op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPtr_op(String newPtr_op)
-  {
-    String oldPtr_op = ptr_op;
-    ptr_op = newPtr_op;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__PTR_OP, oldPtr_op, ptr_op));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getInc_op()
-  {
-    return inc_op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setInc_op(String newInc_op)
-  {
-    String oldInc_op = inc_op;
-    inc_op = newInc_op;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__INC_OP, oldInc_op, inc_op));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getDec_op()
-  {
-    return dec_op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDec_op(String newDec_op)
-  {
-    String oldDec_op = dec_op;
-    dec_op = newDec_op;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__DEC_OP, oldDec_op, dec_op));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION, newAssignment_expression, newAssignment_expression));
   }
 
   /**
@@ -415,12 +120,8 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION:
-        return basicSetExpression(null, msgs);
-      case MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2:
-        return basicSetPostfix_expression2(null, msgs);
-      case MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST:
-        return basicSetArgument_expression_list(null, msgs);
+      case MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION:
+        return basicSetAssignment_expression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -435,20 +136,8 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION:
-        return getExpression();
-      case MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2:
-        return getPostfix_expression2();
-      case MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST:
-        return getArgument_expression_list();
-      case MyDslPackage.POSTFIX_EXPRESSION2__IDENTIFIER:
-        return getIdentifier();
-      case MyDslPackage.POSTFIX_EXPRESSION2__PTR_OP:
-        return getPtr_op();
-      case MyDslPackage.POSTFIX_EXPRESSION2__INC_OP:
-        return getInc_op();
-      case MyDslPackage.POSTFIX_EXPRESSION2__DEC_OP:
-        return getDec_op();
+      case MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION:
+        return getAssignment_expression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -463,26 +152,8 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION:
-        setExpression((expression)newValue);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2:
-        setPostfix_expression2((postfix_expression2)newValue);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST:
-        setArgument_expression_list((argument_expression_list)newValue);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__IDENTIFIER:
-        setIdentifier((String)newValue);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__PTR_OP:
-        setPtr_op((String)newValue);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__INC_OP:
-        setInc_op((String)newValue);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__DEC_OP:
-        setDec_op((String)newValue);
+      case MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION:
+        setAssignment_expression((assignment_expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -498,26 +169,8 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION:
-        setExpression((expression)null);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2:
-        setPostfix_expression2((postfix_expression2)null);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST:
-        setArgument_expression_list((argument_expression_list)null);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__IDENTIFIER:
-        setIdentifier(IDENTIFIER_EDEFAULT);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__PTR_OP:
-        setPtr_op(PTR_OP_EDEFAULT);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__INC_OP:
-        setInc_op(INC_OP_EDEFAULT);
-        return;
-      case MyDslPackage.POSTFIX_EXPRESSION2__DEC_OP:
-        setDec_op(DEC_OP_EDEFAULT);
+      case MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION:
+        setAssignment_expression((assignment_expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -533,45 +186,10 @@ public class postfix_expression2Impl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case MyDslPackage.POSTFIX_EXPRESSION2__EXPRESSION:
-        return expression != null;
-      case MyDslPackage.POSTFIX_EXPRESSION2__POSTFIX_EXPRESSION2:
-        return postfix_expression2 != null;
-      case MyDslPackage.POSTFIX_EXPRESSION2__ARGUMENT_EXPRESSION_LIST:
-        return argument_expression_list != null;
-      case MyDslPackage.POSTFIX_EXPRESSION2__IDENTIFIER:
-        return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-      case MyDslPackage.POSTFIX_EXPRESSION2__PTR_OP:
-        return PTR_OP_EDEFAULT == null ? ptr_op != null : !PTR_OP_EDEFAULT.equals(ptr_op);
-      case MyDslPackage.POSTFIX_EXPRESSION2__INC_OP:
-        return INC_OP_EDEFAULT == null ? inc_op != null : !INC_OP_EDEFAULT.equals(inc_op);
-      case MyDslPackage.POSTFIX_EXPRESSION2__DEC_OP:
-        return DEC_OP_EDEFAULT == null ? dec_op != null : !DEC_OP_EDEFAULT.equals(dec_op);
+      case MyDslPackage.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION:
+        return assignment_expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (identifier: ");
-    result.append(identifier);
-    result.append(", ptr_op: ");
-    result.append(ptr_op);
-    result.append(", inc_op: ");
-    result.append(inc_op);
-    result.append(", dec_op: ");
-    result.append(dec_op);
-    result.append(')');
-    return result.toString();
   }
 
 } //postfix_expression2Impl

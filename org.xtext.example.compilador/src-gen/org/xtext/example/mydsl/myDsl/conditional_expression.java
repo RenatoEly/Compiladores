@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.conditional_expression#getSimple_expression <em>Simple expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.conditional_expression#getLogical_or_expression <em>Logical or expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.conditional_expression#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.conditional_expression#getConditional_expression <em>Conditional expression</em>}</li>
@@ -26,6 +27,32 @@ import org.eclipse.emf.ecore.EObject;
 public interface conditional_expression extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Simple expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Simple expression</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Simple expression</em>' containment reference.
+   * @see #setSimple_expression(simple_expression)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getconditional_expression_Simple_expression()
+   * @model containment="true"
+   * @generated
+   */
+  simple_expression getSimple_expression();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.conditional_expression#getSimple_expression <em>Simple expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Simple expression</em>' containment reference.
+   * @see #getSimple_expression()
+   * @generated
+   */
+  void setSimple_expression(simple_expression value);
+
+  /**
    * Returns the value of the '<em><b>Logical or expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -34,12 +61,12 @@ public interface conditional_expression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Logical or expression</em>' containment reference.
-   * @see #setLogical_or_expression(logical_or_expression)
+   * @see #setLogical_or_expression(simple_expression)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getconditional_expression_Logical_or_expression()
    * @model containment="true"
    * @generated
    */
-  logical_or_expression getLogical_or_expression();
+  simple_expression getLogical_or_expression();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.conditional_expression#getLogical_or_expression <em>Logical or expression</em>}' containment reference.
@@ -49,7 +76,7 @@ public interface conditional_expression extends EObject
    * @see #getLogical_or_expression()
    * @generated
    */
-  void setLogical_or_expression(logical_or_expression value);
+  void setLogical_or_expression(simple_expression value);
 
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.

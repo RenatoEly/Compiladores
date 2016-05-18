@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.conditional_expression;
 import org.xtext.example.mydsl.myDsl.expression;
-import org.xtext.example.mydsl.myDsl.logical_or_expression;
+import org.xtext.example.mydsl.myDsl.simple_expression;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +25,7 @@ import org.xtext.example.mydsl.myDsl.logical_or_expression;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.conditional_expressionImpl#getSimple_expression <em>Simple expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.conditional_expressionImpl#getLogical_or_expression <em>Logical or expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.conditional_expressionImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.conditional_expressionImpl#getConditional_expression <em>Conditional expression</em>}</li>
@@ -35,6 +36,16 @@ import org.xtext.example.mydsl.myDsl.logical_or_expression;
 public class conditional_expressionImpl extends MinimalEObjectImpl.Container implements conditional_expression
 {
   /**
+   * The cached value of the '{@link #getSimple_expression() <em>Simple expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSimple_expression()
+   * @generated
+   * @ordered
+   */
+  protected simple_expression simple_expression;
+
+  /**
    * The cached value of the '{@link #getLogical_or_expression() <em>Logical or expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -42,7 +53,7 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
    * @generated
    * @ordered
    */
-  protected logical_or_expression logical_or_expression;
+  protected simple_expression logical_or_expression;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -90,7 +101,55 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public logical_or_expression getLogical_or_expression()
+  public simple_expression getSimple_expression()
+  {
+    return simple_expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSimple_expression(simple_expression newSimple_expression, NotificationChain msgs)
+  {
+    simple_expression oldSimple_expression = simple_expression;
+    simple_expression = newSimple_expression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION, oldSimple_expression, newSimple_expression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSimple_expression(simple_expression newSimple_expression)
+  {
+    if (newSimple_expression != simple_expression)
+    {
+      NotificationChain msgs = null;
+      if (simple_expression != null)
+        msgs = ((InternalEObject)simple_expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION, null, msgs);
+      if (newSimple_expression != null)
+        msgs = ((InternalEObject)newSimple_expression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION, null, msgs);
+      msgs = basicSetSimple_expression(newSimple_expression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION, newSimple_expression, newSimple_expression));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public simple_expression getLogical_or_expression()
   {
     return logical_or_expression;
   }
@@ -100,9 +159,9 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLogical_or_expression(logical_or_expression newLogical_or_expression, NotificationChain msgs)
+  public NotificationChain basicSetLogical_or_expression(simple_expression newLogical_or_expression, NotificationChain msgs)
   {
-    logical_or_expression oldLogical_or_expression = logical_or_expression;
+    simple_expression oldLogical_or_expression = logical_or_expression;
     logical_or_expression = newLogical_or_expression;
     if (eNotificationRequired())
     {
@@ -117,7 +176,7 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLogical_or_expression(logical_or_expression newLogical_or_expression)
+  public void setLogical_or_expression(simple_expression newLogical_or_expression)
   {
     if (newLogical_or_expression != logical_or_expression)
     {
@@ -239,6 +298,8 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION:
+        return basicSetSimple_expression(null, msgs);
       case MyDslPackage.CONDITIONAL_EXPRESSION__LOGICAL_OR_EXPRESSION:
         return basicSetLogical_or_expression(null, msgs);
       case MyDslPackage.CONDITIONAL_EXPRESSION__EXPRESSION:
@@ -259,6 +320,8 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION:
+        return getSimple_expression();
       case MyDslPackage.CONDITIONAL_EXPRESSION__LOGICAL_OR_EXPRESSION:
         return getLogical_or_expression();
       case MyDslPackage.CONDITIONAL_EXPRESSION__EXPRESSION:
@@ -279,8 +342,11 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION:
+        setSimple_expression((simple_expression)newValue);
+        return;
       case MyDslPackage.CONDITIONAL_EXPRESSION__LOGICAL_OR_EXPRESSION:
-        setLogical_or_expression((logical_or_expression)newValue);
+        setLogical_or_expression((simple_expression)newValue);
         return;
       case MyDslPackage.CONDITIONAL_EXPRESSION__EXPRESSION:
         setExpression((expression)newValue);
@@ -302,8 +368,11 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION:
+        setSimple_expression((simple_expression)null);
+        return;
       case MyDslPackage.CONDITIONAL_EXPRESSION__LOGICAL_OR_EXPRESSION:
-        setLogical_or_expression((logical_or_expression)null);
+        setLogical_or_expression((simple_expression)null);
         return;
       case MyDslPackage.CONDITIONAL_EXPRESSION__EXPRESSION:
         setExpression((expression)null);
@@ -325,6 +394,8 @@ public class conditional_expressionImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case MyDslPackage.CONDITIONAL_EXPRESSION__SIMPLE_EXPRESSION:
+        return simple_expression != null;
       case MyDslPackage.CONDITIONAL_EXPRESSION__LOGICAL_OR_EXPRESSION:
         return logical_or_expression != null;
       case MyDslPackage.CONDITIONAL_EXPRESSION__EXPRESSION:

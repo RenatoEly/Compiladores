@@ -3,8 +3,12 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -12,11 +16,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.initializer_list;
 import org.xtext.example.mydsl.myDsl.postfix_expression;
 import org.xtext.example.mydsl.myDsl.postfix_expression2;
-import org.xtext.example.mydsl.myDsl.primary_expression;
+import org.xtext.example.mydsl.myDsl.simple_expression;
 import org.xtext.example.mydsl.myDsl.type_name;
 
 /**
@@ -28,7 +35,7 @@ import org.xtext.example.mydsl.myDsl.type_name;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expressionImpl#getPrimary_expression <em>Primary expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expressionImpl#getPostfix_expression2 <em>Postfix expression2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expressionImpl#getPostifx_expres <em>Postifx expres</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expressionImpl#getType_name <em>Type name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.postfix_expressionImpl#getInitializer_list <em>Initializer list</em>}</li>
  * </ul>
@@ -45,17 +52,17 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected primary_expression primary_expression;
+  protected simple_expression primary_expression;
 
   /**
-   * The cached value of the '{@link #getPostfix_expression2() <em>Postfix expression2</em>}' containment reference.
+   * The cached value of the '{@link #getPostifx_expres() <em>Postifx expres</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPostfix_expression2()
+   * @see #getPostifx_expres()
    * @generated
    * @ordered
    */
-  protected postfix_expression2 postfix_expression2;
+  protected EList<postfix_expression2> postifx_expres;
 
   /**
    * The cached value of the '{@link #getType_name() <em>Type name</em>}' containment reference.
@@ -103,7 +110,7 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public primary_expression getPrimary_expression()
+  public simple_expression getPrimary_expression()
   {
     return primary_expression;
   }
@@ -113,9 +120,9 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPrimary_expression(primary_expression newPrimary_expression, NotificationChain msgs)
+  public NotificationChain basicSetPrimary_expression(simple_expression newPrimary_expression, NotificationChain msgs)
   {
-    primary_expression oldPrimary_expression = primary_expression;
+    simple_expression oldPrimary_expression = primary_expression;
     primary_expression = newPrimary_expression;
     if (eNotificationRequired())
     {
@@ -130,7 +137,7 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPrimary_expression(primary_expression newPrimary_expression)
+  public void setPrimary_expression(simple_expression newPrimary_expression)
   {
     if (newPrimary_expression != primary_expression)
     {
@@ -151,47 +158,13 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public postfix_expression2 getPostfix_expression2()
+  public EList<postfix_expression2> getPostifx_expres()
   {
-    return postfix_expression2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetPostfix_expression2(postfix_expression2 newPostfix_expression2, NotificationChain msgs)
-  {
-    postfix_expression2 oldPostfix_expression2 = postfix_expression2;
-    postfix_expression2 = newPostfix_expression2;
-    if (eNotificationRequired())
+    if (postifx_expres == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2, oldPostfix_expression2, newPostfix_expression2);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      postifx_expres = new EObjectContainmentEList<postfix_expression2>(postfix_expression2.class, this, MyDslPackage.POSTFIX_EXPRESSION__POSTIFX_EXPRES);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPostfix_expression2(postfix_expression2 newPostfix_expression2)
-  {
-    if (newPostfix_expression2 != postfix_expression2)
-    {
-      NotificationChain msgs = null;
-      if (postfix_expression2 != null)
-        msgs = ((InternalEObject)postfix_expression2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2, null, msgs);
-      if (newPostfix_expression2 != null)
-        msgs = ((InternalEObject)newPostfix_expression2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2, null, msgs);
-      msgs = basicSetPostfix_expression2(newPostfix_expression2, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2, newPostfix_expression2, newPostfix_expression2));
+    return postifx_expres;
   }
 
   /**
@@ -302,8 +275,8 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
     {
       case MyDslPackage.POSTFIX_EXPRESSION__PRIMARY_EXPRESSION:
         return basicSetPrimary_expression(null, msgs);
-      case MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2:
-        return basicSetPostfix_expression2(null, msgs);
+      case MyDslPackage.POSTFIX_EXPRESSION__POSTIFX_EXPRES:
+        return ((InternalEList<?>)getPostifx_expres()).basicRemove(otherEnd, msgs);
       case MyDslPackage.POSTFIX_EXPRESSION__TYPE_NAME:
         return basicSetType_name(null, msgs);
       case MyDslPackage.POSTFIX_EXPRESSION__INITIALIZER_LIST:
@@ -324,8 +297,8 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
     {
       case MyDslPackage.POSTFIX_EXPRESSION__PRIMARY_EXPRESSION:
         return getPrimary_expression();
-      case MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2:
-        return getPostfix_expression2();
+      case MyDslPackage.POSTFIX_EXPRESSION__POSTIFX_EXPRES:
+        return getPostifx_expres();
       case MyDslPackage.POSTFIX_EXPRESSION__TYPE_NAME:
         return getType_name();
       case MyDslPackage.POSTFIX_EXPRESSION__INITIALIZER_LIST:
@@ -339,16 +312,18 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case MyDslPackage.POSTFIX_EXPRESSION__PRIMARY_EXPRESSION:
-        setPrimary_expression((primary_expression)newValue);
+        setPrimary_expression((simple_expression)newValue);
         return;
-      case MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2:
-        setPostfix_expression2((postfix_expression2)newValue);
+      case MyDslPackage.POSTFIX_EXPRESSION__POSTIFX_EXPRES:
+        getPostifx_expres().clear();
+        getPostifx_expres().addAll((Collection<? extends postfix_expression2>)newValue);
         return;
       case MyDslPackage.POSTFIX_EXPRESSION__TYPE_NAME:
         setType_name((type_name)newValue);
@@ -371,10 +346,10 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
     switch (featureID)
     {
       case MyDslPackage.POSTFIX_EXPRESSION__PRIMARY_EXPRESSION:
-        setPrimary_expression((primary_expression)null);
+        setPrimary_expression((simple_expression)null);
         return;
-      case MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2:
-        setPostfix_expression2((postfix_expression2)null);
+      case MyDslPackage.POSTFIX_EXPRESSION__POSTIFX_EXPRES:
+        getPostifx_expres().clear();
         return;
       case MyDslPackage.POSTFIX_EXPRESSION__TYPE_NAME:
         setType_name((type_name)null);
@@ -398,8 +373,8 @@ public class postfix_expressionImpl extends MinimalEObjectImpl.Container impleme
     {
       case MyDslPackage.POSTFIX_EXPRESSION__PRIMARY_EXPRESSION:
         return primary_expression != null;
-      case MyDslPackage.POSTFIX_EXPRESSION__POSTFIX_EXPRESSION2:
-        return postfix_expression2 != null;
+      case MyDslPackage.POSTFIX_EXPRESSION__POSTIFX_EXPRES:
+        return postifx_expres != null && !postifx_expres.isEmpty();
       case MyDslPackage.POSTFIX_EXPRESSION__TYPE_NAME:
         return type_name != null;
       case MyDslPackage.POSTFIX_EXPRESSION__INITIALIZER_LIST:

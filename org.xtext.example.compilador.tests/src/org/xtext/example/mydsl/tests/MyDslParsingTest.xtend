@@ -22,9 +22,10 @@ class MyDslParsingTest{
 	@Test 
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			int ak[][]
 		''')
-		Assert.assertNotNull(result)
+		println(result.declaracoes.get(0).external_declaration)
+		Assert.assertNotNull(result.declaracoes.get(0));
 	}
 
 }

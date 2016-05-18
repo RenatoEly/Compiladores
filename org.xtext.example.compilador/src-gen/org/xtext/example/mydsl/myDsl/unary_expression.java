@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,9 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getUnary_expression <em>Unary expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getDec_op <em>Dec op</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getUnary_operator <em>Unary operator</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getCast_expression <em>Cast expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getSizeof <em>Sizeof</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getType_name <em>Type name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.unary_expression#getAlignof <em>Alignof</em>}</li>
  * </ul>
  *
@@ -29,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface unary_expression extends EObject
+public interface unary_expression extends simple_expression
 {
   /**
    * Returns the value of the '<em><b>Postfix expression</b></em>' containment reference.
@@ -162,32 +159,6 @@ public interface unary_expression extends EObject
   void setUnary_operator(String value);
 
   /**
-   * Returns the value of the '<em><b>Cast expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cast expression</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cast expression</em>' containment reference.
-   * @see #setCast_expression(cast_expression)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunary_expression_Cast_expression()
-   * @model containment="true"
-   * @generated
-   */
-  cast_expression getCast_expression();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.unary_expression#getCast_expression <em>Cast expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cast expression</em>' containment reference.
-   * @see #getCast_expression()
-   * @generated
-   */
-  void setCast_expression(cast_expression value);
-
-  /**
    * Returns the value of the '<em><b>Sizeof</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -212,32 +183,6 @@ public interface unary_expression extends EObject
    * @generated
    */
   void setSizeof(String value);
-
-  /**
-   * Returns the value of the '<em><b>Type name</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type name</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type name</em>' containment reference.
-   * @see #setType_name(type_name)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunary_expression_Type_name()
-   * @model containment="true"
-   * @generated
-   */
-  type_name getType_name();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.unary_expression#getType_name <em>Type name</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type name</em>' containment reference.
-   * @see #getType_name()
-   * @generated
-   */
-  void setType_name(type_name value);
 
   /**
    * Returns the value of the '<em><b>Alignof</b></em>' attribute.

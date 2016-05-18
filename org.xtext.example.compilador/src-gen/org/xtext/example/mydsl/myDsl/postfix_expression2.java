@@ -14,13 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getPostfix_expression2 <em>Postfix expression2</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getArgument_expression_list <em>Argument expression list</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getPtr_op <em>Ptr op</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getInc_op <em>Inc op</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getDec_op <em>Dec op</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getAssignment_expression <em>Assignment expression</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2()
@@ -30,185 +24,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface postfix_expression2 extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+   * Returns the value of the '<em><b>Assignment expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Assignment expression</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(expression)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Expression()
+   * @return the value of the '<em>Assignment expression</em>' containment reference.
+   * @see #setAssignment_expression(assignment_expression)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Assignment_expression()
    * @model containment="true"
    * @generated
    */
-  expression getExpression();
+  assignment_expression getAssignment_expression();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getExpression <em>Expression</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getAssignment_expression <em>Assignment expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expression</em>' containment reference.
-   * @see #getExpression()
+   * @param value the new value of the '<em>Assignment expression</em>' containment reference.
+   * @see #getAssignment_expression()
    * @generated
    */
-  void setExpression(expression value);
-
-  /**
-   * Returns the value of the '<em><b>Postfix expression2</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Postfix expression2</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Postfix expression2</em>' containment reference.
-   * @see #setPostfix_expression2(postfix_expression2)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Postfix_expression2()
-   * @model containment="true"
-   * @generated
-   */
-  postfix_expression2 getPostfix_expression2();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getPostfix_expression2 <em>Postfix expression2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Postfix expression2</em>' containment reference.
-   * @see #getPostfix_expression2()
-   * @generated
-   */
-  void setPostfix_expression2(postfix_expression2 value);
-
-  /**
-   * Returns the value of the '<em><b>Argument expression list</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Argument expression list</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Argument expression list</em>' containment reference.
-   * @see #setArgument_expression_list(argument_expression_list)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Argument_expression_list()
-   * @model containment="true"
-   * @generated
-   */
-  argument_expression_list getArgument_expression_list();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getArgument_expression_list <em>Argument expression list</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Argument expression list</em>' containment reference.
-   * @see #getArgument_expression_list()
-   * @generated
-   */
-  void setArgument_expression_list(argument_expression_list value);
-
-  /**
-   * Returns the value of the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Identifier</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Identifier</em>' attribute.
-   * @see #setIdentifier(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Identifier()
-   * @model
-   * @generated
-   */
-  String getIdentifier();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getIdentifier <em>Identifier</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Identifier</em>' attribute.
-   * @see #getIdentifier()
-   * @generated
-   */
-  void setIdentifier(String value);
-
-  /**
-   * Returns the value of the '<em><b>Ptr op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ptr op</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ptr op</em>' attribute.
-   * @see #setPtr_op(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Ptr_op()
-   * @model
-   * @generated
-   */
-  String getPtr_op();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getPtr_op <em>Ptr op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ptr op</em>' attribute.
-   * @see #getPtr_op()
-   * @generated
-   */
-  void setPtr_op(String value);
-
-  /**
-   * Returns the value of the '<em><b>Inc op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Inc op</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Inc op</em>' attribute.
-   * @see #setInc_op(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Inc_op()
-   * @model
-   * @generated
-   */
-  String getInc_op();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getInc_op <em>Inc op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inc op</em>' attribute.
-   * @see #getInc_op()
-   * @generated
-   */
-  void setInc_op(String value);
-
-  /**
-   * Returns the value of the '<em><b>Dec op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Dec op</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Dec op</em>' attribute.
-   * @see #setDec_op(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression2_Dec_op()
-   * @model
-   * @generated
-   */
-  String getDec_op();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression2#getDec_op <em>Dec op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dec op</em>' attribute.
-   * @see #getDec_op()
-   * @generated
-   */
-  void setDec_op(String value);
+  void setAssignment_expression(assignment_expression value);
 
 } // postfix_expression2

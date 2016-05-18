@@ -27,7 +27,6 @@ import org.xtext.example.mydsl.myDsl.type_qualifier_list;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declarator2Impl#getDirect_declarator2 <em>Direct declarator2</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declarator2Impl#getStatic <em>Static</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declarator2Impl#getType_qualifier_list <em>Type qualifier list</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declarator2Impl#getAssignment_expression <em>Assignment expression</em>}</li>
@@ -39,16 +38,6 @@ import org.xtext.example.mydsl.myDsl.type_qualifier_list;
  */
 public class direct_declarator2Impl extends MinimalEObjectImpl.Container implements direct_declarator2
 {
-  /**
-   * The cached value of the '{@link #getDirect_declarator2() <em>Direct declarator2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDirect_declarator2()
-   * @generated
-   * @ordered
-   */
-  protected direct_declarator2 direct_declarator2;
-
   /**
    * The default value of the '{@link #getStatic() <em>Static</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -128,54 +117,6 @@ public class direct_declarator2Impl extends MinimalEObjectImpl.Container impleme
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.DIRECT_DECLARATOR2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public direct_declarator2 getDirect_declarator2()
-  {
-    return direct_declarator2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetDirect_declarator2(direct_declarator2 newDirect_declarator2, NotificationChain msgs)
-  {
-    direct_declarator2 oldDirect_declarator2 = direct_declarator2;
-    direct_declarator2 = newDirect_declarator2;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2, oldDirect_declarator2, newDirect_declarator2);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDirect_declarator2(direct_declarator2 newDirect_declarator2)
-  {
-    if (newDirect_declarator2 != direct_declarator2)
-    {
-      NotificationChain msgs = null;
-      if (direct_declarator2 != null)
-        msgs = ((InternalEObject)direct_declarator2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2, null, msgs);
-      if (newDirect_declarator2 != null)
-        msgs = ((InternalEObject)newDirect_declarator2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2, null, msgs);
-      msgs = basicSetDirect_declarator2(newDirect_declarator2, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2, newDirect_declarator2, newDirect_declarator2));
   }
 
   /**
@@ -403,8 +344,6 @@ public class direct_declarator2Impl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2:
-        return basicSetDirect_declarator2(null, msgs);
       case MyDslPackage.DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST:
         return basicSetType_qualifier_list(null, msgs);
       case MyDslPackage.DIRECT_DECLARATOR2__ASSIGNMENT_EXPRESSION:
@@ -427,8 +366,6 @@ public class direct_declarator2Impl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2:
-        return getDirect_declarator2();
       case MyDslPackage.DIRECT_DECLARATOR2__STATIC:
         return getStatic();
       case MyDslPackage.DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST:
@@ -453,9 +390,6 @@ public class direct_declarator2Impl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2:
-        setDirect_declarator2((direct_declarator2)newValue);
-        return;
       case MyDslPackage.DIRECT_DECLARATOR2__STATIC:
         setStatic((String)newValue);
         return;
@@ -485,9 +419,6 @@ public class direct_declarator2Impl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2:
-        setDirect_declarator2((direct_declarator2)null);
-        return;
       case MyDslPackage.DIRECT_DECLARATOR2__STATIC:
         setStatic(STATIC_EDEFAULT);
         return;
@@ -517,8 +448,6 @@ public class direct_declarator2Impl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case MyDslPackage.DIRECT_DECLARATOR2__DIRECT_DECLARATOR2:
-        return direct_declarator2 != null;
       case MyDslPackage.DIRECT_DECLARATOR2__STATIC:
         return STATIC_EDEFAULT == null ? static_ != null : !STATIC_EDEFAULT.equals(static_);
       case MyDslPackage.DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST:

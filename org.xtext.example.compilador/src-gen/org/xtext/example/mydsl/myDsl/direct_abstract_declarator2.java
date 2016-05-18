@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.direct_abstract_declarator2#getDirect_abstract_declarator2 <em>Direct abstract declarator2</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_abstract_declarator2#getStatic <em>Static</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_abstract_declarator2#getType_qualifier_list <em>Type qualifier list</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_abstract_declarator2#getAssignment_expression <em>Assignment expression</em>}</li>
@@ -27,32 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface direct_abstract_declarator2 extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Direct abstract declarator2</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Direct abstract declarator2</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Direct abstract declarator2</em>' containment reference.
-   * @see #setDirect_abstract_declarator2(direct_abstract_declarator2)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getdirect_abstract_declarator2_Direct_abstract_declarator2()
-   * @model containment="true"
-   * @generated
-   */
-  direct_abstract_declarator2 getDirect_abstract_declarator2();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.direct_abstract_declarator2#getDirect_abstract_declarator2 <em>Direct abstract declarator2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Direct abstract declarator2</em>' containment reference.
-   * @see #getDirect_abstract_declarator2()
-   * @generated
-   */
-  void setDirect_abstract_declarator2(direct_abstract_declarator2 value);
-
   /**
    * Returns the value of the '<em><b>Static</b></em>' attribute.
    * <!-- begin-user-doc -->

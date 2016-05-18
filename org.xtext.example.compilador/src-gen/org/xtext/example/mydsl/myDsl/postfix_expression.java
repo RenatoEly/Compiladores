@@ -3,6 +3,8 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression#getPrimary_expression <em>Primary expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression#getPostfix_expression2 <em>Postfix expression2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression#getPostifx_expres <em>Postifx expres</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression#getType_name <em>Type name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.postfix_expression#getInitializer_list <em>Initializer list</em>}</li>
  * </ul>
@@ -35,12 +37,12 @@ public interface postfix_expression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Primary expression</em>' containment reference.
-   * @see #setPrimary_expression(primary_expression)
+   * @see #setPrimary_expression(simple_expression)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression_Primary_expression()
    * @model containment="true"
    * @generated
    */
-  primary_expression getPrimary_expression();
+  simple_expression getPrimary_expression();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression#getPrimary_expression <em>Primary expression</em>}' containment reference.
@@ -50,33 +52,23 @@ public interface postfix_expression extends EObject
    * @see #getPrimary_expression()
    * @generated
    */
-  void setPrimary_expression(primary_expression value);
+  void setPrimary_expression(simple_expression value);
 
   /**
-   * Returns the value of the '<em><b>Postfix expression2</b></em>' containment reference.
+   * Returns the value of the '<em><b>Postifx expres</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.postfix_expression2}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Postfix expression2</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Postifx expres</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Postfix expression2</em>' containment reference.
-   * @see #setPostfix_expression2(postfix_expression2)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression_Postfix_expression2()
+   * @return the value of the '<em>Postifx expres</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getpostfix_expression_Postifx_expres()
    * @model containment="true"
    * @generated
    */
-  postfix_expression2 getPostfix_expression2();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.postfix_expression#getPostfix_expression2 <em>Postfix expression2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Postfix expression2</em>' containment reference.
-   * @see #getPostfix_expression2()
-   * @generated
-   */
-  void setPostfix_expression2(postfix_expression2 value);
+  EList<postfix_expression2> getPostifx_expres();
 
   /**
    * Returns the value of the '<em><b>Type name</b></em>' containment reference.

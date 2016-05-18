@@ -3,6 +3,8 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.generic_assoc_list#getGeneric_association <em>Generic association</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.generic_assoc_list#getGeneric_assoc_list2 <em>Generic assoc list2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.generic_assoc_list#getGeneric_list <em>Generic list</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getgeneric_assoc_list()
@@ -51,29 +53,19 @@ public interface generic_assoc_list extends EObject
   void setGeneric_association(generic_association value);
 
   /**
-   * Returns the value of the '<em><b>Generic assoc list2</b></em>' containment reference.
+   * Returns the value of the '<em><b>Generic list</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.generic_association}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Generic assoc list2</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Generic list</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Generic assoc list2</em>' containment reference.
-   * @see #setGeneric_assoc_list2(generic_assoc_list2)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getgeneric_assoc_list_Generic_assoc_list2()
+   * @return the value of the '<em>Generic list</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getgeneric_assoc_list_Generic_list()
    * @model containment="true"
    * @generated
    */
-  generic_assoc_list2 getGeneric_assoc_list2();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.generic_assoc_list#getGeneric_assoc_list2 <em>Generic assoc list2</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Generic assoc list2</em>' containment reference.
-   * @see #getGeneric_assoc_list2()
-   * @generated
-   */
-  void setGeneric_assoc_list2(generic_assoc_list2 value);
+  EList<generic_association> getGeneric_list();
 
 } // generic_assoc_list

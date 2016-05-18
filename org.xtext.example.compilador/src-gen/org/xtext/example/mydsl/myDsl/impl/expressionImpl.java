@@ -10,10 +10,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.assignment_expression;
 import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expression2;
 
@@ -25,24 +23,13 @@ import org.xtext.example.mydsl.myDsl.expression2;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getAssignment_expression <em>Assignment expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getExpression2 <em>Expression2</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class expressionImpl extends MinimalEObjectImpl.Container implements expression
+public class expressionImpl extends postfix_expression2Impl implements expression
 {
-  /**
-   * The cached value of the '{@link #getAssignment_expression() <em>Assignment expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAssignment_expression()
-   * @generated
-   * @ordered
-   */
-  protected assignment_expression assignment_expression;
-
   /**
    * The cached value of the '{@link #getExpression2() <em>Expression2</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -72,54 +59,6 @@ public class expressionImpl extends MinimalEObjectImpl.Container implements expr
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.EXPRESSION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public assignment_expression getAssignment_expression()
-  {
-    return assignment_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetAssignment_expression(assignment_expression newAssignment_expression, NotificationChain msgs)
-  {
-    assignment_expression oldAssignment_expression = assignment_expression;
-    assignment_expression = newAssignment_expression;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION, oldAssignment_expression, newAssignment_expression);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAssignment_expression(assignment_expression newAssignment_expression)
-  {
-    if (newAssignment_expression != assignment_expression)
-    {
-      NotificationChain msgs = null;
-      if (assignment_expression != null)
-        msgs = ((InternalEObject)assignment_expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION, null, msgs);
-      if (newAssignment_expression != null)
-        msgs = ((InternalEObject)newAssignment_expression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION, null, msgs);
-      msgs = basicSetAssignment_expression(newAssignment_expression, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION, newAssignment_expression, newAssignment_expression));
   }
 
   /**
@@ -180,8 +119,6 @@ public class expressionImpl extends MinimalEObjectImpl.Container implements expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION:
-        return basicSetAssignment_expression(null, msgs);
       case MyDslPackage.EXPRESSION__EXPRESSION2:
         return basicSetExpression2(null, msgs);
     }
@@ -198,8 +135,6 @@ public class expressionImpl extends MinimalEObjectImpl.Container implements expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION:
-        return getAssignment_expression();
       case MyDslPackage.EXPRESSION__EXPRESSION2:
         return getExpression2();
     }
@@ -216,9 +151,6 @@ public class expressionImpl extends MinimalEObjectImpl.Container implements expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION:
-        setAssignment_expression((assignment_expression)newValue);
-        return;
       case MyDslPackage.EXPRESSION__EXPRESSION2:
         setExpression2((expression2)newValue);
         return;
@@ -236,9 +168,6 @@ public class expressionImpl extends MinimalEObjectImpl.Container implements expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION:
-        setAssignment_expression((assignment_expression)null);
-        return;
       case MyDslPackage.EXPRESSION__EXPRESSION2:
         setExpression2((expression2)null);
         return;
@@ -256,8 +185,6 @@ public class expressionImpl extends MinimalEObjectImpl.Container implements expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__ASSIGNMENT_EXPRESSION:
-        return assignment_expression != null;
       case MyDslPackage.EXPRESSION__EXPRESSION2:
         return expression2 != null;
     }

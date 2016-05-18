@@ -3,15 +3,16 @@
  */
 package org.xtext.example.mydsl.validation;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.xtext.example.mydsl.myDsl.assignment_expression;
+import org.xtext.example.mydsl.myDsl.conditional_expression;
 import org.xtext.example.mydsl.myDsl.declaration;
 import org.xtext.example.mydsl.myDsl.declaration_specifiers;
 import org.xtext.example.mydsl.myDsl.init_declarator;
 import org.xtext.example.mydsl.myDsl.init_declarator_list;
 import org.xtext.example.mydsl.myDsl.initializer;
-import org.xtext.example.mydsl.myDsl.integer;
+import org.xtext.example.mydsl.myDsl.simple_expression;
 import org.xtext.example.mydsl.myDsl.type_specifier;
 import org.xtext.example.mydsl.validation.AbstractMyDslValidator;
 
@@ -26,24 +27,18 @@ public class MyDslValidator extends AbstractMyDslValidator {
   public void checkGreetingStartsWithCapital(final declaration dec) {
     declaration_specifiers _declaration_specifiers = dec.getDeclaration_specifiers();
     type_specifier _type_specifier = _declaration_specifiers.getType_specifier();
-    if ((_type_specifier instanceof integer)) {
-      InputOutput.<String>println("passou no 1");
-      init_declarator_list _init_declarator_list = dec.getInit_declarator_list();
-      init_declarator _init_declarator = _init_declarator_list.getInit_declarator();
-      initializer _initializer = _init_declarator.getInitializer();
-      assignment_expression _assignment_expression = _initializer.getAssignment_expression();
-      InputOutput.<assignment_expression>println(_assignment_expression);
-      init_declarator_list _init_declarator_list_1 = dec.getInit_declarator_list();
-      init_declarator _init_declarator_1 = _init_declarator_list_1.getInit_declarator();
-      initializer _initializer_1 = _init_declarator_1.getInitializer();
-      assignment_expression _assignment_expression_1 = _initializer_1.getAssignment_expression();
-      boolean _equals = _assignment_expression_1.equals("5");
-      boolean _not = (!_equals);
-      if (_not) {
-        InputOutput.<String>println("passou no 2");
-        this.error("Variável não está declarada corretamente", 
-          null);
-      }
+    Class<? extends type_specifier> _class = _type_specifier.getClass();
+    init_declarator_list _init_declarator_list = dec.getInit_declarator_list();
+    init_declarator _init_declarator = _init_declarator_list.getInit_declarator();
+    initializer _initializer = _init_declarator.getInitializer();
+    assignment_expression _assignment_expression = _initializer.getAssignment_expression();
+    conditional_expression _conditional_expression = _assignment_expression.getConditional_expression();
+    simple_expression _simple_expression = _conditional_expression.getSimple_expression();
+    Class<? extends simple_expression> _class_1 = _simple_expression.getClass();
+    boolean _notEquals = (!Objects.equal(_class, _class_1));
+    if (_notEquals) {
+      this.error("Atribuição não está de acordo com o tipo da variável", 
+        null);
     }
   }
 }

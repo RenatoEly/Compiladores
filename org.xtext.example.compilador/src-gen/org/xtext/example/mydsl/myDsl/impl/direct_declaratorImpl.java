@@ -3,14 +3,21 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.declarator;
@@ -26,7 +33,7 @@ import org.xtext.example.mydsl.myDsl.direct_declarator2;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declaratorImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declaratorImpl#getDirect_declarator2 <em>Direct declarator2</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declaratorImpl#getDirect_declarators <em>Direct declarators</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.direct_declaratorImpl#getDeclarator <em>Declarator</em>}</li>
  * </ul>
  *
@@ -55,14 +62,14 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDirect_declarator2() <em>Direct declarator2</em>}' containment reference.
+   * The cached value of the '{@link #getDirect_declarators() <em>Direct declarators</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDirect_declarator2()
+   * @see #getDirect_declarators()
    * @generated
    * @ordered
    */
-  protected direct_declarator2 direct_declarator2;
+  protected EList<direct_declarator2> direct_declarators;
 
   /**
    * The cached value of the '{@link #getDeclarator() <em>Declarator</em>}' containment reference.
@@ -123,47 +130,13 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public direct_declarator2 getDirect_declarator2()
+  public EList<direct_declarator2> getDirect_declarators()
   {
-    return direct_declarator2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetDirect_declarator2(direct_declarator2 newDirect_declarator2, NotificationChain msgs)
-  {
-    direct_declarator2 oldDirect_declarator2 = direct_declarator2;
-    direct_declarator2 = newDirect_declarator2;
-    if (eNotificationRequired())
+    if (direct_declarators == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2, oldDirect_declarator2, newDirect_declarator2);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      direct_declarators = new EObjectContainmentEList<direct_declarator2>(direct_declarator2.class, this, MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATORS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDirect_declarator2(direct_declarator2 newDirect_declarator2)
-  {
-    if (newDirect_declarator2 != direct_declarator2)
-    {
-      NotificationChain msgs = null;
-      if (direct_declarator2 != null)
-        msgs = ((InternalEObject)direct_declarator2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2, null, msgs);
-      if (newDirect_declarator2 != null)
-        msgs = ((InternalEObject)newDirect_declarator2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2, null, msgs);
-      msgs = basicSetDirect_declarator2(newDirect_declarator2, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2, newDirect_declarator2, newDirect_declarator2));
+    return direct_declarators;
   }
 
   /**
@@ -224,8 +197,8 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2:
-        return basicSetDirect_declarator2(null, msgs);
+      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATORS:
+        return ((InternalEList<?>)getDirect_declarators()).basicRemove(otherEnd, msgs);
       case MyDslPackage.DIRECT_DECLARATOR__DECLARATOR:
         return basicSetDeclarator(null, msgs);
     }
@@ -244,8 +217,8 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
     {
       case MyDslPackage.DIRECT_DECLARATOR__NAME:
         return getName();
-      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2:
-        return getDirect_declarator2();
+      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATORS:
+        return getDirect_declarators();
       case MyDslPackage.DIRECT_DECLARATOR__DECLARATOR:
         return getDeclarator();
     }
@@ -257,6 +230,7 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -265,8 +239,9 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
       case MyDslPackage.DIRECT_DECLARATOR__NAME:
         setName((String)newValue);
         return;
-      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2:
-        setDirect_declarator2((direct_declarator2)newValue);
+      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATORS:
+        getDirect_declarators().clear();
+        getDirect_declarators().addAll((Collection<? extends direct_declarator2>)newValue);
         return;
       case MyDslPackage.DIRECT_DECLARATOR__DECLARATOR:
         setDeclarator((declarator)newValue);
@@ -288,8 +263,8 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
       case MyDslPackage.DIRECT_DECLARATOR__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2:
-        setDirect_declarator2((direct_declarator2)null);
+      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATORS:
+        getDirect_declarators().clear();
         return;
       case MyDslPackage.DIRECT_DECLARATOR__DECLARATOR:
         setDeclarator((declarator)null);
@@ -310,8 +285,8 @@ public class direct_declaratorImpl extends MinimalEObjectImpl.Container implemen
     {
       case MyDslPackage.DIRECT_DECLARATOR__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATOR2:
-        return direct_declarator2 != null;
+      case MyDslPackage.DIRECT_DECLARATOR__DIRECT_DECLARATORS:
+        return direct_declarators != null && !direct_declarators.isEmpty();
       case MyDslPackage.DIRECT_DECLARATOR__DECLARATOR:
         return declarator != null;
     }
