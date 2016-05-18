@@ -1,0 +1,931 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Model:
+	declaracoes+=translation_unit*;
+	//Greeting;
+
+//Greeting:
+	//'Ola'name=ID'!';
+
+primary_expression
+    : identifier=[direct_declarator]
+    | constant=constant
+    | string=string_nova
+    | '(' expression=expression ')'
+    | generic_selection=generic_selection
+    ;
+   
+//TODO VER se esse enum é esse enum mesmo
+constant
+    : i_constant=I_CONSTANT        /* includes character_constant */
+    | f_constant=F_CONSTANT
+    | enumt=ENUM    /* after it has been defined as such */ /* AQUI ERA ENUMERATION_CONSTANT troquei pro terminal ENUM */
+    ;
+
+enumeration_constant        /* before it has been defined as such */
+    : identifier=ID
+    ;
+
+string_nova                 /* Na gramatica se chama String mais nao pode ter esse nome */
+    : string_literal=STRING_LITERAL
+    | func_name=FUNC_NAME
+    ;
+
+generic_selection
+    : generic=GENERIC '(' assignment_expression=assignment_expression ',' generic_assoc_list=generic_assoc_list ')'
+    ;
+
+generic_assoc_list
+    : generic_association=generic_association generic_assoc_list2=generic_assoc_list2
+    ;
+    
+generic_assoc_list2
+	:{generic_assoc_list2}(',' generic_association=generic_association generic_assoc_list2=generic_assoc_list2)?
+	;
+	
+generic_association
+    : type_name=type_name ':' assignment_expression=assignment_expression
+    | default=DEFAULT ':' assignment_expression=assignment_expression
+    ;
+
+//TODO verificar esse type_name se precisa ser type_name=type_name
+postfix_expression
+    : primary_expression=primary_expression postfix_expression2=postfix_expression2
+    | '(' type_name=type_name ')' '{' initializer_list=initializer_list '}' postfix_expression2=postfix_expression2
+    | '(' type_name=type_name ')' '{' initializer_list=initializer_list ',' '}' postfix_expression2=postfix_expression2
+    ;
+ 
+ //TODO '(' argument_expression_list+=argument_expression_list ')'
+ postfix_expression2:
+ 	{postfix_expression2}('[' expression=expression ']' postfix_expression2=postfix_expression2
+ 	| '(' ')' postfix_expression2=postfix_expression2
+ 	| '(' argument_expression_list=argument_expression_list ')' postfix_expression2=postfix_expression2
+ 	| '.' identifier=ID postfix_expression2=postfix_expression2
+ 	| ptr_op=PTR_OP identifier=ID postfix_expression2=postfix_expression2
+ 	| inc_op=INC_OP postfix_expression2=postfix_expression2
+ 	| dec_op=DEC_OP postfix_expression2=postfix_expression2)?
+ ;
+
+argument_expression_list
+    : assignment_expression=assignment_expression argument_expression_list2=argument_expression_list2
+    ;
+    
+argument_expression_list2
+	:(',' assignment_expression=assignment_expression argument_expression_list2=argument_expression_list2)?
+	;
+
+unary_expression
+    : postfix_expression=postfix_expression
+    | inc_op=INC_OP unary_expression=unary_expression
+    | dec_op=DEC_OP unary_expression=unary_expression
+    | unary_operator=unary_operator cast_expression=cast_expression
+    | sizeof=SIZEOF unary_expression=unary_expression
+    | sizeof=SIZEOF '(' type_name=type_name ')'
+    | alignof=ALIGNOF '(' type_name=type_name ')'
+    ;
+
+unary_operator
+    : '&'
+    | '*'
+    | '+'
+    | '-'
+    | '~'
+    | '!'
+    ;
+
+cast_expression
+    : unary_expression=unary_expression
+    | '(' type_name=type_name ')' cast_expression=cast_expression
+    ;
+
+//TODO verificar se ta certo como removeu a recursao
+multiplicative_expression
+    : cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2
+    ;
+    
+multiplicative_expression2:
+	{multiplicative_expression2}('*' cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2
+	| '/' cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2
+	| '%' cast_expression=cast_expression multiplicative_expression2=multiplicative_expression2)?
+;
+
+additive_expression
+    : multiplicative_expression=multiplicative_expression additive_expression2=additive_expression2
+    ;
+
+additive_expression2
+	:{additive_expression2}('+' multiplicative_expression=multiplicative_expression additive_expression2=additive_expression2
+	| '-' multiplicative_expression=multiplicative_expression additive_expression2=additive_expression2)?
+;
+
+shift_expression
+    : additive_expression=additive_expression shift_expression2=shift_expression2
+    ;
+    
+shift_expression2
+	: {shift_expression2}(left_op=LEFT_OP additive_expression=additive_expression shift_expression2=shift_expression2
+	| right_op=RIGHT_OP additive_expression=additive_expression shift_expression2=shift_expression2)?
+	;
+
+relational_expression
+    : shift_expression=shift_expression relational_expression2=relational_expression2
+    ;
+
+relational_expression2
+	: {relational_expression2}('<' shift_expression=shift_expression relational_expression2=relational_expression2
+	| '>' shift_expression=shift_expression relational_expression=relational_expression2
+	| le_op=LE_OP shift_expression=shift_expression relational_expression2=relational_expression2
+	| ge_op=GE_OP shift_expression=shift_expression relational_expression2=relational_expression2)?
+	;
+
+equality_expression
+    : relational_expression=relational_expression equality_expression2=equality_expression2
+    ;
+   
+//olhar
+equality_expression2:
+	{equality_expression2}(eq_op=EQ_OP relational_expression=relational_expression equality_expression2=equality_expression2
+	| ne_op=NE_OP relational_expression=relational_expression equality_expression2=equality_expression2)?
+;
+
+and_expression
+    : equality_expression=equality_expression and_expression2=and_expression2
+    ;
+
+and_expression2
+	: {and_expression2}('&' equality_expression=equality_expression and_expression2=and_expression2)?
+	;
+
+exclusive_or_expression
+    : and_expression=and_expression exclusive_or_expression2=exclusive_or_expression2 
+    ;
+
+exclusive_or_expression2
+	: {exclusive_or_expression2}('^' and_expression=and_expression exclusive_or_expression2=exclusive_or_expression2)?
+	;
+
+inclusive_or_expression
+    : exclusive_or_expression=exclusive_or_expression inclusive_or_expression2=inclusive_or_expression2
+    ;
+
+inclusive_or_expression2:
+	{inclusive_or_expression2}('|' exclusive_or_expression=exclusive_or_expression inclusive_or_expression2=inclusive_or_expression2)?
+	;
+
+logical_and_expression
+    : inclusive_or_expression=inclusive_or_expression logical_and_expression2=logical_and_expression2
+    ;
+    
+logical_and_expression2
+	: {logical_and_expression2}(and_op=AND_OP inclusive_or_expression=inclusive_or_expression logical_and_expression2=logical_and_expression2)?
+	;
+
+logical_or_expression
+    : logical_and_expression=logical_and_expression logical_or_expression2=logical_or_expression2
+    ;
+    
+ logical_or_expression2
+ 	: {logical_or_expression2}(or_op=OR_OP logical_and_expression=logical_and_expression logical_or_expression2=logical_or_expression2)?
+	;
+    
+//TODO Rever esse
+conditional_expression
+    : logical_or_expression=logical_or_expression
+    | logical_or_expression=logical_or_expression '?' expression=expression ':' conditional_expression=conditional_expression
+    ;
+
+assignment_expression
+    : conditional_expression=conditional_expression
+    | unary_expression=unary_expression assignment_operator=assignment_operator assignment_expression=assignment_expression
+    ;
+
+assignment_operator
+    : '='
+    | mul_assign=MUL_ASSIGN
+    | div_assign=DIV_ASSIGN
+    | mod_assign=MOD_ASSIGN
+    | add_assign=ADD_ASSIGN
+    | sub_assign=SUB_ASSIGN
+    | left_assign=LEFT_ASSIGN
+    | right_assign=RIGHT_ASSIGN
+    | and_assign=AND_ASSIGN
+    | xor_assign=XOR_ASSIGN
+    | or_assign=OR_ASSIGN
+    ;
+
+expression
+    : assignment_expression=assignment_expression expression2=expression2
+    ;
+    
+expression2
+	: {expression2}(',' assignment_expression=assignment_expression expression2=expression2)?
+	;
+
+constant_expression
+    : conditional_expression=conditional_expression    /* with constraints */
+    ;
+    
+/*TODO
+ * declaration
+	: declaration_specifiers+=declaration_specifiers ';'
+	| declaration_specifiers+=declaration_specifiers init_declarator_list+=init_declarator_list ';'
+	| static_assert_declaration=static_assert_declaration
+	;
+ */
+declaration
+	: declaration_specifiers=declaration_specifiers ';' 
+	| declaration_specifiers=declaration_specifiers init_declarator_list=init_declarator_list ';' 
+	| static_assert_declaration=static_assert_declaration
+	;
+
+	
+/*TODO
+ * declaration_specifiers
+	: storage_class_specifier=storage_class_specifier declaration_specifiers+=declaration_specifiers
+	| storage_class_specifier=storage_class_specifier
+	| type_specifier=type_specifier declaration_specifiers+=declaration_specifiers
+	| type_specifier=type_specifier
+	| type_qualifier=type_qualifier declaration_specifiers+=declaration_specifiers
+	| type_qualifier=type_qualifier
+	| function_specifier=function_specifier declaration_specifiers+=declaration_specifiers
+	| function_specifier=function_specifier
+	| alignment_specifier=alignment_specifier declaration_specifiers+=declaration_specifiers
+	| alignment_specifier=alignment_specifier
+	;
+ */	
+declaration_specifiers
+    : storage_class_specifier=storage_class_specifier declaration_specifiers=declaration_specifiers
+    | storage_class_specifier=storage_class_specifier
+    | type_specifier=type_specifier declaration_specifiers=declaration_specifiers
+    | type_specifier=type_specifier
+    | type_qualifier=type_qualifier declaration_specifiers=declaration_specifiers
+    | type_qualifier=type_qualifier
+    | function_specifier=function_specifier declaration_specifiers=declaration_specifiers
+    | function_specifier=function_specifier
+    | alignment_specifier=alignment_specifier declaration_specifiers=declaration_specifiers
+    | alignment_specifier=alignment_specifier
+    ;
+	
+init_declarator_list
+    : init_declarator=init_declarator init_declarator_list2=init_declarator_list2
+    ;
+
+init_declarator_list2
+	: {init_declarator_list2}(',' init_declarator=init_declarator init_declarator_list2=init_declarator_list2)?
+	;
+	
+init_declarator
+    : declarator=declarator '=' initializer=initializer
+    | declarator=declarator
+    ;
+	
+storage_class_specifier
+    : typedef=TYPEDEF    /* identifiers must be flagged as TYPEDEF_NAME */
+    | extern=EXTERN
+    | static=STATIC
+    | thread_local=THREAD_LOCAL
+    | auto=AUTO
+    | register=REGISTER
+    ;
+	
+type_specifier
+    : void_type=VOID
+    | char_type=CHAR
+    | short_type=SHORT
+    | {integer} int_type=INTNAME
+    | long_type=LONG
+    | float_type=FLOAT
+    | double_type=DOUBLE
+    | signed_type=SIGNED
+    | unsigned_type=UNSIGNED
+    | bool_type=BOOL
+    | complex_type=COMPLEX
+    | imaginary_type=IMAGINARY          /* non-mandated extension */
+    | atomic_type_specifier=atomic_type_specifier
+    | struct_or_union_specifier=struct_or_union_specifier
+    | enum_specifier=enum_specifier
+    | typedef_name=TYPEDEF        /* after it has been defined as such */
+    ;
+
+//tem como refatorar.
+struct_or_union_specifier
+    : struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}'
+    | struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}'
+    | struct_or_union identifier=ID
+    ;
+	
+struct_or_union
+    : struct=STRUCT
+    | union=UNION
+    ;
+
+struct_declaration_list
+    : struct_declaration=struct_declaration struct_declaration_list2=struct_declaration_list2
+    ;
+    
+struct_declaration_list2
+	: (struct_declaration=struct_declaration struct_declaration_list2=struct_declaration_list2)?
+	;
+	
+struct_declaration
+    : specifier_qualifier_list=specifier_qualifier_list ';'    /* for anonymous struct/union */
+    | specifier_qualifier_list=specifier_qualifier_list struct_declarator_list=struct_declarator_list ';'
+    | static_assert_declaration=static_assert_declaration
+    ;
+
+specifier_qualifier_list
+    : type_specifier=type_specifier specifier_qualifier_list=specifier_qualifier_list
+    | type_specifier=type_specifier
+    | type_qualifier=type_specifier specifier_qualifier_list=specifier_qualifier_list
+    | type_qualifier=type_specifier
+    ;
+	
+struct_declarator_list
+    : struct_declarator=struct_declarator struct_declarator_list2=struct_declarator_list2
+    ;
+
+struct_declarator_list2
+	: {struct_declarator_list2}(',' struct_declarator=struct_declarator struct_declarator_list2=struct_declarator_list2)?
+	;
+	
+struct_declarator
+    : ':' constant_expression=constant_expression
+    | declarator=declarator ':' constant_expression=constant_expression
+    | declarator=declarator
+    ;
+	
+enum_specifier
+    : enumt=ENUM '{' enumerator_list=enumerator_list '}'
+    | enumt=ENUM '{' enumerator_list=enumerator_list ',' '}'
+    | enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list '}'
+    | enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list ',' '}'
+    | enumt=ENUM identifier=ID
+    ;
+	
+enumerator_list
+    : enumerator=enumerator enumerator_list2=enumerator_list2
+    ;
+    
+enumerator_list2
+	: (',' enumerator=enumerator enumerator_list2=enumerator_list2)?
+	;
+
+//OLHAR
+enumerator    /* identifiers must be flagged as ENUMERATION_CONSTANT */
+    : enumeration_constant=enumeration_constant '=' constant_expression=constant_expression
+    | enumeration_constant=enumeration_constant
+    ;
+
+atomic_type_specifier
+    : atomic=ATOMIC '(' type_name=type_name ')'
+    ;
+	
+type_qualifier
+    : const=CONST
+    | restrict=RESTRICT
+    | volatile=VOLATILE
+    | atomic=ATOMIC
+    ;
+	
+function_specifier
+    : inline=INLINE
+    | noreturn=NORETURN
+    ;
+	
+alignment_specifier
+    : alignas=ALIGNAS '(' type_name=type_name ')'
+    | alignas=ALIGNAS '(' constant_expression=constant_expression ')'
+    ;
+	
+declarator
+    : pointer=pointer direct_declarator=direct_declarator
+    | direct_declarator=direct_declarator
+    ;
+	
+direct_declarator
+    : name=ID direct_declarator2=direct_declarator2
+    | '(' declarator=declarator ')' direct_declarator2=direct_declarator2
+    ;
+
+direct_declarator2
+	: {direct_declarator2}('[' ']' direct_declarator2=direct_declarator2
+	| '[' '*' ']' direct_declarator2=direct_declarator2
+	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
+	| '[' static=STATIC assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
+	| '[' type_qualifier_list=type_qualifier_list '*' ']' direct_declarator2=direct_declarator2
+	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
+	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
+	| '[' type_qualifier_list=type_qualifier_list ']' direct_declarator2=direct_declarator2
+	| '[' assignment_expression=assignment_expression ']' direct_declarator2=direct_declarator2
+	| '(' parameter_type_list=parameter_type_list ')' direct_declarator2=direct_declarator2
+	| '(' ')' direct_declarator2=direct_declarator2
+	| '(' identifier_list=identifier_list ')' direct_declarator2=direct_declarator2)?
+	;
+	
+pointer
+    : '*' type_qualifier_list=type_qualifier_list pointer=pointer
+    | '*' type_qualifier_list=type_qualifier_list
+    | '*' pointer=pointer
+    | '*'
+    ;
+    
+type_qualifier_list
+	: type_qualifier=type_qualifier type_qualifier_list2=type_qualifier_list2;
+
+type_qualifier_list2
+	: {type_qualifier_list2}(type_qualifier=type_qualifier type_qualifier_list2=type_qualifier_list2)?;
+	
+parameter_type_list
+	: parameter_list=parameter_list ',' ellipsis=ELLIPSIS 
+	| parameter_list=parameter_list
+	;
+	
+parameter_list
+	: parameter_declaration=parameter_declaration parameter_list2=parameter_list2	
+	;
+
+parameter_list2
+	: {parameter_list2}(',' parameter_declaration=parameter_declaration parameter_list2=parameter_list2)?
+	;
+	
+parameter_declaration
+	:	declaration_specifiers=declaration_specifiers declarator=declarator
+	| declaration_specifiers=declaration_specifiers abstract_declarator=abstract_declarator
+	| declaration_specifiers=declaration_specifiers
+	;
+	
+identifier_list
+	:
+	identifier=ID identifier_list2=identifier_list2
+	;
+
+identifier_list2
+	: {identifier_list2}(',' identifier=ID identifier_list2=identifier_list2)?
+	;
+
+type_name
+	: specifier_qualifier_list=specifier_qualifier_list abstract_declarator=abstract_declarator 
+	| specifier_qualifier_list=specifier_qualifier_list;
+
+abstract_declarator
+	:pointer=pointer direct_abstract_declarator=direct_abstract_declarator 
+	| pointer=pointer
+	| direct_abstract_declarator=direct_abstract_declarator
+	;
+
+//TODO Olhar esse tem como refatorar ( A | B| C) direct_abstract_declarator2
+direct_abstract_declarator
+	: '(' abstract_declarator=abstract_declarator ')' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' '*' ']'	direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' type_qualifier_list=type_qualifier_list ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '(' ')' direct_abstract_declarator2=direct_abstract_declarator2
+	| '(' parameter_type_list=parameter_type_list ')' direct_abstract_declarator2=direct_abstract_declarator2
+	;
+
+direct_abstract_declarator2
+	: {direct_abstract_declarator2}('[' ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' '*' ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' type_qualifier_list=type_qualifier_list ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '[' assignment_expression=assignment_expression ']' direct_abstract_declarator2=direct_abstract_declarator2
+	| '(' ')' direct_abstract_declarator2=direct_abstract_declarator2
+	| '(' parameter_type_list=parameter_type_list ')' direct_abstract_declarator2=direct_abstract_declarator2)?
+	;
+
+//TODO Olhar esse
+initializer
+	: '{' initializer_list=initializer_list '}' 
+	| '{' initializer_list=initializer_list ',' '}' 
+	| assignment_expression=assignment_expression
+	;
+	
+//TODO OLHAR esse
+initializer_list
+	: designation=designation initializer=initializer initializer_list2=initializer_list2
+	| initializer=initializer initializer_list2=initializer_list2;
+
+initializer_list2
+	: {initializer_list2}(',' designation=designation initializer=initializer initializer_list2=initializer_list2
+	| ',' initializer=initializer initializer_list2=initializer_list2)?;
+ 
+designation
+	:designator_list=designator_list '='
+	;
+    
+designator_list
+	:designator=designator designator_list2=designator_list2
+	;
+
+designator_list2:
+	{designator_list2}(designator=designator designator_list2=designator_list2)?;
+
+designator
+	: '[' constant_expression=constant_expression ']' 
+	| '.' identifier=ID
+	;
+
+//Olhar
+static_assert_declaration
+	: static_assert=STATIC_ASSERT '(' constant_expression=constant_expression ',' string_literal=STRING_LITERAL ')' ';';
+
+//OLHAR
+statement
+	: labeled_statement=labeled_statement
+	| compound_statement=compound_statement
+	| expression_statement=expression_statement
+	| selection_statement=selection_statement
+	| iteration_statement=iteration_statement
+	|jump_statement=jump_statement
+	;
+
+//OLHAR
+labeled_statement
+	: identifier=ID ':' statement=statement 
+	| case=CASE constant_expression=constant_expression ':' statement=statement
+	| default=DEFAULT ':' statement=statement;
+
+/*
+ * compound_statement
+	: '{' '}'
+	| '{'  block_item_list+=block_item_list '}'
+;
+ */
+compound_statement
+	: '{' '}' 
+	| '{' block_item_list+=block_item* '}'
+	;
+
+block_item
+	: declaration=declaration
+	| statement=statement
+	;
+
+expression_statement
+	: ';' 
+	| expression=expression ';'
+	;
+
+selection_statement
+	: if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement 
+	| if=IF '(' expression=expression ')' statement=statement 
+	| switch=SWITCH '(' expression=expression ')'statement=statement
+	;
+
+iteration_statement
+	: while=WHILE '(' expression=expression ')' statement=statement
+	| do=DO statement=statement while=WHILE '(' expression=expression ')' ';' 
+	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement ')' statement=statement
+	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement expression=expression ')' statement=statement
+	| for=FOR '(' declaration=declaration expression_statement=expression_statement ')' statement=statement
+	| for=FOR '(' declaration=declaration expression_statement=expression_statement expression=expression ')' statement=statement
+	;
+	
+jump_statement
+	: goto=GOTO identifier=ID ';' 
+	| continue=CONTINUE ';' 
+	| break=BREAK ';' 
+	| return=RETURN ';' 
+	| return=RETURN expression=expression ';'
+	;
+
+translation_unit
+	: external_declaration=external_declaration	
+	;
+
+external_declaration
+	: function_definition=function_definition
+	| declaration=declaration
+	;
+
+/*
+ * function_definition
+	: declaration_specifiers+=declaration_specifiers declarator=declarator declaration_list+=declaration_list compound_statement=compound_statement
+	| declaration_specifiers+=declaration_specifiers declarator=declarator compound_statement=compound_statement
+	;
+ */ 
+function_definition
+	: declaration_specifiers=declaration_specifiers declarator=declarator declaration_list=declaration_list compound_statement=compound_statement
+	| declaration_specifiers=declaration_specifiers declarator=declarator compound_statement=compound_statement
+	;
+
+declaration_list
+	: declaration=declaration declaration_list_2=declaration_list2
+	;
+	
+declaration_list2
+	: {declaration_list2}(declaration=declaration declaration_list2=declaration_list2)?
+	;
+
+//----------------------------------------TERMINAIS---------------------------------------------------------//
+
+
+	//O   [0-7]
+terminal O:
+	('0'..'7');
+	//D   [0-9]
+terminal D:
+	('0'..'9');
+	//NZ  [1-9]
+terminal NZ:
+	('1'..'9');
+	//L   [a-zA-Z_]
+terminal L:
+	('a'..'z' | 'A'..'Z' | '_');
+	//A   [a-zA-Z_0-9]
+terminal A:
+	('a'..'z' | 'A'..'Z' | '_' | '0' '..' '9');
+	//H   [a-fA-F0-9]
+terminal H:
+	('a'..'f' | 'A'..'F' | '0' .. '9');
+	//HP  (0[xX])
+terminal HP:
+	('0' ('x' | 'X'));
+//E   ([Ee][+-]?{D}+)
+terminal E:
+	('E' | 'e') ('+' | '-')? D '+';
+//P   ([Pp][+-]?{D}+)
+terminal P:
+	('P' | 'p') ('+' | '-')? '{' D '}' '+';
+//FS  (f|F|l|L)
+terminal FS:
+	'f' | 'F' | 'l' | 'L';
+//IS  (((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))
+terminal IS:
+	((('u' | 'U') ('l' | 'L' | 'l' 'l' | 'L' 'L')?) | (('l' | 'L' | 'l' 'l' | 'L' 'L') ('u' | 'U')?));
+//CP  (u|U|L)
+terminal CP:
+	('u' | 'U' | 'L');
+//SP  (u8|u|U|L)
+terminal SP:
+	('u' '8' | 'u' | 'U' | 'L');
+//ES  (\\(['"\?\\abfnrtv]|[0-7]{1,3}|x[a-fA-F0-9]+))
+terminal ES:
+	//TODO FAZER ESSE AQUI
+	('0*')
+;
+//WS  [ \t\v\n\f]
+terminal WS:
+	(' ' | '\t' | '\r' | '\n' | '\f')+;
+
+
+
+// "auto"					{ return(AUTO); }
+ AUTO:
+	"auto";
+	//"break"					{ return(BREAK); }
+ BREAK:
+	"break";
+	//"case"					{ return(CASE); }
+ CASE:
+	"case";
+	//"char"					{ return(CHAR); }
+ CHAR:
+	"char";
+	//"const"					{ return(CONST); }
+ CONST:
+	"const";
+	//"continue"				{ return(CONTINUE); }
+ CONTINUE:
+	"continue";
+	//"default"				{ return(DEFAULT); }
+ DEFAULT:
+	"default";
+	//"do"					{ return(DO); }
+ DO:
+	"do";
+	//"double"				{ return(DOUBLE); }
+ DOUBLE:
+	"double";
+	//"else"					{ return(ELSE); }
+ ELSE:
+	"else";
+	//"enum"					{ return(ENUM); }
+ ENUM:
+	"enum";
+	//"extern"				{ return(EXTERN); }
+ EXTERN:
+	"extern";
+	//"float"					{ return(FLOAT); }
+ FLOAT:
+	"float";
+	//"for"					{ return(FOR); }
+ FOR:
+	"for";
+	//"goto"					{ return(GOTO); }
+ GOTO:
+	"goto";
+	//"if"					{ return(IF); }
+ IF:
+	"if";
+	//"inline"				{ return(INLINE); }
+ INLINE:
+	"inline";
+	//"int"					{ return(INT); }
+ INTNAME: 
+			"int";                                    //  <-- Aqui nao deixou acho que int ja é um terminal que pode usar que nem ID
+//"long"					{ return(LONG); }
+ LONG:
+	"long";
+	//"register"				{ return(REGISTER); }
+ REGISTER:
+	"register";
+	//"restrict"				{ return(RESTRICT); }
+ RESTRICT:
+	"restrict";
+	//"return"				{ return(RETURN); }
+ RETURN:
+	"return";
+	//"short"					{ return(SHORT); }
+ SHORT:
+	"short";
+	//"signed"				{ return(SIGNED); }
+ SIGNED:
+	"signed";
+	//"sizeof"				{ return(SIZEOF); }
+ SIZEOF:
+	"sizeof";
+	//"static"				{ return(STATIC); }
+ STATIC:
+	"static";
+	//"struct"				{ return(STRUCT); }
+ STRUCT:
+	"struct";
+	//"switch"				{ return(SWITCH); }
+ SWITCH:
+	"switch";
+	//"typedef"				{ return(TYPEDEF); }
+ TYPEDEF:
+	"typedef";
+	//"union"					{ return(UNION); }
+ UNION:
+	"union";
+	//"unsigned"				{ return(UNSIGNED); }
+ UNSIGNED:
+	"unsigned";
+	//"void"					{ return(VOID); }
+ VOID:
+	"void";
+	//"volatile"				{ return(VOLATILE); }
+ VOLATILE:
+	"volatile";
+	//"while"					{ return(WHILE); }
+ WHILE:
+	"while";
+	//"_Alignas"                              { return ALIGNAS; }
+ ALIGNAS:
+	"_Alignas";
+	//"_Alignof"                              { return ALIGNOF; }
+ ALIGNOF:
+	"_Alignof";
+	//"_Atomic"                               { return ATOMIC; }
+ ATOMIC:
+	"_Atomic";
+	//"_Bool"                                 { return BOOL; }
+ BOOL:
+	"_Bool";
+	//"_Complex"                              { return COMPLEX; }
+ COMPLEX:
+	"_Complex";
+	//"_Generic"                              { return GENERIC; }
+ GENERIC:
+	"_Generic";
+	//"_Imaginary"                            { return IMAGINARY; }
+ IMAGINARY:
+	"_Imaginary";
+	//"_Noreturn"                             { return NORETURN; }
+ NORETURN:
+	"_Noreturn";
+	//"_Static_assert"                        { return STATIC_ASSERT; }
+ STATIC_ASSERT:
+	"_Static_assert";
+	//"_Thread_local"                         { return THREAD_LOCAL; }
+ THREAD_LOCAL:
+	"_Thread_local";
+	//"__func__"                              { return FUNC_NAME; }
+ FUNC_NAME:
+	"__func__";
+
+
+
+terminal ELLIPSIS:
+	'...';
+
+/*terminal TYPEDEF_NAME:
+	//TODO Ver se esse token tem diferença pro TYPEDEF e se é assim mesmo que define ele(o 2 ta para nao da conflito com o outro token com mesmo nome)
+	'typedef2'
+;*/
+
+
+terminal OR_ASSIGN:
+	'|='
+;
+
+terminal XOR_ASSIGN:
+	'^='
+;
+
+terminal AND_ASSIGN:
+	'&='
+;
+
+terminal RIGHT_ASSIGN:
+	'>>='
+;
+
+terminal LEFT_ASSIGN:
+	'<<='
+;
+
+terminal SUB_ASSIGN:
+	'-='
+;
+
+terminal ADD_ASSIGN:
+	'+='
+;
+
+terminal MOD_ASSIGN:
+	'%='
+;
+
+terminal DIV_ASSIGN:
+	'/='
+;
+
+terminal MUL_ASSIGN:
+	'*='
+;
+
+terminal OR_OP:
+	'||'
+;
+
+
+terminal AND_OP:
+	'&&'
+;
+
+terminal NE_OP:
+	'!='
+;
+
+terminal EQ_OP:
+	'=='
+;
+
+terminal GE_OP:
+	'>='
+;
+
+terminal LE_OP:
+	'<='
+;
+
+terminal RIGHT_OP:
+	'>>'
+;
+
+terminal LEFT_OP:
+	'<<'
+;
+
+terminal INC_OP:
+	'++'
+;
+
+terminal DEC_OP:
+	'--'
+;
+
+terminal PTR_OP:
+	'->'
+;
+
+terminal STRING_LITERAL:
+(SP? '"' (('^' | '\'' | '\\' | '\n') | ES)* '"' WS*)+;
+
+terminal F_CONSTANT
+	:D+ E FS? |
+	D* "." D+ E? FS? |
+	D+ "." E? FS? |
+	HP H+ P FS?
+	HP H* "." H+ P FS? |
+	HP H+ "." P FS?;
+
+terminal I_CONSTANT
+	:HP H+ IS? |
+	NZ D* IS? |
+	"0" O* IS? |
+	CP? "'" (('^' | '\'' | '\\' | '\n') | ES)+ "'"
+	;
