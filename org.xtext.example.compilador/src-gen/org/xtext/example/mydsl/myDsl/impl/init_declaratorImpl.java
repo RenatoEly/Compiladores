@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.declarator;
 import org.xtext.example.mydsl.myDsl.init_declarator;
-import org.xtext.example.mydsl.myDsl.initializer;
+import org.xtext.example.mydsl.myDsl.simple_expression;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public class init_declaratorImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected initializer initializer;
+  protected simple_expression initializer;
 
   /**
    * <!-- begin-user-doc -->
@@ -127,7 +127,7 @@ public class init_declaratorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public initializer getInitializer()
+  public simple_expression getInitializer()
   {
     return initializer;
   }
@@ -137,9 +137,9 @@ public class init_declaratorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetInitializer(initializer newInitializer, NotificationChain msgs)
+  public NotificationChain basicSetInitializer(simple_expression newInitializer, NotificationChain msgs)
   {
-    initializer oldInitializer = initializer;
+    simple_expression oldInitializer = initializer;
     initializer = newInitializer;
     if (eNotificationRequired())
     {
@@ -154,7 +154,7 @@ public class init_declaratorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInitializer(initializer newInitializer)
+  public void setInitializer(simple_expression newInitializer)
   {
     if (newInitializer != initializer)
     {
@@ -220,7 +220,7 @@ public class init_declaratorImpl extends MinimalEObjectImpl.Container implements
         setDeclarator((declarator)newValue);
         return;
       case MyDslPackage.INIT_DECLARATOR__INITIALIZER:
-        setInitializer((initializer)newValue);
+        setInitializer((simple_expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,7 +240,7 @@ public class init_declaratorImpl extends MinimalEObjectImpl.Container implements
         setDeclarator((declarator)null);
         return;
       case MyDslPackage.INIT_DECLARATOR__INITIALIZER:
-        setInitializer((initializer)null);
+        setInitializer((simple_expression)null);
         return;
     }
     super.eUnset(featureID);

@@ -1602,7 +1602,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     init_declarator returns init_declarator
 	 *
 	 * Constraint:
-	 *     ((declarator=declarator initializer=initializer) | declarator=declarator)
+	 *     ((declarator=declarator initializer=simple_expression) | declarator=declarator)
 	 */
 	protected void sequence_init_declarator(ISerializationContext context, init_declarator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

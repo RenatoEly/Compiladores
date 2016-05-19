@@ -21095,9 +21095,9 @@ rule__Init_declarator__InitializerAssignment_0_2
 	}
 :
 	(
-		{ before(grammarAccess.getInit_declaratorAccess().getInitializerInitializerParserRuleCall_0_2_0()); }
-		ruleinitializer
-		{ after(grammarAccess.getInit_declaratorAccess().getInitializerInitializerParserRuleCall_0_2_0()); }
+		{ before(grammarAccess.getInit_declaratorAccess().getInitializerSimple_expressionParserRuleCall_0_2_0()); }
+		rulesimple_expression
+		{ after(grammarAccess.getInit_declaratorAccess().getInitializerSimple_expressionParserRuleCall_0_2_0()); }
 	)
 ;
 finally {

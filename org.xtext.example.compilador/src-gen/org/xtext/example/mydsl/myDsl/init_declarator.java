@@ -59,12 +59,12 @@ public interface init_declarator extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Initializer</em>' containment reference.
-   * @see #setInitializer(initializer)
+   * @see #setInitializer(simple_expression)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getinit_declarator_Initializer()
    * @model containment="true"
    * @generated
    */
-  initializer getInitializer();
+  simple_expression getInitializer();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.init_declarator#getInitializer <em>Initializer</em>}' containment reference.
@@ -74,6 +74,6 @@ public interface init_declarator extends EObject
    * @see #getInitializer()
    * @generated
    */
-  void setInitializer(initializer value);
+  void setInitializer(simple_expression value);
 
 } // init_declarator

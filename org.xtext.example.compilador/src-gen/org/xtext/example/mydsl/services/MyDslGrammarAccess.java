@@ -49,11 +49,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAtomic2ParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		////Greeting;
-		////Greeting:
-		////'Ola'name=ID'!';
-		//primary_expression simple_expression:
-		//	'(' simple_expression ')'
-		//	| atomic2
+		// //Greeting:
+		// //'Ola'name=ID'!';
+		// primary_expression simple_expression:
+		//	'(' simple_expression ')' | atomic2
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'(' simple_expression ')' | atomic2
@@ -102,10 +101,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cValueFalseKeyword_4_1_0_1 = (Keyword)cValueAlternatives_4_1_0.eContents().get(1);
 		
 		//atomic2 simple_expression:
-		//	{variableRef} variable=[direct_declarator] | {intType} value=I_CONSTANT
-		//	| {floatType} value=F_CONSTANT
-		//	| {stringType} value=string_nova
-		//	| {booleanType} value=("true" | "false")
+		//	{variableRef} variable=[direct_declarator] | {intType} value=I_CONSTANT | {floatType} value=F_CONSTANT | {stringType}
+		//	value=string_nova | {booleanType} value=("true" | "false")
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{variableRef} variable=[direct_declarator] | {intType} value=I_CONSTANT | {floatType} value=F_CONSTANT | {stringType}
@@ -192,10 +189,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEnumtENUMParserRuleCall_2_0 = (RuleCall)cEnumtAssignment_2.eContents().get(0);
 		
 		////TODO VER se esse enum é esse enum mesmo
-		//constant:
-		//	i_constant=I_CONSTANT / * includes character_constant * /
-		//	| f_constant=F_CONSTANT
-		//	| enumt=ENUM / * after it has been defined as such * / / * AQUI ERA ENUMERATION_CONSTANT troquei pro terminal ENUM * /;
+		// constant:
+		//	i_constant=I_CONSTANT / * includes character_constant * / | f_constant=F_CONSTANT | enumt=ENUM
+		//	/ * after it has been defined as such * / / * AQUI ERA ENUMERATION_CONSTANT troquei pro terminal ENUM * /;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//i_constant=I_CONSTANT / * includes character_constant * / | f_constant=F_CONSTANT | enumt=ENUM
@@ -243,8 +239,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFunc_nameFUNC_NAMEParserRuleCall_1_0 = (RuleCall)cFunc_nameAssignment_1.eContents().get(0);
 		
 		//string_nova / * Na gramatica se chama String mais nao pode ter esse nome * /:
-		//	string_literal=STRING_LITERAL
-		//	| func_name=FUNC_NAME;
+		//	string_literal=STRING_LITERAL | func_name=FUNC_NAME;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//string_literal=STRING_LITERAL | func_name=FUNC_NAME
@@ -361,8 +356,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAssignment_expressionAssignment_expressionParserRuleCall_1_2_0 = (RuleCall)cAssignment_expressionAssignment_1_2.eContents().get(0);
 		
 		//generic_association:
-		//	type_name=type_name ':' assignment_expression=assignment_expression
-		//	| default=DEFAULT ':' assignment_expression=assignment_expression;
+		//	type_name=type_name ':' assignment_expression=assignment_expression | default=DEFAULT ':'
+		//	assignment_expression=assignment_expression;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//type_name=type_name ':' assignment_expression=assignment_expression | default=DEFAULT ':'
@@ -438,9 +433,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPostifx_expresPostfix_expression2ParserRuleCall_2_7_0 = (RuleCall)cPostifx_expresAssignment_2_7.eContents().get(0);
 		
 		//postfix_expression:
-		//	primary_expression=primary_expression postifx_expres+=postfix_expression2*
-		//	| '(' type_name=type_name ')' '{' initializer_list=initializer_list '}' postifx_expres+=postfix_expression2*
-		//	| '(' type_name=type_name ')' '{' initializer_list=initializer_list ',' '}' postifx_expres+=postfix_expression2*;
+		//	primary_expression=primary_expression postifx_expres+=postfix_expression2* | '(' type_name=type_name ')' '{'
+		//	initializer_list=initializer_list '}' postifx_expres+=postfix_expression2* | '(' type_name=type_name ')' '{'
+		//	initializer_list=initializer_list ',' '}' postifx_expres+=postfix_expression2*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//primary_expression=primary_expression postifx_expres+=postfix_expression2* | '(' type_name=type_name ')' '{'
@@ -556,13 +551,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDEC_OPTerminalRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//postfix_expression2:
-		//	'[' expression ']'
-		//	| '(' ')'
-		//	| '(' argument_expression_list ')'
-		//	| '.' ID
-		//	| PTR_OP ID
-		//	| INC_OP
-		//	| DEC_OP;
+		//	'[' expression ']' | '(' ')' | '(' argument_expression_list ')' | '.' ID | PTR_OP ID | INC_OP | DEC_OP;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'[' expression ']' | '(' ')' | '(' argument_expression_list ')' | '.' ID | PTR_OP ID | INC_OP | DEC_OP
@@ -701,20 +690,17 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
 		
 		////não vou considerar na análise semântica
-		//unary_expression:
-		//	postfix_expression=postfix_expression
-		//	| inc_op=INC_OP unary_expression=unary_expression
-		//	| dec_op=DEC_OP unary_expression=unary_expression
-		//	| unary_operator=unary_operator cast_expression=cast_expression
-		//	| sizeof=SIZEOF unary_expression=unary_expression
-		//	| sizeof=SIZEOF '(' type_name=type_name ')'
-		//	| alignof=ALIGNOF '(' type_name=type_name ')';
+		// unary_expression:
+		//	postfix_expression=postfix_expression | inc_op=INC_OP unary_expression=unary_expression | dec_op=DEC_OP
+		//	unary_expression=unary_expression | unary_operator=unary_operator cast_expression=cast_expression | sizeof=SIZEOF
+		//	unary_expression=unary_expression | sizeof=SIZEOF '(' type_name=type_name ')' | alignof=ALIGNOF '('
+		//	type_name=type_name ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//postfix_expression=postfix_expression | inc_op=INC_OP unary_expression=unary_expression | dec_op=DEC_OP
 		//unary_expression=unary_expression | unary_operator=unary_operator cast_expression=cast_expression | sizeof=SIZEOF
-		//unary_expression=unary_expression | sizeof=SIZEOF '(' type_name=type_name ')' | alignof=ALIGNOF '(' type_name=type_name
-		//')'
+		//unary_expression=unary_expression | sizeof=SIZEOF '(' type_name=type_name ')' | alignof=ALIGNOF '('
+		//type_name=type_name ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//postfix_expression=postfix_expression
@@ -836,12 +822,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cExclamationMarkKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		
 		//unary_operator:
-		//	'&'
-		//	| '*'
-		//	| '+'
-		//	| '-'
-		//	| '~'
-		//	| '!';
+		//	'&' | '*' | '+' | '-' | '~' | '!';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'&' | '*' | '+' | '-' | '~' | '!'
@@ -878,9 +859,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCast_expressionCast_expressionParserRuleCall_1_3_0 = (RuleCall)cCast_expressionAssignment_1_3.eContents().get(0);
 		
 		////não vou considerar o cast na análise semântica
-		//cast_expression simple_expression:
-		//	unary_expression
-		//	| '(' type_name=type_name ')' cast_expression=cast_expression
+		// cast_expression simple_expression:
+		//	unary_expression | '(' type_name=type_name ')' cast_expression=cast_expression
 		@Override public ParserRule getRule() { return rule; }
 		
 		//unary_expression | '(' type_name=type_name ')' cast_expression=cast_expression
@@ -957,9 +937,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPercentSignKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		//MUL_OP:
-		//	'*'
-		//	| '/'
-		//	| '%';
+		//	'*' | '/' | '%';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'*' | '/' | '%'
@@ -1067,8 +1045,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRIGHT_OPTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//shift_op:
-		//	LEFT_OP
-		//	| RIGHT_OP;
+		//	LEFT_OP | RIGHT_OP;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//LEFT_OP | RIGHT_OP
@@ -1128,10 +1105,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cGE_OPTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//relational_op:
-		//	L_OP
-		//	| G_OP
-		//	| LE_OP
-		//	| GE_OP;
+		//	L_OP | G_OP | LE_OP | GE_OP;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//L_OP | G_OP | LE_OP | GE_OP
@@ -1398,9 +1372,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConditional_expressionConditional_expressionParserRuleCall_1_4_0 = (RuleCall)cConditional_expressionAssignment_1_4.eContents().get(0);
 		
 		////TODO Rever esse
-		//conditional_expression:
-		//	simple_expression=simple_expression
-		//	| logical_or_expression=logical_or_expression '?' expression=expression ':'
+		// conditional_expression:
+		//	simple_expression=simple_expression | logical_or_expression=logical_or_expression '?' expression=expression ':'
 		//	conditional_expression=conditional_expression;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -1455,9 +1428,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAssignment_expressionAssignment_expressionParserRuleCall_1_2_0 = (RuleCall)cAssignment_expressionAssignment_1_2.eContents().get(0);
 		
 		//assignment_expression:
-		//	conditional_expression=conditional_expression
-		//	| unary_expression=unary_expression assignment_operator=assignment_operator
-		//	assignment_expression=assignment_expression;
+		//	conditional_expression=conditional_expression | unary_expression=unary_expression
+		//	assignment_operator=assignment_operator assignment_expression=assignment_expression;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//conditional_expression=conditional_expression | unary_expression=unary_expression
@@ -1517,17 +1489,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOr_assignOR_ASSIGNTerminalRuleCall_10_0 = (RuleCall)cOr_assignAssignment_10.eContents().get(0);
 		
 		//assignment_operator:
-		//	'='
-		//	| mul_assign=MUL_ASSIGN
-		//	| div_assign=DIV_ASSIGN
-		//	| mod_assign=MOD_ASSIGN
-		//	| add_assign=ADD_ASSIGN
-		//	| sub_assign=SUB_ASSIGN
-		//	| left_assign=LEFT_ASSIGN
-		//	| right_assign=RIGHT_ASSIGN
-		//	| and_assign=AND_ASSIGN
-		//	| xor_assign=XOR_ASSIGN
-		//	| or_assign=OR_ASSIGN;
+		//	'=' | mul_assign=MUL_ASSIGN | div_assign=DIV_ASSIGN | mod_assign=MOD_ASSIGN | add_assign=ADD_ASSIGN |
+		//	sub_assign=SUB_ASSIGN | left_assign=LEFT_ASSIGN | right_assign=RIGHT_ASSIGN | and_assign=AND_ASSIGN |
+		//	xor_assign=XOR_ASSIGN | or_assign=OR_ASSIGN;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'=' | mul_assign=MUL_ASSIGN | div_assign=DIV_ASSIGN | mod_assign=MOD_ASSIGN | add_assign=ADD_ASSIGN |
@@ -1701,10 +1665,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	| declaration_specifiers+=declaration_specifiers init_declarator_list+=init_declarator_list ';'
 		//	| static_assert_declaration=static_assert_declaration
 		//	;
-		// * / declaration:
-		//	declaration_specifiers=declaration_specifiers ';'
-		//	| declaration_specifiers=declaration_specifiers init_declarator_list=init_declarator_list ';'
-		//	| static_assert_declaration=static_assert_declaration;
+		// * /
+		//declaration:
+		//	declaration_specifiers=declaration_specifiers ';' | declaration_specifiers=declaration_specifiers
+		//	init_declarator_list=init_declarator_list ';' | static_assert_declaration=static_assert_declaration;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//declaration_specifiers=declaration_specifiers ';' | declaration_specifiers=declaration_specifiers
@@ -1799,17 +1763,15 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	| alignment_specifier=alignment_specifier declaration_specifiers+=declaration_specifiers
 		//	| alignment_specifier=alignment_specifier
 		//	;
-		// * / declaration_specifiers:
-		//	storage_class_specifier=storage_class_specifier declaration_specifiers=declaration_specifiers
-		//	| storage_class_specifier=storage_class_specifier
-		//	| type_specifier=type_specifier declaration_specifiers=declaration_specifiers
-		//	| type_specifier=type_specifier
-		//	| type_qualifier=type_qualifier declaration_specifiers=declaration_specifiers
-		//	| type_qualifier=type_qualifier
-		//	| function_specifier=function_specifier declaration_specifiers=declaration_specifiers
-		//	| function_specifier=function_specifier
-		//	| alignment_specifier=alignment_specifier declaration_specifiers=declaration_specifiers
-		//	| alignment_specifier=alignment_specifier;
+		// * /
+		//declaration_specifiers:
+		//	storage_class_specifier=storage_class_specifier declaration_specifiers=declaration_specifiers |
+		//	storage_class_specifier=storage_class_specifier | type_specifier=type_specifier
+		//	declaration_specifiers=declaration_specifiers | type_specifier=type_specifier | type_qualifier=type_qualifier
+		//	declaration_specifiers=declaration_specifiers | type_qualifier=type_qualifier | function_specifier=function_specifier
+		//	declaration_specifiers=declaration_specifiers | function_specifier=function_specifier |
+		//	alignment_specifier=alignment_specifier declaration_specifiers=declaration_specifiers |
+		//	alignment_specifier=alignment_specifier;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//storage_class_specifier=storage_class_specifier declaration_specifiers=declaration_specifiers |
@@ -2000,19 +1962,18 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclaratorDeclaratorParserRuleCall_0_0_0 = (RuleCall)cDeclaratorAssignment_0_0.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cInitializerAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cInitializerInitializerParserRuleCall_0_2_0 = (RuleCall)cInitializerAssignment_0_2.eContents().get(0);
+		private final RuleCall cInitializerSimple_expressionParserRuleCall_0_2_0 = (RuleCall)cInitializerAssignment_0_2.eContents().get(0);
 		private final Assignment cDeclaratorAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cDeclaratorDeclaratorParserRuleCall_1_0 = (RuleCall)cDeclaratorAssignment_1.eContents().get(0);
 		
 		//init_declarator:
-		//	declarator=declarator '=' initializer=initializer
-		//	| declarator=declarator;
+		//	declarator=declarator '=' initializer=simple_expression | declarator=declarator;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//declarator=declarator '=' initializer=initializer | declarator=declarator
+		//declarator=declarator '=' initializer=simple_expression | declarator=declarator
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//declarator=declarator '=' initializer=initializer
+		//declarator=declarator '=' initializer=simple_expression
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//declarator=declarator
@@ -2024,11 +1985,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_0_1() { return cEqualsSignKeyword_0_1; }
 		
-		//initializer=initializer
+		//initializer=simple_expression
 		public Assignment getInitializerAssignment_0_2() { return cInitializerAssignment_0_2; }
 		
-		//initializer
-		public RuleCall getInitializerInitializerParserRuleCall_0_2_0() { return cInitializerInitializerParserRuleCall_0_2_0; }
+		//simple_expression
+		public RuleCall getInitializerSimple_expressionParserRuleCall_0_2_0() { return cInitializerSimple_expressionParserRuleCall_0_2_0; }
 		
 		//declarator=declarator
 		public Assignment getDeclaratorAssignment_1() { return cDeclaratorAssignment_1; }
@@ -2053,12 +2014,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRegisterREGISTERParserRuleCall_5_0 = (RuleCall)cRegisterAssignment_5.eContents().get(0);
 		
 		//storage_class_specifier:
-		//	typedef=TYPEDEF / * identifiers must be flagged as TYPEDEF_NAME * /
-		//	| extern=EXTERN
-		//	| static=STATIC
-		//	| thread_local=THREAD_LOCAL
-		//	| auto=AUTO
-		//	| register=REGISTER;
+		//	typedef=TYPEDEF / * identifiers must be flagged as TYPEDEF_NAME * / | extern=EXTERN | static=STATIC |
+		//	thread_local=THREAD_LOCAL | auto=AUTO | register=REGISTER;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//typedef=TYPEDEF / * identifiers must be flagged as TYPEDEF_NAME * / | extern=EXTERN | static=STATIC |
@@ -2162,22 +2119,12 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypedef_nameTYPEDEFParserRuleCall_15_0 = (RuleCall)cTypedef_nameAssignment_15.eContents().get(0);
 		
 		//type_specifier:
-		//	{voidType} void_type=VOID
-		//	| {charType} char_type=CHAR
-		//	| {shortType} short_type=SHORT
-		//	| {intType} int_type=INTNAME
-		//	| {longType} long_type=LONG
-		//	| {floatType} float_type=FLOAT
-		//	| {doubleType} double_type=DOUBLE
-		//	| {signedType} signed_type=SIGNED
-		//	| {unsignedType} unsigned_type=UNSIGNED
-		//	| {booleanType} bool_type=BOOL
-		//	| {complexType} complex_type=COMPLEX
-		//	| {imaginaryType} imaginary_type=IMAGINARY / * non-mandated extension * /
-		//	| atomic_type_specifier=atomic_type_specifier
-		//	| struct_or_union_specifier=struct_or_union_specifier
-		//	| enum_specifier=enum_specifier
-		//	| typedef_name=TYPEDEF / * after it has been defined as such * /;
+		//	{voidType} void_type=VOID | {charType} char_type=CHAR | {shortType} short_type=SHORT | {intType} int_type=INTNAME |
+		//	{longType} long_type=LONG | {floatType} float_type=FLOAT | {doubleType} double_type=DOUBLE | {signedType}
+		//	signed_type=SIGNED | {unsignedType} unsigned_type=UNSIGNED | {booleanType} bool_type=BOOL | {complexType}
+		//	complex_type=COMPLEX | {imaginaryType} imaginary_type=IMAGINARY / * non-mandated extension * / |
+		//	atomic_type_specifier=atomic_type_specifier | struct_or_union_specifier=struct_or_union_specifier |
+		//	enum_specifier=enum_specifier | typedef_name=TYPEDEF / * after it has been defined as such * /;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{voidType} void_type=VOID | {charType} char_type=CHAR | {shortType} short_type=SHORT | {intType} int_type=INTNAME |
@@ -2381,15 +2328,15 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIdentifierIDTerminalRuleCall_2_1_0 = (RuleCall)cIdentifierAssignment_2_1.eContents().get(0);
 		
 		////tem como refatorar.
-		//struct_or_union_specifier:
-		//	struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}'
-		//	| struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}'
-		//	| struct_or_union identifier=ID;
+		// struct_or_union_specifier:
+		//	struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}' |
+		//	struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}' |
+		//	struct_or_union identifier=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}' |
-		//struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}' | struct_or_union
-		//identifier=ID
+		//struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}' |
+		//struct_or_union identifier=ID
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}'
@@ -2461,8 +2408,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUnionUNIONParserRuleCall_1_0 = (RuleCall)cUnionAssignment_1.eContents().get(0);
 		
 		//struct_or_union:
-		//	struct=STRUCT
-		//	| union=UNION;
+		//	struct=STRUCT | union=UNION;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//struct=STRUCT | union=UNION
@@ -2551,9 +2497,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStatic_assert_declarationStatic_assert_declarationParserRuleCall_2_0 = (RuleCall)cStatic_assert_declarationAssignment_2.eContents().get(0);
 		
 		//struct_declaration:
-		//	specifier_qualifier_list=specifier_qualifier_list ';' / * for anonymous struct/union * /
-		//	| specifier_qualifier_list=specifier_qualifier_list struct_declarator_list=struct_declarator_list ';'
-		//	| static_assert_declaration=static_assert_declaration;
+		//	specifier_qualifier_list=specifier_qualifier_list ';' / * for anonymous struct/union * / |
+		//	specifier_qualifier_list=specifier_qualifier_list struct_declarator_list=struct_declarator_list ';' |
+		//	static_assert_declaration=static_assert_declaration;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//specifier_qualifier_list=specifier_qualifier_list ';' / * for anonymous struct/union * / |
@@ -2616,10 +2562,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cType_qualifierType_specifierParserRuleCall_3_0 = (RuleCall)cType_qualifierAssignment_3.eContents().get(0);
 		
 		//specifier_qualifier_list:
-		//	type_specifier=type_specifier specifier_qualifier_list=specifier_qualifier_list
-		//	| type_specifier=type_specifier
-		//	| type_qualifier=type_specifier specifier_qualifier_list=specifier_qualifier_list
-		//	| type_qualifier=type_specifier;
+		//	type_specifier=type_specifier specifier_qualifier_list=specifier_qualifier_list | type_specifier=type_specifier |
+		//	type_qualifier=type_specifier specifier_qualifier_list=specifier_qualifier_list | type_qualifier=type_specifier;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//type_specifier=type_specifier specifier_qualifier_list=specifier_qualifier_list | type_specifier=type_specifier |
@@ -2751,9 +2695,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclaratorDeclaratorParserRuleCall_2_0 = (RuleCall)cDeclaratorAssignment_2.eContents().get(0);
 		
 		//struct_declarator:
-		//	':' constant_expression=constant_expression
-		//	| declarator=declarator ':' constant_expression=constant_expression
-		//	| declarator=declarator;
+		//	':' constant_expression=constant_expression | declarator=declarator ':' constant_expression=constant_expression |
+		//	declarator=declarator;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//':' constant_expression=constant_expression | declarator=declarator ':' constant_expression=constant_expression |
@@ -2840,11 +2783,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIdentifierIDTerminalRuleCall_4_1_0 = (RuleCall)cIdentifierAssignment_4_1.eContents().get(0);
 		
 		//enum_specifier:
-		//	enumt=ENUM '{' enumerator_list=enumerator_list '}'
-		//	| enumt=ENUM '{' enumerator_list=enumerator_list ',' '}'
-		//	| enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list '}'
-		//	| enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list ',' '}'
-		//	| enumt=ENUM identifier=ID;
+		//	enumt=ENUM '{' enumerator_list=enumerator_list '}' | enumt=ENUM '{' enumerator_list=enumerator_list ',' '}' |
+		//	enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list '}' | enumt=ENUM identifier=ID '{'
+		//	enumerator_list=enumerator_list ',' '}' | enumt=ENUM identifier=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//enumt=ENUM '{' enumerator_list=enumerator_list '}' | enumt=ENUM '{' enumerator_list=enumerator_list ',' '}' | enumt=ENUM
@@ -3040,9 +2981,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEnumeration_constantEnumeration_constantParserRuleCall_1_0 = (RuleCall)cEnumeration_constantAssignment_1.eContents().get(0);
 		
 		////OLHAR
-		//enumerator / * identifiers must be flagged as ENUMERATION_CONSTANT * /:
-		//	enumeration_constant=enumeration_constant '=' constant_expression=constant_expression
-		//	| enumeration_constant=enumeration_constant;
+		// enumerator / * identifiers must be flagged as ENUMERATION_CONSTANT * /:
+		//	enumeration_constant=enumeration_constant '=' constant_expression=constant_expression |
+		//	enumeration_constant=enumeration_constant;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//enumeration_constant=enumeration_constant '=' constant_expression=constant_expression |
@@ -3121,10 +3062,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAtomicATOMICParserRuleCall_3_0 = (RuleCall)cAtomicAssignment_3.eContents().get(0);
 		
 		//type_qualifier:
-		//	const=CONST
-		//	| restrict=RESTRICT
-		//	| volatile=VOLATILE
-		//	| atomic=ATOMIC;
+		//	const=CONST | restrict=RESTRICT | volatile=VOLATILE | atomic=ATOMIC;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//const=CONST | restrict=RESTRICT | volatile=VOLATILE | atomic=ATOMIC
@@ -3163,8 +3101,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNoreturnNORETURNParserRuleCall_1_0 = (RuleCall)cNoreturnAssignment_1.eContents().get(0);
 		
 		//function_specifier:
-		//	inline=INLINE
-		//	| noreturn=NORETURN;
+		//	inline=INLINE | noreturn=NORETURN;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//inline=INLINE | noreturn=NORETURN
@@ -3201,8 +3138,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		
 		//alignment_specifier:
-		//	alignas=ALIGNAS '(' type_name=type_name ')'
-		//	| alignas=ALIGNAS '(' constant_expression=constant_expression ')';
+		//	alignas=ALIGNAS '(' type_name=type_name ')' | alignas=ALIGNAS '(' constant_expression=constant_expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//alignas=ALIGNAS '(' type_name=type_name ')' | alignas=ALIGNAS '(' constant_expression=constant_expression ')'
@@ -3262,8 +3198,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDirect_declaratorDirect_declaratorParserRuleCall_1_0 = (RuleCall)cDirect_declaratorAssignment_1.eContents().get(0);
 		
 		//declarator:
-		//	pointer=pointer direct_declarator=direct_declarator
-		//	| direct_declarator=direct_declarator;
+		//	pointer=pointer direct_declarator=direct_declarator | direct_declarator=direct_declarator;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//pointer=pointer direct_declarator=direct_declarator | direct_declarator=direct_declarator
@@ -3307,8 +3242,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDirect_declaratorsDirect_declarator2ParserRuleCall_1_3_0 = (RuleCall)cDirect_declaratorsAssignment_1_3.eContents().get(0);
 		
 		//direct_declarator:
-		//	name=ID direct_declarators+=direct_declarator2*
-		//	| '(' Declarator=declarator ')' direct_declarators+=direct_declarator2*;
+		//	name=ID direct_declarators+=direct_declarator2* | '(' Declarator=declarator ')'
+		//	direct_declarators+=direct_declarator2*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name=ID direct_declarators+=direct_declarator2* | '(' Declarator=declarator ')' direct_declarators+=direct_declarator2*
@@ -3423,18 +3358,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_11_2 = (Keyword)cGroup_11.eContents().get(2);
 		
 		//direct_declarator2:
-		//	'[' ']'
-		//	| '[' '*' ']'
-		//	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-		//	| '[' static=STATIC assignment_expression=assignment_expression ']'
-		//	| '[' type_qualifier_list=type_qualifier_list '*' ']'
-		//	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
-		//	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-		//	| '[' type_qualifier_list=type_qualifier_list ']'
-		//	| '[' assignment_expression=assignment_expression ']'
-		//	| '(' parameter_type_list=parameter_type_list ')'
-		//	| '(' ')'
-		//	| '(' identifier_list=identifier_list ')';
+		//	'[' ']' | '[' '*' ']' | '[' static=STATIC type_qualifier_list=type_qualifier_list
+		//	assignment_expression=assignment_expression ']' | '[' static=STATIC assignment_expression=assignment_expression ']' |
+		//	'[' type_qualifier_list=type_qualifier_list '*' ']' | '[' type_qualifier_list=type_qualifier_list static=STATIC
+		//	assignment_expression=assignment_expression ']' | '[' type_qualifier_list=type_qualifier_list
+		//	assignment_expression=assignment_expression ']' | '[' type_qualifier_list=type_qualifier_list ']' | '['
+		//	assignment_expression=assignment_expression ']' | '(' parameter_type_list=parameter_type_list ')' | '(' ')' | '('
+		//	identifier_list=identifier_list ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'[' ']' | '[' '*' ']' | '[' static=STATIC type_qualifier_list=type_qualifier_list
@@ -3670,10 +3600,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
 		//pointer:
-		//	'*' type_qualifier_list=type_qualifier_list pointer=pointer
-		//	| '*' type_qualifier_list=type_qualifier_list
-		//	| '*' pointer=pointer
-		//	| '*';
+		//	'*' type_qualifier_list=type_qualifier_list pointer=pointer | '*' type_qualifier_list=type_qualifier_list | '*'
+		//	pointer=pointer | '*';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'*' type_qualifier_list=type_qualifier_list pointer=pointer | '*' type_qualifier_list=type_qualifier_list | '*'
@@ -3800,8 +3728,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameter_listParameter_listParserRuleCall_1_0 = (RuleCall)cParameter_listAssignment_1.eContents().get(0);
 		
 		//parameter_type_list:
-		//	parameter_list=parameter_list ',' ellipsis=ELLIPSIS
-		//	| parameter_list=parameter_list;
+		//	parameter_list=parameter_list ',' ellipsis=ELLIPSIS | parameter_list=parameter_list;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//parameter_list=parameter_list ',' ellipsis=ELLIPSIS | parameter_list=parameter_list
@@ -3914,9 +3841,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclaration_specifiersDeclaration_specifiersParserRuleCall_2_0 = (RuleCall)cDeclaration_specifiersAssignment_2.eContents().get(0);
 		
 		//parameter_declaration:
-		//	declaration_specifiers=declaration_specifiers declarator=declarator
-		//	| declaration_specifiers=declaration_specifiers abstract_declarator=abstract_declarator
-		//	| declaration_specifiers=declaration_specifiers;
+		//	declaration_specifiers=declaration_specifiers declarator=declarator | declaration_specifiers=declaration_specifiers
+		//	abstract_declarator=abstract_declarator | declaration_specifiers=declaration_specifiers;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//declaration_specifiers=declaration_specifiers declarator=declarator | declaration_specifiers=declaration_specifiers
@@ -4037,8 +3963,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSpecifier_qualifier_listSpecifier_qualifier_listParserRuleCall_1_0 = (RuleCall)cSpecifier_qualifier_listAssignment_1.eContents().get(0);
 		
 		//type_name:
-		//	specifier_qualifier_list=specifier_qualifier_list abstract_declarator=abstract_declarator
-		//	| specifier_qualifier_list=specifier_qualifier_list;
+		//	specifier_qualifier_list=specifier_qualifier_list abstract_declarator=abstract_declarator |
+		//	specifier_qualifier_list=specifier_qualifier_list;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//specifier_qualifier_list=specifier_qualifier_list abstract_declarator=abstract_declarator |
@@ -4080,9 +4006,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDirect_abstract_declaratorDirect_abstract_declaratorParserRuleCall_2_0 = (RuleCall)cDirect_abstract_declaratorAssignment_2.eContents().get(0);
 		
 		//abstract_declarator:
-		//	pointer=pointer direct_abstract_declarator=direct_abstract_declarator
-		//	| pointer=pointer
-		//	| direct_abstract_declarator=direct_abstract_declarator;
+		//	pointer=pointer direct_abstract_declarator=direct_abstract_declarator | pointer=pointer |
+		//	direct_abstract_declarator=direct_abstract_declarator;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//pointer=pointer direct_abstract_declarator=direct_abstract_declarator | pointer=pointer |
@@ -4122,7 +4047,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDirect_abstract_declarator2Direct_abstract_declarator2ParserRuleCall_0 = (RuleCall)cDirect_abstract_declarator2Assignment.eContents().get(0);
 		
 		////TODO Olhar esse tem como refatorar ( A | B| C) direct_abstract_declarator2
-		//direct_abstract_declarator:
+		// direct_abstract_declarator:
 		//	direct_abstract_declarator2+=direct_abstract_declarator2+;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -4194,16 +4119,12 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
 		
 		//direct_abstract_declarator2:
-		//	'[' ']'
-		//	| '[' '*' ']'
-		//	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-		//	| '[' static=STATIC assignment_expression=assignment_expression ']'
-		//	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-		//	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
-		//	| '[' type_qualifier_list=type_qualifier_list ']'
-		//	| '[' assignment_expression=assignment_expression ']'
-		//	| '(' ')'
-		//	| '(' parameter_type_list=parameter_type_list ')';
+		//	'[' ']' | '[' '*' ']' | '[' static=STATIC type_qualifier_list=type_qualifier_list
+		//	assignment_expression=assignment_expression ']' | '[' static=STATIC assignment_expression=assignment_expression ']' |
+		//	'[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' | '['
+		//	type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' | '['
+		//	type_qualifier_list=type_qualifier_list ']' | '[' assignment_expression=assignment_expression ']' | '(' ')' | '('
+		//	parameter_type_list=parameter_type_list ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'[' ']' | '[' '*' ']' | '[' static=STATIC type_qualifier_list=type_qualifier_list
@@ -4403,10 +4324,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAssignment_expressionAssignment_expressionParserRuleCall_2_0 = (RuleCall)cAssignment_expressionAssignment_2.eContents().get(0);
 		
 		////TODO Olhar esse
-		//initializer:
-		//	'{' initializer_list=initializer_list '}'
-		//	| '{' initializer_list=initializer_list ',' '}'
-		//	| assignment_expression=assignment_expression;
+		// initializer:
+		//	'{' initializer_list=initializer_list '}' | '{' initializer_list=initializer_list ',' '}' |
+		//	assignment_expression=assignment_expression;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'{' initializer_list=initializer_list '}' | '{' initializer_list=initializer_list ',' '}' |
@@ -4469,9 +4389,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInitializer_list2Initializer_list2ParserRuleCall_1_1_0 = (RuleCall)cInitializer_list2Assignment_1_1.eContents().get(0);
 		
 		////TODO OLHAR esse
-		//initializer_list:
-		//	designation=designation initializer=initializer initializer_list2=initializer_list2
-		//	| initializer=initializer initializer_list2=initializer_list2;
+		// initializer_list:
+		//	designation=designation initializer=initializer initializer_list2=initializer_list2 | initializer=initializer
+		//	initializer_list2=initializer_list2;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//designation=designation initializer=initializer initializer_list2=initializer_list2 | initializer=initializer
@@ -4535,8 +4455,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInitializer_list2Initializer_list2ParserRuleCall_1_1_2_0 = (RuleCall)cInitializer_list2Assignment_1_1_2.eContents().get(0);
 		
 		//initializer_list2:
-		//	{initializer_list2} (',' designation=designation initializer=initializer initializer_list2=initializer_list2
-		//	| ',' initializer=initializer initializer_list2=initializer_list2)?;
+		//	{initializer_list2} (',' designation=designation initializer=initializer initializer_list2=initializer_list2 | ','
+		//	initializer=initializer initializer_list2=initializer_list2)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{initializer_list2} (',' designation=designation initializer=initializer initializer_list2=initializer_list2 | ','
@@ -4691,8 +4611,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIdentifierIDTerminalRuleCall_1_1_0 = (RuleCall)cIdentifierAssignment_1_1.eContents().get(0);
 		
 		//designator:
-		//	'[' constant_expression=constant_expression ']'
-		//	| '.' identifier=ID;
+		//	'[' constant_expression=constant_expression ']' | '.' identifier=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'[' constant_expression=constant_expression ']' | '.' identifier=ID
@@ -4740,7 +4659,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		////Olhar
-		//static_assert_declaration:
+		// static_assert_declaration:
 		//	static_assert=STATIC_ASSERT '(' constant_expression=constant_expression ',' string_literal=STRING_LITERAL ')' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -4794,13 +4713,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cJump_statementJump_statementParserRuleCall_5_0 = (RuleCall)cJump_statementAssignment_5.eContents().get(0);
 		
 		////OLHAR
-		//statement:
-		//	labeled_statement=labeled_statement
-		//	| compound_statement=compound_statement
-		//	| expression_statement=expression_statement
-		//	| selection_statement=selection_statement
-		//	| iteration_statement=iteration_statement
-		//	| jump_statement=jump_statement;
+		// statement:
+		//	labeled_statement=labeled_statement | compound_statement=compound_statement |
+		//	expression_statement=expression_statement | selection_statement=selection_statement |
+		//	iteration_statement=iteration_statement | jump_statement=jump_statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//labeled_statement=labeled_statement | compound_statement=compound_statement | expression_statement=expression_statement
@@ -4868,10 +4784,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStatementStatementParserRuleCall_2_2_0 = (RuleCall)cStatementAssignment_2_2.eContents().get(0);
 		
 		////OLHAR
-		//labeled_statement:
-		//	identifier=ID ':' statement=statement
-		//	| case=CASE constant_expression=constant_expression ':' statement=statement
-		//	| default=DEFAULT ':' statement=statement;
+		// labeled_statement:
+		//	identifier=ID ':' statement=statement | case=CASE constant_expression=constant_expression ':' statement=statement |
+		//	default=DEFAULT ':' statement=statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//identifier=ID ':' statement=statement | case=CASE constant_expression=constant_expression ':' statement=statement |
@@ -4956,8 +4871,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	| '{'  block_item_list+=block_item_list '}'
 		//;
 		// * / compound_statement:
-		//	'{' '}'
-		//	| '{' block_item_list+=block_item* '}';
+		//	'{' '}' | '{' block_item_list+=block_item* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'{' '}' | '{' block_item_list+=block_item* '}'
@@ -4996,8 +4910,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStatementStatementParserRuleCall_1_0 = (RuleCall)cStatementAssignment_1.eContents().get(0);
 		
 		//block_item:
-		//	declaration=declaration
-		//	| statement=statement;
+		//	declaration=declaration | statement=statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//declaration=declaration | statement=statement
@@ -5025,8 +4938,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
 		//expression_statement:
-		//	';'
-		//	| expression=expression ';';
+		//	';' | expression=expression ';';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//';' | expression=expression ';'
@@ -5083,9 +4995,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStatementStatementParserRuleCall_2_4_0 = (RuleCall)cStatementAssignment_2_4.eContents().get(0);
 		
 		//selection_statement:
-		//	if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement
-		//	| if=IF '(' expression=expression ')' statement=statement
-		//	| switch=SWITCH '(' expression=expression ')' statement=statement;
+		//	if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement | if=IF '('
+		//	expression=expression ')' statement=statement | switch=SWITCH '(' expression=expression ')' statement=statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement | if=IF '(' expression=expression
@@ -5259,15 +5170,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStatementStatementParserRuleCall_5_6_0 = (RuleCall)cStatementAssignment_5_6.eContents().get(0);
 		
 		//iteration_statement:
-		//	while=WHILE '(' expression=expression ')' statement=statement
-		//	| do=DO statement=statement while=WHILE '(' expression=expression ')' ';'
-		//	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement ')'
-		//	statement=statement
-		//	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement
-		//	expression=expression ')' statement=statement
-		//	| for=FOR '(' declaration=declaration expression_statement=expression_statement ')' statement=statement
-		//	| for=FOR '(' declaration=declaration expression_statement=expression_statement expression=expression ')'
-		//	statement=statement;
+		//	while=WHILE '(' expression=expression ')' statement=statement | do=DO statement=statement while=WHILE '('
+		//	expression=expression ')' ';' | for=FOR '(' expression_statement=expression_statement
+		//	expression_statement2=expression_statement ')' statement=statement | for=FOR '('
+		//	expression_statement=expression_statement expression_statement2=expression_statement expression=expression ')'
+		//	statement=statement | for=FOR '(' declaration=declaration expression_statement=expression_statement ')'
+		//	statement=statement | for=FOR '(' declaration=declaration expression_statement=expression_statement
+		//	expression=expression ')' statement=statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//while=WHILE '(' expression=expression ')' statement=statement | do=DO statement=statement while=WHILE '('
@@ -5517,11 +5426,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		
 		//jump_statement:
-		//	goto=GOTO identifier=ID ';'
-		//	| continue=CONTINUE ';'
-		//	| break=BREAK ';'
-		//	| return=RETURN ';'
-		//	| return=RETURN expression=expression ';';
+		//	goto=GOTO identifier=ID ';' | continue=CONTINUE ';' | break=BREAK ';' | return=RETURN ';' | return=RETURN
+		//	expression=expression ';';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//goto=GOTO identifier=ID ';' | continue=CONTINUE ';' | break=BREAK ';' | return=RETURN ';' | return=RETURN
@@ -5624,8 +5530,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclarationDeclarationParserRuleCall_1_0 = (RuleCall)cDeclarationAssignment_1.eContents().get(0);
 		
 		//external_declaration:
-		//	function_definition=function_definition
-		//	| declaration=declaration;
+		//	function_definition=function_definition | declaration=declaration;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//function_definition=function_definition | declaration=declaration
@@ -5668,10 +5573,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	: declaration_specifiers+=declaration_specifiers declarator=declarator declaration_list+=declaration_list compound_statement=compound_statement
 		//	| declaration_specifiers+=declaration_specifiers declarator=declarator compound_statement=compound_statement
 		//	;
-		// * / function_definition:
+		// * /
+		//function_definition:
 		//	declaration_specifiers=declaration_specifiers declarator=declarator declaration_list=declaration_list
-		//	compound_statement=compound_statement
-		//	| declaration_specifiers=declaration_specifiers declarator=declarator compound_statement=compound_statement;
+		//	compound_statement=compound_statement | declaration_specifiers=declaration_specifiers declarator=declarator
+		//	compound_statement=compound_statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//declaration_specifiers=declaration_specifiers declarator=declarator declaration_list=declaration_list
@@ -5795,7 +5701,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAutoKeyword = (Keyword)rule.eContents().get(1);
 		
 		//// "auto"					{ return(AUTO); }
-		//AUTO:
+		// AUTO:
 		//	"auto";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5807,7 +5713,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBreakKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"break"					{ return(BREAK); }
-		//BREAK:
+		// BREAK:
 		//	"break";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5819,7 +5725,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCaseKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"case"					{ return(CASE); }
-		//CASE:
+		// CASE:
 		//	"case";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5831,7 +5737,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCharKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"char"					{ return(CHAR); }
-		//CHAR:
+		// CHAR:
 		//	"char";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5843,7 +5749,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cConstKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"const"					{ return(CONST); }
-		//CONST:
+		// CONST:
 		//	"const";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5855,7 +5761,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cContinueKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"continue"				{ return(CONTINUE); }
-		//CONTINUE:
+		// CONTINUE:
 		//	"continue";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5867,7 +5773,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDefaultKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"default"				{ return(DEFAULT); }
-		//DEFAULT:
+		// DEFAULT:
 		//	"default";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5879,7 +5785,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDoKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"do"					{ return(DO); }
-		//DO:
+		// DO:
 		//	"do";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5891,7 +5797,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDoubleKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"double"				{ return(DOUBLE); }
-		//DOUBLE:
+		// DOUBLE:
 		//	"double";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5903,7 +5809,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cElseKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"else"					{ return(ELSE); }
-		//ELSE:
+		// ELSE:
 		//	"else";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5915,7 +5821,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEnumKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"enum"					{ return(ENUM); }
-		//ENUM:
+		// ENUM:
 		//	"enum";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5927,7 +5833,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cExternKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"extern"				{ return(EXTERN); }
-		//EXTERN:
+		// EXTERN:
 		//	"extern";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5939,7 +5845,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFloatKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"float"					{ return(FLOAT); }
-		//FLOAT:
+		// FLOAT:
 		//	"float";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5951,7 +5857,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cForKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"for"					{ return(FOR); }
-		//FOR:
+		// FOR:
 		//	"for";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5963,7 +5869,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGotoKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"goto"					{ return(GOTO); }
-		//GOTO:
+		// GOTO:
 		//	"goto";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5975,7 +5881,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIfKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"if"					{ return(IF); }
-		//IF:
+		// IF:
 		//	"if";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5987,7 +5893,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cInlineKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"inline"				{ return(INLINE); }
-		//INLINE:
+		// INLINE:
 		//	"inline";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5999,7 +5905,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIntKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"int"					{ return(INT); }
-		//INTNAME:
+		// INTNAME:
 		//	"int";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6011,8 +5917,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLongKeyword = (Keyword)rule.eContents().get(1);
 		
 		////  <-- Aqui nao deixou acho que int ja é um terminal que pode usar que nem ID
-		////"long"					{ return(LONG); }
-		//LONG:
+		// //"long"					{ return(LONG); }
+		// LONG:
 		//	"long";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6024,7 +5930,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRegisterKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"register"				{ return(REGISTER); }
-		//REGISTER:
+		// REGISTER:
 		//	"register";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6036,7 +5942,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRestrictKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"restrict"				{ return(RESTRICT); }
-		//RESTRICT:
+		// RESTRICT:
 		//	"restrict";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6048,7 +5954,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cReturnKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"return"				{ return(RETURN); }
-		//RETURN:
+		// RETURN:
 		//	"return";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6060,7 +5966,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cShortKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"short"					{ return(SHORT); }
-		//SHORT:
+		// SHORT:
 		//	"short";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6072,7 +5978,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSignedKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"signed"				{ return(SIGNED); }
-		//SIGNED:
+		// SIGNED:
 		//	"signed";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6084,7 +5990,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSizeofKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"sizeof"				{ return(SIZEOF); }
-		//SIZEOF:
+		// SIZEOF:
 		//	"sizeof";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6096,7 +6002,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cStaticKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"static"				{ return(STATIC); }
-		//STATIC:
+		// STATIC:
 		//	"static";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6108,7 +6014,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cStructKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"struct"				{ return(STRUCT); }
-		//STRUCT:
+		// STRUCT:
 		//	"struct";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6120,7 +6026,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSwitchKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"switch"				{ return(SWITCH); }
-		//SWITCH:
+		// SWITCH:
 		//	"switch";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6132,7 +6038,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTypedefKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"typedef"				{ return(TYPEDEF); }
-		//TYPEDEF:
+		// TYPEDEF:
 		//	"typedef";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6144,7 +6050,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cUnionKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"union"					{ return(UNION); }
-		//UNION:
+		// UNION:
 		//	"union";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6156,7 +6062,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cUnsignedKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"unsigned"				{ return(UNSIGNED); }
-		//UNSIGNED:
+		// UNSIGNED:
 		//	"unsigned";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6168,7 +6074,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cVoidKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"void"					{ return(VOID); }
-		//VOID:
+		// VOID:
 		//	"void";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6180,7 +6086,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cVolatileKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"volatile"				{ return(VOLATILE); }
-		//VOLATILE:
+		// VOLATILE:
 		//	"volatile";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6192,7 +6098,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cWhileKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"while"					{ return(WHILE); }
-		//WHILE:
+		// WHILE:
 		//	"while";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6204,7 +6110,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_AlignasKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Alignas"                              { return ALIGNAS; }
-		//ALIGNAS:
+		// ALIGNAS:
 		//	"_Alignas";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6216,7 +6122,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_AlignofKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Alignof"                              { return ALIGNOF; }
-		//ALIGNOF:
+		// ALIGNOF:
 		//	"_Alignof";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6228,7 +6134,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_AtomicKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Atomic"                               { return ATOMIC; }
-		//ATOMIC:
+		// ATOMIC:
 		//	"_Atomic";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6240,7 +6146,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_BoolKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Bool"                                 { return BOOL; }
-		//BOOL:
+		// BOOL:
 		//	"_Bool";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6252,7 +6158,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_ComplexKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Complex"                              { return COMPLEX; }
-		//COMPLEX:
+		// COMPLEX:
 		//	"_Complex";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6264,7 +6170,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_GenericKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Generic"                              { return GENERIC; }
-		//GENERIC:
+		// GENERIC:
 		//	"_Generic";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6276,7 +6182,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_ImaginaryKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Imaginary"                            { return IMAGINARY; }
-		//IMAGINARY:
+		// IMAGINARY:
 		//	"_Imaginary";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6288,7 +6194,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_NoreturnKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Noreturn"                             { return NORETURN; }
-		//NORETURN:
+		// NORETURN:
 		//	"_Noreturn";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6300,7 +6206,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_Static_assertKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Static_assert"                        { return STATIC_ASSERT; }
-		//STATIC_ASSERT:
+		// STATIC_ASSERT:
 		//	"_Static_assert";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6312,7 +6218,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c_Thread_localKeyword = (Keyword)rule.eContents().get(1);
 		
 		////"_Thread_local"                         { return THREAD_LOCAL; }
-		//THREAD_LOCAL:
+		// THREAD_LOCAL:
 		//	"_Thread_local";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6324,7 +6230,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword c__func__Keyword = (Keyword)rule.eContents().get(1);
 		
 		////"__func__"                              { return FUNC_NAME; }
-		//FUNC_NAME:
+		// FUNC_NAME:
 		//	"__func__";
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -6749,11 +6655,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////Greeting;
-	////Greeting:
-	////'Ola'name=ID'!';
-	//primary_expression simple_expression:
-	//	'(' simple_expression ')'
-	//	| atomic2
+	// //Greeting:
+	// //'Ola'name=ID'!';
+	// primary_expression simple_expression:
+	//	'(' simple_expression ')' | atomic2
 	public Primary_expressionElements getPrimary_expressionAccess() {
 		return pPrimary_expression;
 	}
@@ -6763,10 +6668,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//atomic2 simple_expression:
-	//	{variableRef} variable=[direct_declarator] | {intType} value=I_CONSTANT
-	//	| {floatType} value=F_CONSTANT
-	//	| {stringType} value=string_nova
-	//	| {booleanType} value=("true" | "false")
+	//	{variableRef} variable=[direct_declarator] | {intType} value=I_CONSTANT | {floatType} value=F_CONSTANT | {stringType}
+	//	value=string_nova | {booleanType} value=("true" | "false")
 	public Atomic2Elements getAtomic2Access() {
 		return pAtomic2;
 	}
@@ -6776,10 +6679,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////TODO VER se esse enum é esse enum mesmo
-	//constant:
-	//	i_constant=I_CONSTANT / * includes character_constant * /
-	//	| f_constant=F_CONSTANT
-	//	| enumt=ENUM / * after it has been defined as such * / / * AQUI ERA ENUMERATION_CONSTANT troquei pro terminal ENUM * /;
+	// constant:
+	//	i_constant=I_CONSTANT / * includes character_constant * / | f_constant=F_CONSTANT | enumt=ENUM
+	//	/ * after it has been defined as such * / / * AQUI ERA ENUMERATION_CONSTANT troquei pro terminal ENUM * /;
 	public ConstantElements getConstantAccess() {
 		return pConstant;
 	}
@@ -6799,8 +6701,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//string_nova / * Na gramatica se chama String mais nao pode ter esse nome * /:
-	//	string_literal=STRING_LITERAL
-	//	| func_name=FUNC_NAME;
+	//	string_literal=STRING_LITERAL | func_name=FUNC_NAME;
 	public String_novaElements getString_novaAccess() {
 		return pString_nova;
 	}
@@ -6830,8 +6731,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//generic_association:
-	//	type_name=type_name ':' assignment_expression=assignment_expression
-	//	| default=DEFAULT ':' assignment_expression=assignment_expression;
+	//	type_name=type_name ':' assignment_expression=assignment_expression | default=DEFAULT ':'
+	//	assignment_expression=assignment_expression;
 	public Generic_associationElements getGeneric_associationAccess() {
 		return pGeneric_association;
 	}
@@ -6841,9 +6742,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//postfix_expression:
-	//	primary_expression=primary_expression postifx_expres+=postfix_expression2*
-	//	| '(' type_name=type_name ')' '{' initializer_list=initializer_list '}' postifx_expres+=postfix_expression2*
-	//	| '(' type_name=type_name ')' '{' initializer_list=initializer_list ',' '}' postifx_expres+=postfix_expression2*;
+	//	primary_expression=primary_expression postifx_expres+=postfix_expression2* | '(' type_name=type_name ')' '{'
+	//	initializer_list=initializer_list '}' postifx_expres+=postfix_expression2* | '(' type_name=type_name ')' '{'
+	//	initializer_list=initializer_list ',' '}' postifx_expres+=postfix_expression2*;
 	public Postfix_expressionElements getPostfix_expressionAccess() {
 		return pPostfix_expression;
 	}
@@ -6853,13 +6754,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//postfix_expression2:
-	//	'[' expression ']'
-	//	| '(' ')'
-	//	| '(' argument_expression_list ')'
-	//	| '.' ID
-	//	| PTR_OP ID
-	//	| INC_OP
-	//	| DEC_OP;
+	//	'[' expression ']' | '(' ')' | '(' argument_expression_list ')' | '.' ID | PTR_OP ID | INC_OP | DEC_OP;
 	public Postfix_expression2Elements getPostfix_expression2Access() {
 		return pPostfix_expression2;
 	}
@@ -6879,14 +6774,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////não vou considerar na análise semântica
-	//unary_expression:
-	//	postfix_expression=postfix_expression
-	//	| inc_op=INC_OP unary_expression=unary_expression
-	//	| dec_op=DEC_OP unary_expression=unary_expression
-	//	| unary_operator=unary_operator cast_expression=cast_expression
-	//	| sizeof=SIZEOF unary_expression=unary_expression
-	//	| sizeof=SIZEOF '(' type_name=type_name ')'
-	//	| alignof=ALIGNOF '(' type_name=type_name ')';
+	// unary_expression:
+	//	postfix_expression=postfix_expression | inc_op=INC_OP unary_expression=unary_expression | dec_op=DEC_OP
+	//	unary_expression=unary_expression | unary_operator=unary_operator cast_expression=cast_expression | sizeof=SIZEOF
+	//	unary_expression=unary_expression | sizeof=SIZEOF '(' type_name=type_name ')' | alignof=ALIGNOF '('
+	//	type_name=type_name ')';
 	public Unary_expressionElements getUnary_expressionAccess() {
 		return pUnary_expression;
 	}
@@ -6896,12 +6788,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//unary_operator:
-	//	'&'
-	//	| '*'
-	//	| '+'
-	//	| '-'
-	//	| '~'
-	//	| '!';
+	//	'&' | '*' | '+' | '-' | '~' | '!';
 	public Unary_operatorElements getUnary_operatorAccess() {
 		return pUnary_operator;
 	}
@@ -6911,9 +6798,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////não vou considerar o cast na análise semântica
-	//cast_expression simple_expression:
-	//	unary_expression
-	//	| '(' type_name=type_name ')' cast_expression=cast_expression
+	// cast_expression simple_expression:
+	//	unary_expression | '(' type_name=type_name ')' cast_expression=cast_expression
 	public Cast_expressionElements getCast_expressionAccess() {
 		return pCast_expression;
 	}
@@ -6933,9 +6819,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MUL_OP:
-	//	'*'
-	//	| '/'
-	//	| '%';
+	//	'*' | '/' | '%';
 	public MUL_OPElements getMUL_OPAccess() {
 		return pMUL_OP;
 	}
@@ -6965,8 +6849,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//shift_op:
-	//	LEFT_OP
-	//	| RIGHT_OP;
+	//	LEFT_OP | RIGHT_OP;
 	public Shift_opElements getShift_opAccess() {
 		return pShift_op;
 	}
@@ -6986,10 +6869,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//relational_op:
-	//	L_OP
-	//	| G_OP
-	//	| LE_OP
-	//	| GE_OP;
+	//	L_OP | G_OP | LE_OP | GE_OP;
 	public Relational_opElements getRelational_opAccess() {
 		return pRelational_op;
 	}
@@ -7069,9 +6949,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////TODO Rever esse
-	//conditional_expression:
-	//	simple_expression=simple_expression
-	//	| logical_or_expression=logical_or_expression '?' expression=expression ':'
+	// conditional_expression:
+	//	simple_expression=simple_expression | logical_or_expression=logical_or_expression '?' expression=expression ':'
 	//	conditional_expression=conditional_expression;
 	public Conditional_expressionElements getConditional_expressionAccess() {
 		return pConditional_expression;
@@ -7082,9 +6961,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//assignment_expression:
-	//	conditional_expression=conditional_expression
-	//	| unary_expression=unary_expression assignment_operator=assignment_operator
-	//	assignment_expression=assignment_expression;
+	//	conditional_expression=conditional_expression | unary_expression=unary_expression
+	//	assignment_operator=assignment_operator assignment_expression=assignment_expression;
 	public Assignment_expressionElements getAssignment_expressionAccess() {
 		return pAssignment_expression;
 	}
@@ -7094,17 +6972,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//assignment_operator:
-	//	'='
-	//	| mul_assign=MUL_ASSIGN
-	//	| div_assign=DIV_ASSIGN
-	//	| mod_assign=MOD_ASSIGN
-	//	| add_assign=ADD_ASSIGN
-	//	| sub_assign=SUB_ASSIGN
-	//	| left_assign=LEFT_ASSIGN
-	//	| right_assign=RIGHT_ASSIGN
-	//	| and_assign=AND_ASSIGN
-	//	| xor_assign=XOR_ASSIGN
-	//	| or_assign=OR_ASSIGN;
+	//	'=' | mul_assign=MUL_ASSIGN | div_assign=DIV_ASSIGN | mod_assign=MOD_ASSIGN | add_assign=ADD_ASSIGN |
+	//	sub_assign=SUB_ASSIGN | left_assign=LEFT_ASSIGN | right_assign=RIGHT_ASSIGN | and_assign=AND_ASSIGN |
+	//	xor_assign=XOR_ASSIGN | or_assign=OR_ASSIGN;
 	public Assignment_operatorElements getAssignment_operatorAccess() {
 		return pAssignment_operator;
 	}
@@ -7149,10 +7019,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	| declaration_specifiers+=declaration_specifiers init_declarator_list+=init_declarator_list ';'
 	//	| static_assert_declaration=static_assert_declaration
 	//	;
-	// * / declaration:
-	//	declaration_specifiers=declaration_specifiers ';'
-	//	| declaration_specifiers=declaration_specifiers init_declarator_list=init_declarator_list ';'
-	//	| static_assert_declaration=static_assert_declaration;
+	// * /
+	//declaration:
+	//	declaration_specifiers=declaration_specifiers ';' | declaration_specifiers=declaration_specifiers
+	//	init_declarator_list=init_declarator_list ';' | static_assert_declaration=static_assert_declaration;
 	public DeclarationElements getDeclarationAccess() {
 		return pDeclaration;
 	}
@@ -7174,17 +7044,15 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	| alignment_specifier=alignment_specifier declaration_specifiers+=declaration_specifiers
 	//	| alignment_specifier=alignment_specifier
 	//	;
-	// * / declaration_specifiers:
-	//	storage_class_specifier=storage_class_specifier declaration_specifiers=declaration_specifiers
-	//	| storage_class_specifier=storage_class_specifier
-	//	| type_specifier=type_specifier declaration_specifiers=declaration_specifiers
-	//	| type_specifier=type_specifier
-	//	| type_qualifier=type_qualifier declaration_specifiers=declaration_specifiers
-	//	| type_qualifier=type_qualifier
-	//	| function_specifier=function_specifier declaration_specifiers=declaration_specifiers
-	//	| function_specifier=function_specifier
-	//	| alignment_specifier=alignment_specifier declaration_specifiers=declaration_specifiers
-	//	| alignment_specifier=alignment_specifier;
+	// * /
+	//declaration_specifiers:
+	//	storage_class_specifier=storage_class_specifier declaration_specifiers=declaration_specifiers |
+	//	storage_class_specifier=storage_class_specifier | type_specifier=type_specifier
+	//	declaration_specifiers=declaration_specifiers | type_specifier=type_specifier | type_qualifier=type_qualifier
+	//	declaration_specifiers=declaration_specifiers | type_qualifier=type_qualifier | function_specifier=function_specifier
+	//	declaration_specifiers=declaration_specifiers | function_specifier=function_specifier |
+	//	alignment_specifier=alignment_specifier declaration_specifiers=declaration_specifiers |
+	//	alignment_specifier=alignment_specifier;
 	public Declaration_specifiersElements getDeclaration_specifiersAccess() {
 		return pDeclaration_specifiers;
 	}
@@ -7214,8 +7082,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//init_declarator:
-	//	declarator=declarator '=' initializer=initializer
-	//	| declarator=declarator;
+	//	declarator=declarator '=' initializer=simple_expression | declarator=declarator;
 	public Init_declaratorElements getInit_declaratorAccess() {
 		return pInit_declarator;
 	}
@@ -7225,12 +7092,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//storage_class_specifier:
-	//	typedef=TYPEDEF / * identifiers must be flagged as TYPEDEF_NAME * /
-	//	| extern=EXTERN
-	//	| static=STATIC
-	//	| thread_local=THREAD_LOCAL
-	//	| auto=AUTO
-	//	| register=REGISTER;
+	//	typedef=TYPEDEF / * identifiers must be flagged as TYPEDEF_NAME * / | extern=EXTERN | static=STATIC |
+	//	thread_local=THREAD_LOCAL | auto=AUTO | register=REGISTER;
 	public Storage_class_specifierElements getStorage_class_specifierAccess() {
 		return pStorage_class_specifier;
 	}
@@ -7240,22 +7103,12 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//type_specifier:
-	//	{voidType} void_type=VOID
-	//	| {charType} char_type=CHAR
-	//	| {shortType} short_type=SHORT
-	//	| {intType} int_type=INTNAME
-	//	| {longType} long_type=LONG
-	//	| {floatType} float_type=FLOAT
-	//	| {doubleType} double_type=DOUBLE
-	//	| {signedType} signed_type=SIGNED
-	//	| {unsignedType} unsigned_type=UNSIGNED
-	//	| {booleanType} bool_type=BOOL
-	//	| {complexType} complex_type=COMPLEX
-	//	| {imaginaryType} imaginary_type=IMAGINARY / * non-mandated extension * /
-	//	| atomic_type_specifier=atomic_type_specifier
-	//	| struct_or_union_specifier=struct_or_union_specifier
-	//	| enum_specifier=enum_specifier
-	//	| typedef_name=TYPEDEF / * after it has been defined as such * /;
+	//	{voidType} void_type=VOID | {charType} char_type=CHAR | {shortType} short_type=SHORT | {intType} int_type=INTNAME |
+	//	{longType} long_type=LONG | {floatType} float_type=FLOAT | {doubleType} double_type=DOUBLE | {signedType}
+	//	signed_type=SIGNED | {unsignedType} unsigned_type=UNSIGNED | {booleanType} bool_type=BOOL | {complexType}
+	//	complex_type=COMPLEX | {imaginaryType} imaginary_type=IMAGINARY / * non-mandated extension * / |
+	//	atomic_type_specifier=atomic_type_specifier | struct_or_union_specifier=struct_or_union_specifier |
+	//	enum_specifier=enum_specifier | typedef_name=TYPEDEF / * after it has been defined as such * /;
 	public Type_specifierElements getType_specifierAccess() {
 		return pType_specifier;
 	}
@@ -7265,10 +7118,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////tem como refatorar.
-	//struct_or_union_specifier:
-	//	struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}'
-	//	| struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}'
-	//	| struct_or_union identifier=ID;
+	// struct_or_union_specifier:
+	//	struct_or_union=struct_or_union '{' struct_declaration_list=struct_declaration_list '}' |
+	//	struct_or_union=struct_or_union identifier=ID '{' struct_declaration_list=struct_declaration_list '}' |
+	//	struct_or_union identifier=ID;
 	public Struct_or_union_specifierElements getStruct_or_union_specifierAccess() {
 		return pStruct_or_union_specifier;
 	}
@@ -7278,8 +7131,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//struct_or_union:
-	//	struct=STRUCT
-	//	| union=UNION;
+	//	struct=STRUCT | union=UNION;
 	public Struct_or_unionElements getStruct_or_unionAccess() {
 		return pStruct_or_union;
 	}
@@ -7309,9 +7161,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//struct_declaration:
-	//	specifier_qualifier_list=specifier_qualifier_list ';' / * for anonymous struct/union * /
-	//	| specifier_qualifier_list=specifier_qualifier_list struct_declarator_list=struct_declarator_list ';'
-	//	| static_assert_declaration=static_assert_declaration;
+	//	specifier_qualifier_list=specifier_qualifier_list ';' / * for anonymous struct/union * / |
+	//	specifier_qualifier_list=specifier_qualifier_list struct_declarator_list=struct_declarator_list ';' |
+	//	static_assert_declaration=static_assert_declaration;
 	public Struct_declarationElements getStruct_declarationAccess() {
 		return pStruct_declaration;
 	}
@@ -7321,10 +7173,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//specifier_qualifier_list:
-	//	type_specifier=type_specifier specifier_qualifier_list=specifier_qualifier_list
-	//	| type_specifier=type_specifier
-	//	| type_qualifier=type_specifier specifier_qualifier_list=specifier_qualifier_list
-	//	| type_qualifier=type_specifier;
+	//	type_specifier=type_specifier specifier_qualifier_list=specifier_qualifier_list | type_specifier=type_specifier |
+	//	type_qualifier=type_specifier specifier_qualifier_list=specifier_qualifier_list | type_qualifier=type_specifier;
 	public Specifier_qualifier_listElements getSpecifier_qualifier_listAccess() {
 		return pSpecifier_qualifier_list;
 	}
@@ -7354,9 +7204,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//struct_declarator:
-	//	':' constant_expression=constant_expression
-	//	| declarator=declarator ':' constant_expression=constant_expression
-	//	| declarator=declarator;
+	//	':' constant_expression=constant_expression | declarator=declarator ':' constant_expression=constant_expression |
+	//	declarator=declarator;
 	public Struct_declaratorElements getStruct_declaratorAccess() {
 		return pStruct_declarator;
 	}
@@ -7366,11 +7215,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//enum_specifier:
-	//	enumt=ENUM '{' enumerator_list=enumerator_list '}'
-	//	| enumt=ENUM '{' enumerator_list=enumerator_list ',' '}'
-	//	| enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list '}'
-	//	| enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list ',' '}'
-	//	| enumt=ENUM identifier=ID;
+	//	enumt=ENUM '{' enumerator_list=enumerator_list '}' | enumt=ENUM '{' enumerator_list=enumerator_list ',' '}' |
+	//	enumt=ENUM identifier=ID '{' enumerator_list=enumerator_list '}' | enumt=ENUM identifier=ID '{'
+	//	enumerator_list=enumerator_list ',' '}' | enumt=ENUM identifier=ID;
 	public Enum_specifierElements getEnum_specifierAccess() {
 		return pEnum_specifier;
 	}
@@ -7400,9 +7247,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////OLHAR
-	//enumerator / * identifiers must be flagged as ENUMERATION_CONSTANT * /:
-	//	enumeration_constant=enumeration_constant '=' constant_expression=constant_expression
-	//	| enumeration_constant=enumeration_constant;
+	// enumerator / * identifiers must be flagged as ENUMERATION_CONSTANT * /:
+	//	enumeration_constant=enumeration_constant '=' constant_expression=constant_expression |
+	//	enumeration_constant=enumeration_constant;
 	public EnumeratorElements getEnumeratorAccess() {
 		return pEnumerator;
 	}
@@ -7422,10 +7269,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//type_qualifier:
-	//	const=CONST
-	//	| restrict=RESTRICT
-	//	| volatile=VOLATILE
-	//	| atomic=ATOMIC;
+	//	const=CONST | restrict=RESTRICT | volatile=VOLATILE | atomic=ATOMIC;
 	public Type_qualifierElements getType_qualifierAccess() {
 		return pType_qualifier;
 	}
@@ -7435,8 +7279,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//function_specifier:
-	//	inline=INLINE
-	//	| noreturn=NORETURN;
+	//	inline=INLINE | noreturn=NORETURN;
 	public Function_specifierElements getFunction_specifierAccess() {
 		return pFunction_specifier;
 	}
@@ -7446,8 +7289,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//alignment_specifier:
-	//	alignas=ALIGNAS '(' type_name=type_name ')'
-	//	| alignas=ALIGNAS '(' constant_expression=constant_expression ')';
+	//	alignas=ALIGNAS '(' type_name=type_name ')' | alignas=ALIGNAS '(' constant_expression=constant_expression ')';
 	public Alignment_specifierElements getAlignment_specifierAccess() {
 		return pAlignment_specifier;
 	}
@@ -7457,8 +7299,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//declarator:
-	//	pointer=pointer direct_declarator=direct_declarator
-	//	| direct_declarator=direct_declarator;
+	//	pointer=pointer direct_declarator=direct_declarator | direct_declarator=direct_declarator;
 	public DeclaratorElements getDeclaratorAccess() {
 		return pDeclarator;
 	}
@@ -7468,8 +7309,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//direct_declarator:
-	//	name=ID direct_declarators+=direct_declarator2*
-	//	| '(' Declarator=declarator ')' direct_declarators+=direct_declarator2*;
+	//	name=ID direct_declarators+=direct_declarator2* | '(' Declarator=declarator ')'
+	//	direct_declarators+=direct_declarator2*;
 	public Direct_declaratorElements getDirect_declaratorAccess() {
 		return pDirect_declarator;
 	}
@@ -7479,18 +7320,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//direct_declarator2:
-	//	'[' ']'
-	//	| '[' '*' ']'
-	//	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-	//	| '[' static=STATIC assignment_expression=assignment_expression ']'
-	//	| '[' type_qualifier_list=type_qualifier_list '*' ']'
-	//	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
-	//	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-	//	| '[' type_qualifier_list=type_qualifier_list ']'
-	//	| '[' assignment_expression=assignment_expression ']'
-	//	| '(' parameter_type_list=parameter_type_list ')'
-	//	| '(' ')'
-	//	| '(' identifier_list=identifier_list ')';
+	//	'[' ']' | '[' '*' ']' | '[' static=STATIC type_qualifier_list=type_qualifier_list
+	//	assignment_expression=assignment_expression ']' | '[' static=STATIC assignment_expression=assignment_expression ']' |
+	//	'[' type_qualifier_list=type_qualifier_list '*' ']' | '[' type_qualifier_list=type_qualifier_list static=STATIC
+	//	assignment_expression=assignment_expression ']' | '[' type_qualifier_list=type_qualifier_list
+	//	assignment_expression=assignment_expression ']' | '[' type_qualifier_list=type_qualifier_list ']' | '['
+	//	assignment_expression=assignment_expression ']' | '(' parameter_type_list=parameter_type_list ')' | '(' ')' | '('
+	//	identifier_list=identifier_list ')';
 	public Direct_declarator2Elements getDirect_declarator2Access() {
 		return pDirect_declarator2;
 	}
@@ -7500,10 +7336,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//pointer:
-	//	'*' type_qualifier_list=type_qualifier_list pointer=pointer
-	//	| '*' type_qualifier_list=type_qualifier_list
-	//	| '*' pointer=pointer
-	//	| '*';
+	//	'*' type_qualifier_list=type_qualifier_list pointer=pointer | '*' type_qualifier_list=type_qualifier_list | '*'
+	//	pointer=pointer | '*';
 	public PointerElements getPointerAccess() {
 		return pPointer;
 	}
@@ -7533,8 +7367,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//parameter_type_list:
-	//	parameter_list=parameter_list ',' ellipsis=ELLIPSIS
-	//	| parameter_list=parameter_list;
+	//	parameter_list=parameter_list ',' ellipsis=ELLIPSIS | parameter_list=parameter_list;
 	public Parameter_type_listElements getParameter_type_listAccess() {
 		return pParameter_type_list;
 	}
@@ -7564,9 +7397,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//parameter_declaration:
-	//	declaration_specifiers=declaration_specifiers declarator=declarator
-	//	| declaration_specifiers=declaration_specifiers abstract_declarator=abstract_declarator
-	//	| declaration_specifiers=declaration_specifiers;
+	//	declaration_specifiers=declaration_specifiers declarator=declarator | declaration_specifiers=declaration_specifiers
+	//	abstract_declarator=abstract_declarator | declaration_specifiers=declaration_specifiers;
 	public Parameter_declarationElements getParameter_declarationAccess() {
 		return pParameter_declaration;
 	}
@@ -7596,8 +7428,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//type_name:
-	//	specifier_qualifier_list=specifier_qualifier_list abstract_declarator=abstract_declarator
-	//	| specifier_qualifier_list=specifier_qualifier_list;
+	//	specifier_qualifier_list=specifier_qualifier_list abstract_declarator=abstract_declarator |
+	//	specifier_qualifier_list=specifier_qualifier_list;
 	public Type_nameElements getType_nameAccess() {
 		return pType_name;
 	}
@@ -7607,9 +7439,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//abstract_declarator:
-	//	pointer=pointer direct_abstract_declarator=direct_abstract_declarator
-	//	| pointer=pointer
-	//	| direct_abstract_declarator=direct_abstract_declarator;
+	//	pointer=pointer direct_abstract_declarator=direct_abstract_declarator | pointer=pointer |
+	//	direct_abstract_declarator=direct_abstract_declarator;
 	public Abstract_declaratorElements getAbstract_declaratorAccess() {
 		return pAbstract_declarator;
 	}
@@ -7619,7 +7450,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////TODO Olhar esse tem como refatorar ( A | B| C) direct_abstract_declarator2
-	//direct_abstract_declarator:
+	// direct_abstract_declarator:
 	//	direct_abstract_declarator2+=direct_abstract_declarator2+;
 	public Direct_abstract_declaratorElements getDirect_abstract_declaratorAccess() {
 		return pDirect_abstract_declarator;
@@ -7630,16 +7461,12 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//direct_abstract_declarator2:
-	//	'[' ']'
-	//	| '[' '*' ']'
-	//	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-	//	| '[' static=STATIC assignment_expression=assignment_expression ']'
-	//	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-	//	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
-	//	| '[' type_qualifier_list=type_qualifier_list ']'
-	//	| '[' assignment_expression=assignment_expression ']'
-	//	| '(' ')'
-	//	| '(' parameter_type_list=parameter_type_list ')';
+	//	'[' ']' | '[' '*' ']' | '[' static=STATIC type_qualifier_list=type_qualifier_list
+	//	assignment_expression=assignment_expression ']' | '[' static=STATIC assignment_expression=assignment_expression ']' |
+	//	'[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' | '['
+	//	type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' | '['
+	//	type_qualifier_list=type_qualifier_list ']' | '[' assignment_expression=assignment_expression ']' | '(' ')' | '('
+	//	parameter_type_list=parameter_type_list ')';
 	public Direct_abstract_declarator2Elements getDirect_abstract_declarator2Access() {
 		return pDirect_abstract_declarator2;
 	}
@@ -7649,10 +7476,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////TODO Olhar esse
-	//initializer:
-	//	'{' initializer_list=initializer_list '}'
-	//	| '{' initializer_list=initializer_list ',' '}'
-	//	| assignment_expression=assignment_expression;
+	// initializer:
+	//	'{' initializer_list=initializer_list '}' | '{' initializer_list=initializer_list ',' '}' |
+	//	assignment_expression=assignment_expression;
 	public InitializerElements getInitializerAccess() {
 		return pInitializer;
 	}
@@ -7662,9 +7488,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////TODO OLHAR esse
-	//initializer_list:
-	//	designation=designation initializer=initializer initializer_list2=initializer_list2
-	//	| initializer=initializer initializer_list2=initializer_list2;
+	// initializer_list:
+	//	designation=designation initializer=initializer initializer_list2=initializer_list2 | initializer=initializer
+	//	initializer_list2=initializer_list2;
 	public Initializer_listElements getInitializer_listAccess() {
 		return pInitializer_list;
 	}
@@ -7674,8 +7500,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//initializer_list2:
-	//	{initializer_list2} (',' designation=designation initializer=initializer initializer_list2=initializer_list2
-	//	| ',' initializer=initializer initializer_list2=initializer_list2)?;
+	//	{initializer_list2} (',' designation=designation initializer=initializer initializer_list2=initializer_list2 | ','
+	//	initializer=initializer initializer_list2=initializer_list2)?;
 	public Initializer_list2Elements getInitializer_list2Access() {
 		return pInitializer_list2;
 	}
@@ -7715,8 +7541,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//designator:
-	//	'[' constant_expression=constant_expression ']'
-	//	| '.' identifier=ID;
+	//	'[' constant_expression=constant_expression ']' | '.' identifier=ID;
 	public DesignatorElements getDesignatorAccess() {
 		return pDesignator;
 	}
@@ -7726,7 +7551,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////Olhar
-	//static_assert_declaration:
+	// static_assert_declaration:
 	//	static_assert=STATIC_ASSERT '(' constant_expression=constant_expression ',' string_literal=STRING_LITERAL ')' ';';
 	public Static_assert_declarationElements getStatic_assert_declarationAccess() {
 		return pStatic_assert_declaration;
@@ -7737,13 +7562,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////OLHAR
-	//statement:
-	//	labeled_statement=labeled_statement
-	//	| compound_statement=compound_statement
-	//	| expression_statement=expression_statement
-	//	| selection_statement=selection_statement
-	//	| iteration_statement=iteration_statement
-	//	| jump_statement=jump_statement;
+	// statement:
+	//	labeled_statement=labeled_statement | compound_statement=compound_statement |
+	//	expression_statement=expression_statement | selection_statement=selection_statement |
+	//	iteration_statement=iteration_statement | jump_statement=jump_statement;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -7753,10 +7575,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////OLHAR
-	//labeled_statement:
-	//	identifier=ID ':' statement=statement
-	//	| case=CASE constant_expression=constant_expression ':' statement=statement
-	//	| default=DEFAULT ':' statement=statement;
+	// labeled_statement:
+	//	identifier=ID ':' statement=statement | case=CASE constant_expression=constant_expression ':' statement=statement |
+	//	default=DEFAULT ':' statement=statement;
 	public Labeled_statementElements getLabeled_statementAccess() {
 		return pLabeled_statement;
 	}
@@ -7771,8 +7592,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	| '{'  block_item_list+=block_item_list '}'
 	//;
 	// * / compound_statement:
-	//	'{' '}'
-	//	| '{' block_item_list+=block_item* '}';
+	//	'{' '}' | '{' block_item_list+=block_item* '}';
 	public Compound_statementElements getCompound_statementAccess() {
 		return pCompound_statement;
 	}
@@ -7782,8 +7602,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//block_item:
-	//	declaration=declaration
-	//	| statement=statement;
+	//	declaration=declaration | statement=statement;
 	public Block_itemElements getBlock_itemAccess() {
 		return pBlock_item;
 	}
@@ -7793,8 +7612,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//expression_statement:
-	//	';'
-	//	| expression=expression ';';
+	//	';' | expression=expression ';';
 	public Expression_statementElements getExpression_statementAccess() {
 		return pExpression_statement;
 	}
@@ -7804,9 +7622,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//selection_statement:
-	//	if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement
-	//	| if=IF '(' expression=expression ')' statement=statement
-	//	| switch=SWITCH '(' expression=expression ')' statement=statement;
+	//	if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement | if=IF '('
+	//	expression=expression ')' statement=statement | switch=SWITCH '(' expression=expression ')' statement=statement;
 	public Selection_statementElements getSelection_statementAccess() {
 		return pSelection_statement;
 	}
@@ -7816,15 +7633,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//iteration_statement:
-	//	while=WHILE '(' expression=expression ')' statement=statement
-	//	| do=DO statement=statement while=WHILE '(' expression=expression ')' ';'
-	//	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement ')'
-	//	statement=statement
-	//	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement
-	//	expression=expression ')' statement=statement
-	//	| for=FOR '(' declaration=declaration expression_statement=expression_statement ')' statement=statement
-	//	| for=FOR '(' declaration=declaration expression_statement=expression_statement expression=expression ')'
-	//	statement=statement;
+	//	while=WHILE '(' expression=expression ')' statement=statement | do=DO statement=statement while=WHILE '('
+	//	expression=expression ')' ';' | for=FOR '(' expression_statement=expression_statement
+	//	expression_statement2=expression_statement ')' statement=statement | for=FOR '('
+	//	expression_statement=expression_statement expression_statement2=expression_statement expression=expression ')'
+	//	statement=statement | for=FOR '(' declaration=declaration expression_statement=expression_statement ')'
+	//	statement=statement | for=FOR '(' declaration=declaration expression_statement=expression_statement
+	//	expression=expression ')' statement=statement;
 	public Iteration_statementElements getIteration_statementAccess() {
 		return pIteration_statement;
 	}
@@ -7834,11 +7649,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//jump_statement:
-	//	goto=GOTO identifier=ID ';'
-	//	| continue=CONTINUE ';'
-	//	| break=BREAK ';'
-	//	| return=RETURN ';'
-	//	| return=RETURN expression=expression ';';
+	//	goto=GOTO identifier=ID ';' | continue=CONTINUE ';' | break=BREAK ';' | return=RETURN ';' | return=RETURN
+	//	expression=expression ';';
 	public Jump_statementElements getJump_statementAccess() {
 		return pJump_statement;
 	}
@@ -7858,8 +7670,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//external_declaration:
-	//	function_definition=function_definition
-	//	| declaration=declaration;
+	//	function_definition=function_definition | declaration=declaration;
 	public External_declarationElements getExternal_declarationAccess() {
 		return pExternal_declaration;
 	}
@@ -7873,10 +7684,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	: declaration_specifiers+=declaration_specifiers declarator=declarator declaration_list+=declaration_list compound_statement=compound_statement
 	//	| declaration_specifiers+=declaration_specifiers declarator=declarator compound_statement=compound_statement
 	//	;
-	// * / function_definition:
+	// * /
+	//function_definition:
 	//	declaration_specifiers=declaration_specifiers declarator=declarator declaration_list=declaration_list
-	//	compound_statement=compound_statement
-	//	| declaration_specifiers=declaration_specifiers declarator=declarator compound_statement=compound_statement;
+	//	compound_statement=compound_statement | declaration_specifiers=declaration_specifiers declarator=declarator
+	//	compound_statement=compound_statement;
 	public Function_definitionElements getFunction_definitionAccess() {
 		return pFunction_definition;
 	}
@@ -7996,7 +7808,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//// "auto"					{ return(AUTO); }
-	//AUTO:
+	// AUTO:
 	//	"auto";
 	public AUTOElements getAUTOAccess() {
 		return pAUTO;
@@ -8007,7 +7819,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"break"					{ return(BREAK); }
-	//BREAK:
+	// BREAK:
 	//	"break";
 	public BREAKElements getBREAKAccess() {
 		return pBREAK;
@@ -8018,7 +7830,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"case"					{ return(CASE); }
-	//CASE:
+	// CASE:
 	//	"case";
 	public CASEElements getCASEAccess() {
 		return pCASE;
@@ -8029,7 +7841,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"char"					{ return(CHAR); }
-	//CHAR:
+	// CHAR:
 	//	"char";
 	public CHARElements getCHARAccess() {
 		return pCHAR;
@@ -8040,7 +7852,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"const"					{ return(CONST); }
-	//CONST:
+	// CONST:
 	//	"const";
 	public CONSTElements getCONSTAccess() {
 		return pCONST;
@@ -8051,7 +7863,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"continue"				{ return(CONTINUE); }
-	//CONTINUE:
+	// CONTINUE:
 	//	"continue";
 	public CONTINUEElements getCONTINUEAccess() {
 		return pCONTINUE;
@@ -8062,7 +7874,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"default"				{ return(DEFAULT); }
-	//DEFAULT:
+	// DEFAULT:
 	//	"default";
 	public DEFAULTElements getDEFAULTAccess() {
 		return pDEFAULT;
@@ -8073,7 +7885,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"do"					{ return(DO); }
-	//DO:
+	// DO:
 	//	"do";
 	public DOElements getDOAccess() {
 		return pDO;
@@ -8084,7 +7896,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"double"				{ return(DOUBLE); }
-	//DOUBLE:
+	// DOUBLE:
 	//	"double";
 	public DOUBLEElements getDOUBLEAccess() {
 		return pDOUBLE;
@@ -8095,7 +7907,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"else"					{ return(ELSE); }
-	//ELSE:
+	// ELSE:
 	//	"else";
 	public ELSEElements getELSEAccess() {
 		return pELSE;
@@ -8106,7 +7918,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"enum"					{ return(ENUM); }
-	//ENUM:
+	// ENUM:
 	//	"enum";
 	public ENUMElements getENUMAccess() {
 		return pENUM;
@@ -8117,7 +7929,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"extern"				{ return(EXTERN); }
-	//EXTERN:
+	// EXTERN:
 	//	"extern";
 	public EXTERNElements getEXTERNAccess() {
 		return pEXTERN;
@@ -8128,7 +7940,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"float"					{ return(FLOAT); }
-	//FLOAT:
+	// FLOAT:
 	//	"float";
 	public FLOATElements getFLOATAccess() {
 		return pFLOAT;
@@ -8139,7 +7951,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"for"					{ return(FOR); }
-	//FOR:
+	// FOR:
 	//	"for";
 	public FORElements getFORAccess() {
 		return pFOR;
@@ -8150,7 +7962,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"goto"					{ return(GOTO); }
-	//GOTO:
+	// GOTO:
 	//	"goto";
 	public GOTOElements getGOTOAccess() {
 		return pGOTO;
@@ -8161,7 +7973,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"if"					{ return(IF); }
-	//IF:
+	// IF:
 	//	"if";
 	public IFElements getIFAccess() {
 		return pIF;
@@ -8172,7 +7984,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"inline"				{ return(INLINE); }
-	//INLINE:
+	// INLINE:
 	//	"inline";
 	public INLINEElements getINLINEAccess() {
 		return pINLINE;
@@ -8183,7 +7995,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"int"					{ return(INT); }
-	//INTNAME:
+	// INTNAME:
 	//	"int";
 	public INTNAMEElements getINTNAMEAccess() {
 		return pINTNAME;
@@ -8194,8 +8006,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////  <-- Aqui nao deixou acho que int ja é um terminal que pode usar que nem ID
-	////"long"					{ return(LONG); }
-	//LONG:
+	// //"long"					{ return(LONG); }
+	// LONG:
 	//	"long";
 	public LONGElements getLONGAccess() {
 		return pLONG;
@@ -8206,7 +8018,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"register"				{ return(REGISTER); }
-	//REGISTER:
+	// REGISTER:
 	//	"register";
 	public REGISTERElements getREGISTERAccess() {
 		return pREGISTER;
@@ -8217,7 +8029,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"restrict"				{ return(RESTRICT); }
-	//RESTRICT:
+	// RESTRICT:
 	//	"restrict";
 	public RESTRICTElements getRESTRICTAccess() {
 		return pRESTRICT;
@@ -8228,7 +8040,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"return"				{ return(RETURN); }
-	//RETURN:
+	// RETURN:
 	//	"return";
 	public RETURNElements getRETURNAccess() {
 		return pRETURN;
@@ -8239,7 +8051,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"short"					{ return(SHORT); }
-	//SHORT:
+	// SHORT:
 	//	"short";
 	public SHORTElements getSHORTAccess() {
 		return pSHORT;
@@ -8250,7 +8062,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"signed"				{ return(SIGNED); }
-	//SIGNED:
+	// SIGNED:
 	//	"signed";
 	public SIGNEDElements getSIGNEDAccess() {
 		return pSIGNED;
@@ -8261,7 +8073,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"sizeof"				{ return(SIZEOF); }
-	//SIZEOF:
+	// SIZEOF:
 	//	"sizeof";
 	public SIZEOFElements getSIZEOFAccess() {
 		return pSIZEOF;
@@ -8272,7 +8084,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"static"				{ return(STATIC); }
-	//STATIC:
+	// STATIC:
 	//	"static";
 	public STATICElements getSTATICAccess() {
 		return pSTATIC;
@@ -8283,7 +8095,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"struct"				{ return(STRUCT); }
-	//STRUCT:
+	// STRUCT:
 	//	"struct";
 	public STRUCTElements getSTRUCTAccess() {
 		return pSTRUCT;
@@ -8294,7 +8106,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"switch"				{ return(SWITCH); }
-	//SWITCH:
+	// SWITCH:
 	//	"switch";
 	public SWITCHElements getSWITCHAccess() {
 		return pSWITCH;
@@ -8305,7 +8117,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"typedef"				{ return(TYPEDEF); }
-	//TYPEDEF:
+	// TYPEDEF:
 	//	"typedef";
 	public TYPEDEFElements getTYPEDEFAccess() {
 		return pTYPEDEF;
@@ -8316,7 +8128,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"union"					{ return(UNION); }
-	//UNION:
+	// UNION:
 	//	"union";
 	public UNIONElements getUNIONAccess() {
 		return pUNION;
@@ -8327,7 +8139,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"unsigned"				{ return(UNSIGNED); }
-	//UNSIGNED:
+	// UNSIGNED:
 	//	"unsigned";
 	public UNSIGNEDElements getUNSIGNEDAccess() {
 		return pUNSIGNED;
@@ -8338,7 +8150,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"void"					{ return(VOID); }
-	//VOID:
+	// VOID:
 	//	"void";
 	public VOIDElements getVOIDAccess() {
 		return pVOID;
@@ -8349,7 +8161,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"volatile"				{ return(VOLATILE); }
-	//VOLATILE:
+	// VOLATILE:
 	//	"volatile";
 	public VOLATILEElements getVOLATILEAccess() {
 		return pVOLATILE;
@@ -8360,7 +8172,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"while"					{ return(WHILE); }
-	//WHILE:
+	// WHILE:
 	//	"while";
 	public WHILEElements getWHILEAccess() {
 		return pWHILE;
@@ -8371,7 +8183,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Alignas"                              { return ALIGNAS; }
-	//ALIGNAS:
+	// ALIGNAS:
 	//	"_Alignas";
 	public ALIGNASElements getALIGNASAccess() {
 		return pALIGNAS;
@@ -8382,7 +8194,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Alignof"                              { return ALIGNOF; }
-	//ALIGNOF:
+	// ALIGNOF:
 	//	"_Alignof";
 	public ALIGNOFElements getALIGNOFAccess() {
 		return pALIGNOF;
@@ -8393,7 +8205,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Atomic"                               { return ATOMIC; }
-	//ATOMIC:
+	// ATOMIC:
 	//	"_Atomic";
 	public ATOMICElements getATOMICAccess() {
 		return pATOMIC;
@@ -8404,7 +8216,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Bool"                                 { return BOOL; }
-	//BOOL:
+	// BOOL:
 	//	"_Bool";
 	public BOOLElements getBOOLAccess() {
 		return pBOOL;
@@ -8415,7 +8227,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Complex"                              { return COMPLEX; }
-	//COMPLEX:
+	// COMPLEX:
 	//	"_Complex";
 	public COMPLEXElements getCOMPLEXAccess() {
 		return pCOMPLEX;
@@ -8426,7 +8238,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Generic"                              { return GENERIC; }
-	//GENERIC:
+	// GENERIC:
 	//	"_Generic";
 	public GENERICElements getGENERICAccess() {
 		return pGENERIC;
@@ -8437,7 +8249,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Imaginary"                            { return IMAGINARY; }
-	//IMAGINARY:
+	// IMAGINARY:
 	//	"_Imaginary";
 	public IMAGINARYElements getIMAGINARYAccess() {
 		return pIMAGINARY;
@@ -8448,7 +8260,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Noreturn"                             { return NORETURN; }
-	//NORETURN:
+	// NORETURN:
 	//	"_Noreturn";
 	public NORETURNElements getNORETURNAccess() {
 		return pNORETURN;
@@ -8459,7 +8271,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Static_assert"                        { return STATIC_ASSERT; }
-	//STATIC_ASSERT:
+	// STATIC_ASSERT:
 	//	"_Static_assert";
 	public STATIC_ASSERTElements getSTATIC_ASSERTAccess() {
 		return pSTATIC_ASSERT;
@@ -8470,7 +8282,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"_Thread_local"                         { return THREAD_LOCAL; }
-	//THREAD_LOCAL:
+	// THREAD_LOCAL:
 	//	"_Thread_local";
 	public THREAD_LOCALElements getTHREAD_LOCALAccess() {
 		return pTHREAD_LOCAL;
@@ -8481,7 +8293,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	////"__func__"                              { return FUNC_NAME; }
-	//FUNC_NAME:
+	// FUNC_NAME:
 	//	"__func__";
 	public FUNC_NAMEElements getFUNC_NAMEAccess() {
 		return pFUNC_NAME;
@@ -8642,15 +8454,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal F_CONSTANT:
-	//	D+ E FS? | D* "." D+ E? FS? | D+ "." E? FS? | HP H+ P FS?
-	//	HP H* "." H+ P FS? | HP H+ "." P FS?;
+	//	D+ E FS? | D* "." D+ E? FS? | D+ "." E? FS? | HP H+ P FS? HP H* "." H+ P FS? | HP H+ "." P FS?;
 	public TerminalRule getF_CONSTANTRule() {
 		return tF_CONSTANT;
 	}
 	
 	//terminal I_CONSTANT:
-	//	HP H+ IS? | NZ D* IS? |
-	//	"0" O* IS? | CP? "'" (('^' | '\'' | '\\' | '\n') | ES)+ "'";
+	//	HP H+ IS? | NZ D* IS? | "0" O* IS? | CP? "'" (('^' | '\'' | '\\' | '\n') | ES)+ "'";
 	public TerminalRule getI_CONSTANTRule() {
 		return tI_CONSTANT;
 	}
@@ -8668,8 +8478,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' | "'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	}

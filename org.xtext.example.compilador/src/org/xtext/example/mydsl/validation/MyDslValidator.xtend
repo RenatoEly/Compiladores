@@ -4,9 +4,17 @@
 package org.xtext.example.mydsl.validation
 
 import org.eclipse.xtext.validation.Check
+
+
 import org.xtext.example.mydsl.myDsl.declaration
 import org.xtext.example.mydsl.myDsl.intType
 import org.xtext.example.mydsl.myDsl.MyDslPackage
+import org.xtext.example.mydsl.myDsl.simple_expression
+import org.eclipse.emf.ecore.EReference
+import org.xtext.example.mydsl.typing.ExpressionsTypeProvider
+import org.xtext.example.mydsl.typing.ExpressionsType
+import com.google.inject.Inject
+import org.xtext.example.mydsl.myDsl.ADD
 
 /**
  * This class contains custom validation rules. 
@@ -26,11 +34,66 @@ class MyDslValidator extends AbstractMyDslValidator {
 //		}
 //	}
 	
+	//@Check
+	//def checkGreetingStartsWithCapital(declaration dec) {
+	//	if (dec.declaration_specifiers.type_specifier.class != dec.init_declarator_list.init_declarator.initializer.assignment_expression.conditional_expression.simple_expression.class) {
+	//			error('Atribuição não está de acordo com o tipo da variável',
+	//				null);
+	//	}
+	//}
+/* */	
+
+@Inject extension ExpressionsTypeProvider
+	
 	@Check
-	def checkGreetingStartsWithCapital(declaration dec) {
-		if (dec.declaration_specifiers.type_specifier.class != dec.init_declarator_list.init_declarator.initializer.assignment_expression.conditional_expression.simple_expression.class) {
-				error('Atribuição não está de acordo com o tipo da variável',
-					null);
+	def checkType(ADD plus) {
+		
+		val leftType = getTypeAndCheckNotNull(plus.left,
+				null)
+		val rightType = getTypeAndCheckNotNull(plus.right,
+				null)
+		
+		if (leftType == ExpressionsTypeProvider::intType
+				|| rightType == ExpressionsTypeProvider::intType
+				|| (leftType != ExpressionsTypeProvider::stringType && 
+					rightType != ExpressionsTypeProvider::stringType
+				)) {
+					
+			checkNotBoolean(leftType, null)
+			checkNotBoolean(rightType, null)
 		}
 	}
+	
+	def private checkNotBoolean(ExpressionsType type, EReference reference) {
+		if (type == ExpressionsTypeProvider::boolType) {
+			error("cannot be boolean", reference, "deu.erro.com")
+		}
+	}
+	
+	
+	def private checkExpectedBoolean(simple_expression exp, EReference reference) {
+		checkExpectedType(exp, ExpressionsTypeProvider::boolType, reference)
+	}
+
+	def private checkExpectedInt(simple_expression exp, EReference reference) {
+		checkExpectedType(exp, ExpressionsTypeProvider::intType, reference)
+	}
+	
+	def private checkExpectedType(simple_expression exp,
+			ExpressionsType expectedType, EReference reference) {
+		val actualType = getTypeAndCheckNotNull(exp, reference)
+		if (actualType != expectedType)
+			error("expected " + expectedType + " type, but was " + actualType,
+					reference, "erro.deu.erro")
+	}
+	
+	def private ExpressionsType getTypeAndCheckNotNull(simple_expression exp,
+			EReference reference) {
+		var type = exp?.typeFor
+		if (type == null)
+			error("null type", reference, "erro.deu.erro")
+		return type;
+	}
+
+
 }

@@ -3497,9 +3497,9 @@ ruleinit_declarator returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getInit_declaratorAccess().getInitializerInitializerParserRuleCall_0_2_0());
+						newCompositeNode(grammarAccess.getInit_declaratorAccess().getInitializerSimple_expressionParserRuleCall_0_2_0());
 					}
-					lv_initializer_2_0=ruleinitializer
+					lv_initializer_2_0=rulesimple_expression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getInit_declaratorRule());
@@ -3508,7 +3508,7 @@ ruleinit_declarator returns [EObject current=null]
 							$current,
 							"initializer",
 							lv_initializer_2_0,
-							"org.xtext.example.mydsl.MyDsl.initializer");
+							"org.xtext.example.mydsl.MyDsl.simple_expression");
 						afterParserOrEnumRuleCall();
 					}
 				)

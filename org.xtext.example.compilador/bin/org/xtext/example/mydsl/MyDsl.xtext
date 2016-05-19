@@ -251,7 +251,7 @@ init_declarator_list2
 	;
 	
 init_declarator
-    : declarator=declarator '=' initializer=initializer
+    : declarator=declarator '=' initializer=simple_expression
     | declarator=declarator
     ;
 	

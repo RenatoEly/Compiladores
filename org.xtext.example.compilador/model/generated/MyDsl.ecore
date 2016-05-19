@@ -155,7 +155,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="init_declarator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="declarator" eType="#//declarator"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="initializer" eType="#//initializer"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initializer" eType="#//simple_expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="storage_class_specifier">

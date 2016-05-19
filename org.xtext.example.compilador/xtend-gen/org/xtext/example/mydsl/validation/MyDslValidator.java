@@ -4,16 +4,14 @@
 package org.xtext.example.mydsl.validation;
 
 import com.google.common.base.Objects;
+import com.google.inject.Inject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.validation.Check;
-import org.xtext.example.mydsl.myDsl.assignment_expression;
-import org.xtext.example.mydsl.myDsl.conditional_expression;
-import org.xtext.example.mydsl.myDsl.declaration;
-import org.xtext.example.mydsl.myDsl.declaration_specifiers;
-import org.xtext.example.mydsl.myDsl.init_declarator;
-import org.xtext.example.mydsl.myDsl.init_declarator_list;
-import org.xtext.example.mydsl.myDsl.initializer;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.xtext.example.mydsl.myDsl.ADD;
 import org.xtext.example.mydsl.myDsl.simple_expression;
-import org.xtext.example.mydsl.myDsl.type_specifier;
+import org.xtext.example.mydsl.typing.ExpressionsType;
+import org.xtext.example.mydsl.typing.ExpressionsTypeProvider;
 import org.xtext.example.mydsl.validation.AbstractMyDslValidator;
 
 /**
@@ -23,22 +21,79 @@ import org.xtext.example.mydsl.validation.AbstractMyDslValidator;
  */
 @SuppressWarnings("all")
 public class MyDslValidator extends AbstractMyDslValidator {
+  @Inject
+  @Extension
+  private ExpressionsTypeProvider _expressionsTypeProvider;
+  
   @Check
-  public void checkGreetingStartsWithCapital(final declaration dec) {
-    declaration_specifiers _declaration_specifiers = dec.getDeclaration_specifiers();
-    type_specifier _type_specifier = _declaration_specifiers.getType_specifier();
-    Class<? extends type_specifier> _class = _type_specifier.getClass();
-    init_declarator_list _init_declarator_list = dec.getInit_declarator_list();
-    init_declarator _init_declarator = _init_declarator_list.getInit_declarator();
-    initializer _initializer = _init_declarator.getInitializer();
-    assignment_expression _assignment_expression = _initializer.getAssignment_expression();
-    conditional_expression _conditional_expression = _assignment_expression.getConditional_expression();
-    simple_expression _simple_expression = _conditional_expression.getSimple_expression();
-    Class<? extends simple_expression> _class_1 = _simple_expression.getClass();
-    boolean _notEquals = (!Objects.equal(_class, _class_1));
-    if (_notEquals) {
-      this.error("Atribuição não está de acordo com o tipo da variável", 
-        null);
+  public void checkType(final ADD plus) {
+    simple_expression _left = plus.getLeft();
+    final ExpressionsType leftType = this.getTypeAndCheckNotNull(_left, 
+      null);
+    simple_expression _right = plus.getRight();
+    final ExpressionsType rightType = this.getTypeAndCheckNotNull(_right, 
+      null);
+    boolean _or = false;
+    boolean _or_1 = false;
+    boolean _equals = Objects.equal(leftType, ExpressionsTypeProvider.intType);
+    if (_equals) {
+      _or_1 = true;
+    } else {
+      boolean _equals_1 = Objects.equal(rightType, ExpressionsTypeProvider.intType);
+      _or_1 = _equals_1;
     }
+    if (_or_1) {
+      _or = true;
+    } else {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(leftType, ExpressionsTypeProvider.stringType));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        boolean _notEquals_1 = (!Objects.equal(rightType, ExpressionsTypeProvider.stringType));
+        _and = _notEquals_1;
+      }
+      _or = _and;
+    }
+    if (_or) {
+      this.checkNotBoolean(leftType, null);
+      this.checkNotBoolean(rightType, null);
+    }
+  }
+  
+  private void checkNotBoolean(final ExpressionsType type, final EReference reference) {
+    boolean _equals = Objects.equal(type, ExpressionsTypeProvider.boolType);
+    if (_equals) {
+      this.error("cannot be boolean", reference, "deu.erro.com");
+    }
+  }
+  
+  private void checkExpectedBoolean(final simple_expression exp, final EReference reference) {
+    this.checkExpectedType(exp, ExpressionsTypeProvider.boolType, reference);
+  }
+  
+  private void checkExpectedInt(final simple_expression exp, final EReference reference) {
+    this.checkExpectedType(exp, ExpressionsTypeProvider.intType, reference);
+  }
+  
+  private void checkExpectedType(final simple_expression exp, final ExpressionsType expectedType, final EReference reference) {
+    final ExpressionsType actualType = this.getTypeAndCheckNotNull(exp, reference);
+    boolean _notEquals = (!Objects.equal(actualType, expectedType));
+    if (_notEquals) {
+      this.error(((("expected " + expectedType) + " type, but was ") + actualType), reference, "erro.deu.erro");
+    }
+  }
+  
+  private ExpressionsType getTypeAndCheckNotNull(final simple_expression exp, final EReference reference) {
+    ExpressionsType _typeFor = null;
+    if (exp!=null) {
+      _typeFor=this._expressionsTypeProvider.typeFor(exp);
+    }
+    ExpressionsType type = _typeFor;
+    boolean _equals = Objects.equal(type, null);
+    if (_equals) {
+      this.error("null type", reference, "erro.deu.erro");
+    }
+    return type;
   }
 }
