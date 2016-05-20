@@ -63,12 +63,12 @@ public interface selection_statement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(expression)
+   * @see #setExpression(simple_expression)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getselection_statement_Expression()
    * @model containment="true"
    * @generated
    */
-  expression getExpression();
+  simple_expression getExpression();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.selection_statement#getExpression <em>Expression</em>}' containment reference.
@@ -78,7 +78,7 @@ public interface selection_statement extends EObject
    * @see #getExpression()
    * @generated
    */
-  void setExpression(expression value);
+  void setExpression(simple_expression value);
 
   /**
    * Returns the value of the '<em><b>Statement</b></em>' containment reference.

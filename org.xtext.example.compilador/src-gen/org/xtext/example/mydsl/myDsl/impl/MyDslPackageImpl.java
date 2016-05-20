@@ -2590,9 +2590,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getdirect_declarator2_Declarators()
+  {
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getdirect_declarator2_Static()
   {
-    return (EAttribute)direct_declarator2EClass.getEStructuralFeatures().get(0);
+    return (EAttribute)direct_declarator2EClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2602,7 +2612,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Type_qualifier_list()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(1);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2612,7 +2622,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Assignment_expression()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(2);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2622,7 +2632,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Parameter_type_list()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(3);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -2632,7 +2642,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getdirect_declarator2_Identifier_list()
   {
-    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(4);
+    return (EReference)direct_declarator2EClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -3910,9 +3920,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getvariableRef_Variable()
+  public EAttribute getvariableRef_Variable()
   {
-    return (EReference)variableRefEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variableRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -4817,6 +4827,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(direct_declaratorEClass, DIRECT_DECLARATOR__DECLARATOR);
 
     direct_declarator2EClass = createEClass(DIRECT_DECLARATOR2);
+    createEReference(direct_declarator2EClass, DIRECT_DECLARATOR2__DECLARATORS);
     createEAttribute(direct_declarator2EClass, DIRECT_DECLARATOR2__STATIC);
     createEReference(direct_declarator2EClass, DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST);
     createEReference(direct_declarator2EClass, DIRECT_DECLARATOR2__ASSIGNMENT_EXPRESSION);
@@ -4984,7 +4995,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(declaration_list2EClass, DECLARATION_LIST2__DECLARATION_LIST2);
 
     variableRefEClass = createEClass(VARIABLE_REF);
-    createEReference(variableRefEClass, VARIABLE_REF__VARIABLE);
+    createEAttribute(variableRefEClass, VARIABLE_REF__VARIABLE);
 
     intTypeEClass = createEClass(INT_TYPE);
     createEAttribute(intTypeEClass, INT_TYPE__VALUE);
@@ -5348,10 +5359,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(direct_declaratorEClass, direct_declarator.class, "direct_declarator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getdirect_declarator_Name(), ecorePackage.getEString(), "name", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getdirect_declarator_Direct_declarators(), this.getdirect_declarator2(), null, "direct_declarators", null, 0, -1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getdirect_declarator_Direct_declarators(), this.getdirect_declarator2(), null, "direct_declarators", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_declarator_Declarator(), this.getdeclarator(), null, "Declarator", null, 0, 1, direct_declarator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(direct_declarator2EClass, direct_declarator2.class, "direct_declarator2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getdirect_declarator2_Declarators(), this.getdirect_declarator2(), null, "declarators", null, 0, -1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getdirect_declarator2_Static(), ecorePackage.getEString(), "static", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_declarator2_Type_qualifier_list(), this.gettype_qualifier_list(), null, "type_qualifier_list", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getdirect_declarator2_Assignment_expression(), this.getassignment_expression(), null, "assignment_expression", null, 0, 1, direct_declarator2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5473,7 +5485,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(selection_statementEClass, selection_statement.class, "selection_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getselection_statement_If(), ecorePackage.getEString(), "if", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getselection_statement_Expression(), this.getexpression(), null, "expression", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getselection_statement_Expression(), this.getsimple_expression(), null, "expression", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getselection_statement_Statement(), this.getstatement(), null, "statement", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getselection_statement_Else(), ecorePackage.getEString(), "else", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getselection_statement_Statement2(), this.getstatement(), null, "statement2", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5481,7 +5493,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(iteration_statementEClass, iteration_statement.class, "iteration_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getiteration_statement_While(), ecorePackage.getEString(), "while", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getiteration_statement_Expression(), this.getexpression(), null, "expression", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getiteration_statement_Expression(), ecorePackage.getEObject(), null, "expression", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getiteration_statement_Statement(), this.getstatement(), null, "statement", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getiteration_statement_Do(), ecorePackage.getEString(), "do", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getiteration_statement_For(), ecorePackage.getEString(), "for", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5519,7 +5531,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getdeclaration_list2_Declaration_list2(), this.getdeclaration_list2(), null, "declaration_list2", null, 0, 1, declaration_list2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableRefEClass, variableRef.class, "variableRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getvariableRef_Variable(), this.getdirect_declarator(), null, "variable", null, 0, 1, variableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getvariableRef_Variable(), ecorePackage.getEString(), "variable", null, 0, 1, variableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intTypeEClass, intType.class, "intType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getintType_Value(), ecorePackage.getEString(), "value", null, 0, 1, intType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

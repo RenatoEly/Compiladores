@@ -15,7 +15,7 @@ primary_expression returns simple_expression
     ;
     
 atomic2 returns simple_expression
-    : {variableRef} variable=[direct_declarator]
+    : {variableRef} variable=ID
     | {intType} value=I_CONSTANT
     | {floatType} value=F_CONSTANT
     | {stringType} value=string_nova
@@ -72,7 +72,7 @@ argument_expression_list
     : assignment_expression=assignment_expression (',' list+=assignment_expression)*
     ;
 
-//não vou considerar na análise semântica
+
 unary_expression
     : postfix_expression=postfix_expression
     | inc_op=INC_OP unary_expression=unary_expression
@@ -190,11 +190,11 @@ assignment_operator
     ;
 
 expression
-    : assignment_expression=assignment_expression expression2=expression2
+    : assignment_expression=assignment_expression (expression2=expression2)?
     ;
     
 expression2
-	: {expression2}(',' assignment_expression=assignment_expression expression2=expression2)?
+	: {expression2}(',' assignment_expression=assignment_expression expression2=expression2)
 	;
 
 constant_expression
@@ -243,11 +243,11 @@ declaration_specifiers
     ;
 	
 init_declarator_list
-    : init_declarator=init_declarator init_declarator_list2=init_declarator_list2
+    : init_declarator=init_declarator (init_declarator_list2=init_declarator_list2)?
     ;
 
 init_declarator_list2
-	: {init_declarator_list2}(',' init_declarator=init_declarator init_declarator_list2=init_declarator_list2)?
+	: {init_declarator_list2}(',' init_declarator=init_declarator init_declarator_list2=init_declarator_list2)
 	;
 	
 init_declarator
@@ -379,23 +379,23 @@ declarator
     ;
 
 direct_declarator
-	:name=ID direct_declarators+=direct_declarator2* 
-	|'(' Declarator=declarator ')' direct_declarators+=direct_declarator2* 
+	:name=ID (direct_declarators=direct_declarator2)? 
+	|'(' Declarator=declarator ')' (direct_declarators=direct_declarator2)? 
 ;
 
 direct_declarator2
-	: '[' ']'
-	| '[' '*' ']'
-	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-	| '[' static=STATIC assignment_expression=assignment_expression ']'
-	| '[' type_qualifier_list=type_qualifier_list '*' ']'
-	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']'
-	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']'
-	| '[' type_qualifier_list=type_qualifier_list ']'
-	| '[' assignment_expression=assignment_expression ']'
-	| '(' parameter_type_list=parameter_type_list ')'
-	| '(' ')'
-	| '(' identifier_list=identifier_list ')'
+	: '[' ']' (declarators += direct_declarator2)*
+	| '[' '*' ']'(declarators += direct_declarator2)*
+	| '[' static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' (declarators += direct_declarator2)*
+	| '[' static=STATIC assignment_expression=assignment_expression ']' (declarators += direct_declarator2)*
+	| '[' type_qualifier_list=type_qualifier_list '*' ']' (declarators += direct_declarator2)*
+	| '[' type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression ']' (declarators += direct_declarator2)*
+	| '[' type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression ']' (declarators += direct_declarator2)*
+	| '[' type_qualifier_list=type_qualifier_list ']' (declarators += direct_declarator2)*
+	| '[' assignment_expression=assignment_expression ']' (declarators += direct_declarator2)*
+	| '(' parameter_type_list=parameter_type_list ')' (declarators += direct_declarator2)*
+	| '(' ')' (declarators += direct_declarator2)*
+	| '(' identifier_list=identifier_list ')' (declarators += direct_declarator2)*
 	;
 
 	
@@ -530,7 +530,7 @@ labeled_statement
  */
 compound_statement
 	: '{' '}' 
-	| '{' block_item_list+=block_item* '}'
+	| '{' block_item_list+=block_item+ '}'
 	;
 
 block_item
@@ -544,14 +544,14 @@ expression_statement
 	;
 
 selection_statement
-	: if=IF '(' expression=expression ')' statement=statement else=ELSE statement2=statement 
-	| if=IF '(' expression=expression ')' statement=statement 
-	| switch=SWITCH '(' expression=expression ')'statement=statement
+	: if=IF '(' expression=simple_expression ')' statement=statement else=ELSE statement2=statement 
+	| if=IF '(' expression=simple_expression')' statement=statement 
+	| switch=SWITCH '(' expression=simple_expression ')'statement=statement
 	;
 
 iteration_statement
-	: while=WHILE '(' expression=expression ')' statement=statement
-	| do=DO statement=statement while=WHILE '(' expression=expression ')' ';' 
+	: while=WHILE '(' expression=simple_expression ')' statement=statement
+	| do=DO statement=statement while=WHILE '(' expression=simple_expression ')' ';' 
 	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement ')' statement=statement
 	| for=FOR '(' expression_statement=expression_statement expression_statement2=expression_statement expression=expression ')' statement=statement
 	| for=FOR '(' declaration=declaration expression_statement=expression_statement ')' statement=statement

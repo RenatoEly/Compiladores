@@ -3,8 +3,6 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -54,20 +52,30 @@ public interface direct_declarator extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Direct declarators</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.direct_declarator2}.
+   * Returns the value of the '<em><b>Direct declarators</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Direct declarators</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Direct declarators</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Direct declarators</em>' containment reference list.
+   * @return the value of the '<em>Direct declarators</em>' containment reference.
+   * @see #setDirect_declarators(direct_declarator2)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getdirect_declarator_Direct_declarators()
    * @model containment="true"
    * @generated
    */
-  EList<direct_declarator2> getDirect_declarators();
+  direct_declarator2 getDirect_declarators();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarators <em>Direct declarators</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Direct declarators</em>' containment reference.
+   * @see #getDirect_declarators()
+   * @generated
+   */
+  void setDirect_declarators(direct_declarator2 value);
 
   /**
    * Returns the value of the '<em><b>Declarator</b></em>' containment reference.

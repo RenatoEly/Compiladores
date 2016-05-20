@@ -82,6 +82,7 @@ public class MyDslValidator extends AbstractMyDslValidator {
       ExpressionsType expressiontype = this.getTypeAndCheckNotNull(_initializer, null);
       boolean _notEquals_1 = (!Objects.equal(tipo, expressiontype));
       if (_notEquals_1) {
+        boolean _or = false;
         boolean _and = false;
         boolean _equals = Objects.equal(tipo, ExpressionsTypeProvider.floatType);
         if (!_equals) {
@@ -91,10 +92,24 @@ public class MyDslValidator extends AbstractMyDslValidator {
           boolean _equals_1 = Objects.equal(_typeFor, ExpressionsTypeProvider.intType);
           _and = _equals_1;
         }
-        boolean _not = (!_and);
-        if (_not) {
-          this.error("Tipo da expressão é diferente do tipo da variável", null);
+        if (_and) {
+          _or = true;
+        } else {
+          boolean _and_1 = false;
+          boolean _equals_2 = Objects.equal(tipo, ExpressionsTypeProvider.boolType);
+          if (!_equals_2) {
+            _and_1 = false;
+          } else {
+            ExpressionsType _typeFor_1 = this._expressionsTypeProvider.typeFor(expression);
+            boolean _equals_3 = Objects.equal(_typeFor_1, ExpressionsTypeProvider.intType);
+            _and_1 = _equals_3;
+          }
+          _or = _and_1;
         }
+        if (_or) {
+          return;
+        }
+        this.error("Tipo da expressão é diferente do tipo da variável", null);
       }
     }
   }

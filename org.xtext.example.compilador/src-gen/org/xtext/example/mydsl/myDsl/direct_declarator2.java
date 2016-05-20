@@ -3,6 +3,8 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator2#getDeclarators <em>Declarators</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator2#getStatic <em>Static</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator2#getType_qualifier_list <em>Type qualifier list</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.direct_declarator2#getAssignment_expression <em>Assignment expression</em>}</li>
@@ -27,6 +30,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface direct_declarator2 extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Declarators</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.direct_declarator2}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Declarators</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Declarators</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getdirect_declarator2_Declarators()
+   * @model containment="true"
+   * @generated
+   */
+  EList<direct_declarator2> getDeclarators();
+
   /**
    * Returns the value of the '<em><b>Static</b></em>' attribute.
    * <!-- begin-user-doc -->

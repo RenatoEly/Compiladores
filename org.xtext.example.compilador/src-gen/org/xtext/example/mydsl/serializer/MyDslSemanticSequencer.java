@@ -947,7 +947,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     simple_expression returns variableRef
 	 *
 	 * Constraint:
-	 *     variable=[direct_declarator|ID]
+	 *     variable=ID
 	 */
 	protected void sequence_atomic2(ISerializationContext context, variableRef semanticObject) {
 		if (errorAcceptor != null) {
@@ -955,7 +955,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.VARIABLE_REF__VARIABLE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomic2Access().getVariableDirect_declaratorIDTerminalRuleCall_0_1_0_1(), semanticObject.getVariable());
+		feeder.accept(grammarAccess.getAtomic2Access().getVariableIDTerminalRuleCall_0_1_0(), semanticObject.getVariable());
 		feeder.finish();
 	}
 	
@@ -1256,15 +1256,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *
 	 * Constraint:
 	 *     (
-	 *         (static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression) | 
-	 *         (static=STATIC assignment_expression=assignment_expression) | 
-	 *         type_qualifier_list=type_qualifier_list | 
-	 *         (type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression) | 
-	 *         (type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression) | 
-	 *         type_qualifier_list=type_qualifier_list | 
-	 *         assignment_expression=assignment_expression | 
-	 *         parameter_type_list=parameter_type_list | 
-	 *         identifier_list=identifier_list
+	 *         declarators+=direct_declarator2+ | 
+	 *         declarators+=direct_declarator2+ | 
+	 *         (static=STATIC type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression declarators+=direct_declarator2*) | 
+	 *         (static=STATIC assignment_expression=assignment_expression declarators+=direct_declarator2*) | 
+	 *         (type_qualifier_list=type_qualifier_list declarators+=direct_declarator2*) | 
+	 *         (type_qualifier_list=type_qualifier_list static=STATIC assignment_expression=assignment_expression declarators+=direct_declarator2*) | 
+	 *         (type_qualifier_list=type_qualifier_list assignment_expression=assignment_expression declarators+=direct_declarator2*) | 
+	 *         (type_qualifier_list=type_qualifier_list declarators+=direct_declarator2*) | 
+	 *         (assignment_expression=assignment_expression declarators+=direct_declarator2*) | 
+	 *         (parameter_type_list=parameter_type_list declarators+=direct_declarator2*) | 
+	 *         declarators+=direct_declarator2+ | 
+	 *         (identifier_list=identifier_list declarators+=direct_declarator2*)
 	 *     )
 	 */
 	protected void sequence_direct_declarator2(ISerializationContext context, direct_declarator2 semanticObject) {
@@ -1277,7 +1280,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     direct_declarator returns direct_declarator
 	 *
 	 * Constraint:
-	 *     ((name=ID direct_declarators+=direct_declarator2*) | (Declarator=declarator direct_declarators+=direct_declarator2*))
+	 *     ((name=ID direct_declarators=direct_declarator2?) | (Declarator=declarator direct_declarators=direct_declarator2?))
 	 */
 	protected void sequence_direct_declarator(ISerializationContext context, direct_declarator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1456,10 +1459,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     expression2 returns expression2
 	 *
 	 * Constraint:
-	 *     (assignment_expression=assignment_expression expression2=expression2)?
+	 *     (assignment_expression=assignment_expression expression2=expression2)
 	 */
 	protected void sequence_expression2(ISerializationContext context, expression2 semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.EXPRESSION2__ASSIGNMENT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.EXPRESSION2__ASSIGNMENT_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.EXPRESSION2__EXPRESSION2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.EXPRESSION2__EXPRESSION2));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpression2Access().getAssignment_expressionAssignment_expressionParserRuleCall_1_1_0(), semanticObject.getAssignment_expression());
+		feeder.accept(grammarAccess.getExpression2Access().getExpression2Expression2ParserRuleCall_1_2_0(), semanticObject.getExpression2());
+		feeder.finish();
 	}
 	
 	
@@ -1469,19 +1481,10 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     expression returns expression
 	 *
 	 * Constraint:
-	 *     (assignment_expression=assignment_expression expression2=expression2)
+	 *     (assignment_expression=assignment_expression expression2=expression2?)
 	 */
 	protected void sequence_expression(ISerializationContext context, expression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.POSTFIX_EXPRESSION2__ASSIGNMENT_EXPRESSION));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.EXPRESSION__EXPRESSION2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.EXPRESSION__EXPRESSION2));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getAssignment_expressionAssignment_expressionParserRuleCall_0_0(), semanticObject.getAssignment_expression());
-		feeder.accept(grammarAccess.getExpressionAccess().getExpression2Expression2ParserRuleCall_1_0(), semanticObject.getExpression2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1683,10 +1686,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     init_declarator_list2 returns init_declarator_list2
 	 *
 	 * Constraint:
-	 *     (init_declarator=init_declarator init_declarator_list2=init_declarator_list2)?
+	 *     (init_declarator=init_declarator init_declarator_list2=init_declarator_list2)
 	 */
 	protected void sequence_init_declarator_list2(ISerializationContext context, init_declarator_list2 semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST2__INIT_DECLARATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST2__INIT_DECLARATOR));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST2__INIT_DECLARATOR_LIST2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST2__INIT_DECLARATOR_LIST2));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInit_declarator_list2Access().getInit_declaratorInit_declaratorParserRuleCall_1_1_0(), semanticObject.getInit_declarator());
+		feeder.accept(grammarAccess.getInit_declarator_list2Access().getInit_declarator_list2Init_declarator_list2ParserRuleCall_1_2_0(), semanticObject.getInit_declarator_list2());
+		feeder.finish();
 	}
 	
 	
@@ -1695,19 +1707,10 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     init_declarator_list returns init_declarator_list
 	 *
 	 * Constraint:
-	 *     (init_declarator=init_declarator init_declarator_list2=init_declarator_list2)
+	 *     (init_declarator=init_declarator init_declarator_list2=init_declarator_list2?)
 	 */
 	protected void sequence_init_declarator_list(ISerializationContext context, init_declarator_list semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST__INIT_DECLARATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST__INIT_DECLARATOR));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST__INIT_DECLARATOR_LIST2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.INIT_DECLARATOR_LIST__INIT_DECLARATOR_LIST2));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getInit_declarator_listAccess().getInit_declaratorInit_declaratorParserRuleCall_0_0(), semanticObject.getInit_declarator());
-		feeder.accept(grammarAccess.getInit_declarator_listAccess().getInit_declarator_list2Init_declarator_list2ParserRuleCall_1_0(), semanticObject.getInit_declarator_list2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1759,8 +1762,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *
 	 * Constraint:
 	 *     (
-	 *         (while=WHILE expression=expression statement=statement) | 
-	 *         (do=DO statement=statement while=WHILE expression=expression) | 
+	 *         (while=WHILE expression=simple_expression statement=statement) | 
+	 *         (do=DO statement=statement while=WHILE expression=simple_expression) | 
 	 *         (for=FOR expression_statement=expression_statement expression_statement2=expression_statement statement=statement) | 
 	 *         (for=FOR expression_statement=expression_statement expression_statement2=expression_statement expression=expression statement=statement) | 
 	 *         (for=FOR declaration=declaration expression_statement=expression_statement statement=statement) | 
@@ -2073,9 +2076,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *
 	 * Constraint:
 	 *     (
-	 *         (if=IF expression=expression statement=statement else=ELSE statement2=statement) | 
-	 *         (if=IF expression=expression statement=statement) | 
-	 *         (switch=SWITCH expression=expression statement=statement)
+	 *         (if=IF expression=simple_expression statement=statement else=ELSE statement2=statement) | 
+	 *         (if=IF expression=simple_expression statement=statement) | 
+	 *         (switch=SWITCH expression=simple_expression statement=statement)
 	 *     )
 	 */
 	protected void sequence_selection_statement(ISerializationContext context, selection_statement semanticObject) {

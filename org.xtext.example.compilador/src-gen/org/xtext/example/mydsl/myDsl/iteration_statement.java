@@ -65,12 +65,12 @@ public interface iteration_statement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(expression)
+   * @see #setExpression(EObject)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getiteration_statement_Expression()
    * @model containment="true"
    * @generated
    */
-  expression getExpression();
+  EObject getExpression();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.iteration_statement#getExpression <em>Expression</em>}' containment reference.
@@ -80,7 +80,7 @@ public interface iteration_statement extends EObject
    * @see #getExpression()
    * @generated
    */
-  void setExpression(expression value);
+  void setExpression(EObject value);
 
   /**
    * Returns the value of the '<em><b>Statement</b></em>' containment reference.

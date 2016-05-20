@@ -68,8 +68,12 @@ class MyDslValidator extends AbstractMyDslValidator {
 		if (expression != null){
 			var expressiontype = getTypeAndCheckNotNull(dec.init_declarator_list.init_declarator.initializer,null)
 			if (tipo != expressiontype){
-				if(!(tipo == ExpressionsTypeProvider::floatType && expression.typeFor == ExpressionsTypeProvider::intType))
+				if(tipo == ExpressionsTypeProvider::floatType && expression.typeFor == ExpressionsTypeProvider::intType
+					|| tipo == ExpressionsTypeProvider::boolType && expression.typeFor == ExpressionsTypeProvider::intType
+				) return;
+			
 				error("Tipo da expressão é diferente do tipo da variável", null)
+				
 			}
 		}
 	}

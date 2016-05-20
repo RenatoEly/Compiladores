@@ -218,6 +218,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//direct_declarator/Declarator"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//direct_declarator2">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//direct_declarator2/declarators"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//direct_declarator2/static"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//direct_declarator2/type_qualifier_list"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//direct_declarator2/assignment_expression"/>
@@ -385,7 +386,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//declaration_list2/declaration_list2"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//variableRef">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//variableRef/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//variableRef/variable"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//intType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//intType/value"/>

@@ -286,12 +286,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="direct_declarator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="direct_declarators" upperBound="-1"
-        eType="#//direct_declarator2" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="direct_declarators" eType="#//direct_declarator2"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Declarator" eType="#//declarator"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="direct_declarator2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarators" upperBound="-1"
+        eType="#//direct_declarator2" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="static" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type_qualifier_list" eType="#//type_qualifier_list"
         containment="true"/>
@@ -468,7 +470,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="selection_statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="if" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//simple_expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="#//statement"
         containment="true"/>
@@ -479,7 +481,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="iteration_statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="while" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="#//statement"
         containment="true"/>
@@ -534,7 +536,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="variableRef" eSuperTypes="#//simple_expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//direct_declarator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="intType" eSuperTypes="#//simple_expression #//type_specifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

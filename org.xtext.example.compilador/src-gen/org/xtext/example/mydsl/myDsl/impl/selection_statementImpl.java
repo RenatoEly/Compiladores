@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.selection_statement;
+import org.xtext.example.mydsl.myDsl.simple_expression;
 import org.xtext.example.mydsl.myDsl.statement;
 
 /**
@@ -65,7 +65,7 @@ public class selection_statementImpl extends MinimalEObjectImpl.Container implem
    * @generated
    * @ordered
    */
-  protected expression expression;
+  protected simple_expression expression;
 
   /**
    * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
@@ -176,7 +176,7 @@ public class selection_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public expression getExpression()
+  public simple_expression getExpression()
   {
     return expression;
   }
@@ -186,9 +186,9 @@ public class selection_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(expression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(simple_expression newExpression, NotificationChain msgs)
   {
-    expression oldExpression = expression;
+    simple_expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -203,7 +203,7 @@ public class selection_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(expression newExpression)
+  public void setExpression(simple_expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -421,7 +421,7 @@ public class selection_statementImpl extends MinimalEObjectImpl.Container implem
         setIf((String)newValue);
         return;
       case MyDslPackage.SELECTION_STATEMENT__EXPRESSION:
-        setExpression((expression)newValue);
+        setExpression((simple_expression)newValue);
         return;
       case MyDslPackage.SELECTION_STATEMENT__STATEMENT:
         setStatement((statement)newValue);
@@ -453,7 +453,7 @@ public class selection_statementImpl extends MinimalEObjectImpl.Container implem
         setIf(IF_EDEFAULT);
         return;
       case MyDslPackage.SELECTION_STATEMENT__EXPRESSION:
-        setExpression((expression)null);
+        setExpression((simple_expression)null);
         return;
       case MyDslPackage.SELECTION_STATEMENT__STATEMENT:
         setStatement((statement)null);

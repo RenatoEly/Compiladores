@@ -2037,7 +2037,7 @@ public interface MyDslPackage extends EPackage
   int DIRECT_DECLARATOR__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Direct declarators</b></em>' containment reference list.
+   * The feature id for the '<em><b>Direct declarators</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2074,13 +2074,22 @@ public interface MyDslPackage extends EPackage
   int DIRECT_DECLARATOR2 = 44;
 
   /**
+   * The feature id for the '<em><b>Declarators</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIRECT_DECLARATOR2__DECLARATORS = 0;
+
+  /**
    * The feature id for the '<em><b>Static</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DIRECT_DECLARATOR2__STATIC = 0;
+  int DIRECT_DECLARATOR2__STATIC = 1;
 
   /**
    * The feature id for the '<em><b>Type qualifier list</b></em>' containment reference.
@@ -2089,7 +2098,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST = 1;
+  int DIRECT_DECLARATOR2__TYPE_QUALIFIER_LIST = 2;
 
   /**
    * The feature id for the '<em><b>Assignment expression</b></em>' containment reference.
@@ -2098,7 +2107,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIRECT_DECLARATOR2__ASSIGNMENT_EXPRESSION = 2;
+  int DIRECT_DECLARATOR2__ASSIGNMENT_EXPRESSION = 3;
 
   /**
    * The feature id for the '<em><b>Parameter type list</b></em>' containment reference.
@@ -2107,7 +2116,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIRECT_DECLARATOR2__PARAMETER_TYPE_LIST = 3;
+  int DIRECT_DECLARATOR2__PARAMETER_TYPE_LIST = 4;
 
   /**
    * The feature id for the '<em><b>Identifier list</b></em>' containment reference.
@@ -2116,7 +2125,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIRECT_DECLARATOR2__IDENTIFIER_LIST = 4;
+  int DIRECT_DECLARATOR2__IDENTIFIER_LIST = 5;
 
   /**
    * The number of structural features of the '<em>direct declarator2</em>' class.
@@ -2125,7 +2134,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIRECT_DECLARATOR2_FEATURE_COUNT = 5;
+  int DIRECT_DECLARATOR2_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.pointerImpl <em>pointer</em>}' class.
@@ -3630,7 +3639,7 @@ public interface MyDslPackage extends EPackage
   int VARIABLE_REF__CAST_EXPRESSION = SIMPLE_EXPRESSION__CAST_EXPRESSION;
 
   /**
-   * The feature id for the '<em><b>Variable</b></em>' reference.
+   * The feature id for the '<em><b>Variable</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -6956,10 +6965,10 @@ public interface MyDslPackage extends EPackage
   EAttribute getdirect_declarator_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarators <em>Direct declarators</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarators <em>Direct declarators</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Direct declarators</em>'.
+   * @return the meta object for the containment reference '<em>Direct declarators</em>'.
    * @see org.xtext.example.mydsl.myDsl.direct_declarator#getDirect_declarators()
    * @see #getdirect_declarator()
    * @generated
@@ -6986,6 +6995,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getdirect_declarator2();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.direct_declarator2#getDeclarators <em>Declarators</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Declarators</em>'.
+   * @see org.xtext.example.mydsl.myDsl.direct_declarator2#getDeclarators()
+   * @see #getdirect_declarator2()
+   * @generated
+   */
+  EReference getdirect_declarator2_Declarators();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.direct_declarator2#getStatic <em>Static</em>}'.
@@ -8405,15 +8425,15 @@ public interface MyDslPackage extends EPackage
   EClass getvariableRef();
 
   /**
-   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.myDsl.variableRef#getVariable <em>Variable</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.variableRef#getVariable <em>Variable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Variable</em>'.
+   * @return the meta object for the attribute '<em>Variable</em>'.
    * @see org.xtext.example.mydsl.myDsl.variableRef#getVariable()
    * @see #getvariableRef()
    * @generated
    */
-  EReference getvariableRef_Variable();
+  EAttribute getvariableRef_Variable();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.intType <em>int Type</em>}'.
@@ -10549,7 +10569,7 @@ public interface MyDslPackage extends EPackage
     EAttribute DIRECT_DECLARATOR__NAME = eINSTANCE.getdirect_declarator_Name();
 
     /**
-     * The meta object literal for the '<em><b>Direct declarators</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Direct declarators</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -10573,6 +10593,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass DIRECT_DECLARATOR2 = eINSTANCE.getdirect_declarator2();
+
+    /**
+     * The meta object literal for the '<em><b>Declarators</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DIRECT_DECLARATOR2__DECLARATORS = eINSTANCE.getdirect_declarator2_Declarators();
 
     /**
      * The meta object literal for the '<em><b>Static</b></em>' attribute feature.
@@ -11701,12 +11729,12 @@ public interface MyDslPackage extends EPackage
     EClass VARIABLE_REF = eINSTANCE.getvariableRef();
 
     /**
-     * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VARIABLE_REF__VARIABLE = eINSTANCE.getvariableRef_Variable();
+    EAttribute VARIABLE_REF__VARIABLE = eINSTANCE.getvariableRef_Variable();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.intTypeImpl <em>int Type</em>}' class.

@@ -6,12 +6,10 @@ package org.xtext.example.mydsl.myDsl.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.direct_declarator;
 import org.xtext.example.mydsl.myDsl.variableRef;
 
 /**
@@ -30,14 +28,24 @@ import org.xtext.example.mydsl.myDsl.variableRef;
 public class variableRefImpl extends simple_expressionImpl implements variableRef
 {
   /**
-   * The cached value of the '{@link #getVariable() <em>Variable</em>}' reference.
+   * The default value of the '{@link #getVariable() <em>Variable</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVariable()
    * @generated
    * @ordered
    */
-  protected direct_declarator variable;
+  protected static final String VARIABLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVariable() <em>Variable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVariable()
+   * @generated
+   * @ordered
+   */
+  protected String variable = VARIABLE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,27 +73,7 @@ public class variableRefImpl extends simple_expressionImpl implements variableRe
    * <!-- end-user-doc -->
    * @generated
    */
-  public direct_declarator getVariable()
-  {
-    if (variable != null && variable.eIsProxy())
-    {
-      InternalEObject oldVariable = (InternalEObject)variable;
-      variable = (direct_declarator)eResolveProxy(oldVariable);
-      if (variable != oldVariable)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MyDslPackage.VARIABLE_REF__VARIABLE, oldVariable, variable));
-      }
-    }
-    return variable;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public direct_declarator basicGetVariable()
+  public String getVariable()
   {
     return variable;
   }
@@ -95,9 +83,9 @@ public class variableRefImpl extends simple_expressionImpl implements variableRe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVariable(direct_declarator newVariable)
+  public void setVariable(String newVariable)
   {
-    direct_declarator oldVariable = variable;
+    String oldVariable = variable;
     variable = newVariable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.VARIABLE_REF__VARIABLE, oldVariable, variable));
@@ -114,8 +102,7 @@ public class variableRefImpl extends simple_expressionImpl implements variableRe
     switch (featureID)
     {
       case MyDslPackage.VARIABLE_REF__VARIABLE:
-        if (resolve) return getVariable();
-        return basicGetVariable();
+        return getVariable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -131,7 +118,7 @@ public class variableRefImpl extends simple_expressionImpl implements variableRe
     switch (featureID)
     {
       case MyDslPackage.VARIABLE_REF__VARIABLE:
-        setVariable((direct_declarator)newValue);
+        setVariable((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -148,7 +135,7 @@ public class variableRefImpl extends simple_expressionImpl implements variableRe
     switch (featureID)
     {
       case MyDslPackage.VARIABLE_REF__VARIABLE:
-        setVariable((direct_declarator)null);
+        setVariable(VARIABLE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -165,9 +152,26 @@ public class variableRefImpl extends simple_expressionImpl implements variableRe
     switch (featureID)
     {
       case MyDslPackage.VARIABLE_REF__VARIABLE:
-        return variable != null;
+        return VARIABLE_EDEFAULT == null ? variable != null : !VARIABLE_EDEFAULT.equals(variable);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (variable: ");
+    result.append(variable);
+    result.append(')');
+    return result.toString();
   }
 
 } //variableRefImpl

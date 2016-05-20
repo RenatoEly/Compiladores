@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -14,7 +15,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.declaration;
-import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expression_statement;
 import org.xtext.example.mydsl.myDsl.iteration_statement;
 import org.xtext.example.mydsl.myDsl.statement;
@@ -69,7 +69,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * @generated
    * @ordered
    */
-  protected expression expression;
+  protected EObject expression;
 
   /**
    * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
@@ -200,7 +200,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public expression getExpression()
+  public EObject getExpression()
   {
     return expression;
   }
@@ -210,9 +210,9 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(expression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(EObject newExpression, NotificationChain msgs)
   {
-    expression oldExpression = expression;
+    EObject oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -227,7 +227,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(expression newExpression)
+  public void setExpression(EObject newExpression)
   {
     if (newExpression != expression)
     {
@@ -549,7 +549,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
         setWhile((String)newValue);
         return;
       case MyDslPackage.ITERATION_STATEMENT__EXPRESSION:
-        setExpression((expression)newValue);
+        setExpression((EObject)newValue);
         return;
       case MyDslPackage.ITERATION_STATEMENT__STATEMENT:
         setStatement((statement)newValue);
@@ -587,7 +587,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
         setWhile(WHILE_EDEFAULT);
         return;
       case MyDslPackage.ITERATION_STATEMENT__EXPRESSION:
-        setExpression((expression)null);
+        setExpression((EObject)null);
         return;
       case MyDslPackage.ITERATION_STATEMENT__STATEMENT:
         setStatement((statement)null);
