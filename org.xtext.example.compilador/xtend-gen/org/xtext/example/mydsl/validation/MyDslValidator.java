@@ -9,7 +9,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.xtext.example.mydsl.myDsl.ADD;
+import org.xtext.example.mydsl.myDsl.declaration;
+import org.xtext.example.mydsl.myDsl.declaration_specifiers;
+import org.xtext.example.mydsl.myDsl.init_declarator;
+import org.xtext.example.mydsl.myDsl.init_declarator_list;
 import org.xtext.example.mydsl.myDsl.simple_expression;
+import org.xtext.example.mydsl.myDsl.type_specifier;
 import org.xtext.example.mydsl.typing.ExpressionsType;
 import org.xtext.example.mydsl.typing.ExpressionsTypeProvider;
 import org.xtext.example.mydsl.validation.AbstractMyDslValidator;
@@ -61,6 +66,39 @@ public class MyDslValidator extends AbstractMyDslValidator {
     }
   }
   
+  @Check
+  public void checaAtribuicao(final declaration dec) {
+    declaration_specifiers _declaration_specifiers = dec.getDeclaration_specifiers();
+    type_specifier _type_specifier = _declaration_specifiers.getType_specifier();
+    ExpressionsType tipo = this._expressionsTypeProvider.typeFor(_type_specifier);
+    init_declarator_list _init_declarator_list = dec.getInit_declarator_list();
+    init_declarator _init_declarator = _init_declarator_list.getInit_declarator();
+    simple_expression expression = _init_declarator.getInitializer();
+    boolean _notEquals = (!Objects.equal(expression, null));
+    if (_notEquals) {
+      init_declarator_list _init_declarator_list_1 = dec.getInit_declarator_list();
+      init_declarator _init_declarator_1 = _init_declarator_list_1.getInit_declarator();
+      simple_expression _initializer = _init_declarator_1.getInitializer();
+      ExpressionsType expressiontype = this.getTypeAndCheckNotNull(_initializer, null);
+      boolean _notEquals_1 = (!Objects.equal(tipo, expressiontype));
+      if (_notEquals_1) {
+        boolean _and = false;
+        boolean _equals = Objects.equal(tipo, ExpressionsTypeProvider.floatType);
+        if (!_equals) {
+          _and = false;
+        } else {
+          ExpressionsType _typeFor = this._expressionsTypeProvider.typeFor(expression);
+          boolean _equals_1 = Objects.equal(_typeFor, ExpressionsTypeProvider.intType);
+          _and = _equals_1;
+        }
+        boolean _not = (!_and);
+        if (_not) {
+          this.error("Tipo da expressão é diferente do tipo da variável", null);
+        }
+      }
+    }
+  }
+  
   private void checkNotBoolean(final ExpressionsType type, final EReference reference) {
     boolean _equals = Objects.equal(type, ExpressionsTypeProvider.boolType);
     if (_equals) {
@@ -92,7 +130,7 @@ public class MyDslValidator extends AbstractMyDslValidator {
     ExpressionsType type = _typeFor;
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      this.error("null type", reference, "erro.deu.erro");
+      this.error("Operação não suportada", reference, "erro.deu.erro");
     }
     return type;
   }

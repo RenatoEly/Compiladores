@@ -798,6 +798,15 @@ public interface MyDslFactory extends EFactory
   ADD createADD();
 
   /**
+   * Returns a new object of class '<em>MINUS</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>MINUS</em>'.
+   * @generated
+   */
+  MINUS createMINUS();
+
+  /**
    * Returns a new object of class '<em>SHF</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

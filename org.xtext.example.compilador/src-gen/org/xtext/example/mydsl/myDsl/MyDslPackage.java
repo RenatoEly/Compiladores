@@ -4068,22 +4068,13 @@ public interface MyDslPackage extends EPackage
   int ADD__LEFT = SIMPLE_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADD__OP = SIMPLE_EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADD__RIGHT = SIMPLE_EXPRESSION_FEATURE_COUNT + 2;
+  int ADD__RIGHT = SIMPLE_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>ADD</em>' class.
@@ -4092,7 +4083,62 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADD_FEATURE_COUNT = SIMPLE_EXPRESSION_FEATURE_COUNT + 3;
+  int ADD_FEATURE_COUNT = SIMPLE_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.MINUSImpl <em>MINUS</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.MINUSImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getMINUS()
+   * @generated
+   */
+  int MINUS = 86;
+
+  /**
+   * The feature id for the '<em><b>Type name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__TYPE_NAME = SIMPLE_EXPRESSION__TYPE_NAME;
+
+  /**
+   * The feature id for the '<em><b>Cast expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__CAST_EXPRESSION = SIMPLE_EXPRESSION__CAST_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__LEFT = SIMPLE_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__RIGHT = SIMPLE_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>MINUS</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS_FEATURE_COUNT = SIMPLE_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.SHFImpl <em>SHF</em>}' class.
@@ -4102,7 +4148,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSHF()
    * @generated
    */
-  int SHF = 86;
+  int SHF = 87;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4166,7 +4212,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getREL()
    * @generated
    */
-  int REL = 87;
+  int REL = 88;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4230,7 +4276,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getEQL()
    * @generated
    */
-  int EQL = 88;
+  int EQL = 89;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4294,7 +4340,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getAND()
    * @generated
    */
-  int AND = 89;
+  int AND = 90;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4349,7 +4395,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getEXC_OR()
    * @generated
    */
-  int EXC_OR = 90;
+  int EXC_OR = 91;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4404,7 +4450,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getINC_OR()
    * @generated
    */
-  int INC_OR = 91;
+  int INC_OR = 92;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4459,7 +4505,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getLOG_AND()
    * @generated
    */
-  int LOG_AND = 92;
+  int LOG_AND = 93;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4514,7 +4560,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getLOG_OR()
    * @generated
    */
-  int LOG_OR = 93;
+  int LOG_OR = 94;
 
   /**
    * The feature id for the '<em><b>Type name</b></em>' containment reference.
@@ -4569,7 +4615,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getvoidType()
    * @generated
    */
-  int VOID_TYPE = 94;
+  int VOID_TYPE = 95;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -4633,7 +4679,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getcharType()
    * @generated
    */
-  int CHAR_TYPE = 95;
+  int CHAR_TYPE = 96;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -4697,7 +4743,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getshortType()
    * @generated
    */
-  int SHORT_TYPE = 96;
+  int SHORT_TYPE = 97;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -4761,7 +4807,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getlongType()
    * @generated
    */
-  int LONG_TYPE = 97;
+  int LONG_TYPE = 98;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -4825,7 +4871,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getdoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 98;
+  int DOUBLE_TYPE = 99;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -4889,7 +4935,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getsignedType()
    * @generated
    */
-  int SIGNED_TYPE = 99;
+  int SIGNED_TYPE = 100;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -4953,7 +4999,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getunsignedType()
    * @generated
    */
-  int UNSIGNED_TYPE = 100;
+  int UNSIGNED_TYPE = 101;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -5017,7 +5063,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getcomplexType()
    * @generated
    */
-  int COMPLEX_TYPE = 101;
+  int COMPLEX_TYPE = 102;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -5081,7 +5127,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getimaginaryType()
    * @generated
    */
-  int IMAGINARY_TYPE = 102;
+  int IMAGINARY_TYPE = 103;
 
   /**
    * The feature id for the '<em><b>Atomic type specifier</b></em>' containment reference.
@@ -8551,17 +8597,6 @@ public interface MyDslPackage extends EPackage
   EReference getADD_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.ADD#getOp <em>Op</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Op</em>'.
-   * @see org.xtext.example.mydsl.myDsl.ADD#getOp()
-   * @see #getADD()
-   * @generated
-   */
-  EAttribute getADD_Op();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.ADD#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8571,6 +8606,38 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EReference getADD_Right();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.MINUS <em>MINUS</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>MINUS</em>'.
+   * @see org.xtext.example.mydsl.myDsl.MINUS
+   * @generated
+   */
+  EClass getMINUS();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.MINUS#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.xtext.example.mydsl.myDsl.MINUS#getLeft()
+   * @see #getMINUS()
+   * @generated
+   */
+  EReference getMINUS_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.MINUS#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.example.mydsl.myDsl.MINUS#getRight()
+   * @see #getMINUS()
+   * @generated
+   */
+  EReference getMINUS_Right();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.SHF <em>SHF</em>}'.
@@ -11790,12 +11857,30 @@ public interface MyDslPackage extends EPackage
     EReference ADD__LEFT = eINSTANCE.getADD_Left();
 
     /**
-     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ADD__OP = eINSTANCE.getADD_Op();
+    EReference ADD__RIGHT = eINSTANCE.getADD_Right();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.MINUSImpl <em>MINUS</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.MINUSImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getMINUS()
+     * @generated
+     */
+    EClass MINUS = eINSTANCE.getMINUS();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MINUS__LEFT = eINSTANCE.getMINUS_Left();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -11803,7 +11888,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADD__RIGHT = eINSTANCE.getADD_Right();
+    EReference MINUS__RIGHT = eINSTANCE.getMINUS_Right();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.SHFImpl <em>SHF</em>}' class.

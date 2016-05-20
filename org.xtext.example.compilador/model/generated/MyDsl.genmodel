@@ -409,8 +409,11 @@
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ADD">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ADD/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ADD/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ADD/right"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//MINUS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//MINUS/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//MINUS/right"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//SHF">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//SHF/left"/>

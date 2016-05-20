@@ -151,6 +151,7 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.BOOLEAN_TYPE: return createbooleanType();
       case MyDslPackage.MUL: return createMUL();
       case MyDslPackage.ADD: return createADD();
+      case MyDslPackage.MINUS: return createMINUS();
       case MyDslPackage.SHF: return createSHF();
       case MyDslPackage.REL: return createREL();
       case MyDslPackage.EQL: return createEQL();
@@ -1117,6 +1118,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     ADDImpl add = new ADDImpl();
     return add;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MINUS createMINUS()
+  {
+    MINUSImpl minus = new MINUSImpl();
+    return minus;
   }
 
   /**

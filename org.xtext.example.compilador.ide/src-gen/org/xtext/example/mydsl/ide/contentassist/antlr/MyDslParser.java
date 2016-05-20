@@ -47,7 +47,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnary_operatorAccess().getAlternatives(), "rule__Unary_operator__Alternatives");
 					put(grammarAccess.getCast_expressionAccess().getAlternatives(), "rule__Cast_expression__Alternatives");
 					put(grammarAccess.getMUL_OPAccess().getAlternatives(), "rule__MUL_OP__Alternatives");
-					put(grammarAccess.getAdditive_expressionAccess().getOpAlternatives_1_1_0(), "rule__Additive_expression__OpAlternatives_1_1_0");
+					put(grammarAccess.getAdditive_expressionAccess().getAlternatives_1_0(), "rule__Additive_expression__Alternatives_1_0");
 					put(grammarAccess.getShift_opAccess().getAlternatives(), "rule__Shift_op__Alternatives");
 					put(grammarAccess.getRelational_opAccess().getAlternatives(), "rule__Relational_op__Alternatives");
 					put(grammarAccess.getEquality_expressionAccess().getOpAlternatives_1_1_0(), "rule__Equality_expression__OpAlternatives_1_1_0");
@@ -124,6 +124,8 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMultiplicative_expressionAccess().getGroup_1(), "rule__Multiplicative_expression__Group_1__0");
 					put(grammarAccess.getAdditive_expressionAccess().getGroup(), "rule__Additive_expression__Group__0");
 					put(grammarAccess.getAdditive_expressionAccess().getGroup_1(), "rule__Additive_expression__Group_1__0");
+					put(grammarAccess.getAdditive_expressionAccess().getGroup_1_0_0(), "rule__Additive_expression__Group_1_0_0__0");
+					put(grammarAccess.getAdditive_expressionAccess().getGroup_1_0_1(), "rule__Additive_expression__Group_1_0_1__0");
 					put(grammarAccess.getShift_expressionAccess().getGroup(), "rule__Shift_expression__Group__0");
 					put(grammarAccess.getShift_expressionAccess().getGroup_1(), "rule__Shift_expression__Group_1__0");
 					put(grammarAccess.getRelational_expressionAccess().getGroup(), "rule__Relational_expression__Group__0");
@@ -322,8 +324,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCast_expressionAccess().getCast_expressionAssignment_1_3(), "rule__Cast_expression__Cast_expressionAssignment_1_3");
 					put(grammarAccess.getMultiplicative_expressionAccess().getOpAssignment_1_1(), "rule__Multiplicative_expression__OpAssignment_1_1");
 					put(grammarAccess.getMultiplicative_expressionAccess().getRightAssignment_1_2(), "rule__Multiplicative_expression__RightAssignment_1_2");
-					put(grammarAccess.getAdditive_expressionAccess().getOpAssignment_1_1(), "rule__Additive_expression__OpAssignment_1_1");
-					put(grammarAccess.getAdditive_expressionAccess().getRightAssignment_1_2(), "rule__Additive_expression__RightAssignment_1_2");
+					put(grammarAccess.getAdditive_expressionAccess().getRightAssignment_1_1(), "rule__Additive_expression__RightAssignment_1_1");
 					put(grammarAccess.getShift_expressionAccess().getOpAssignment_1_1(), "rule__Shift_expression__OpAssignment_1_1");
 					put(grammarAccess.getShift_expressionAccess().getRightAssignment_1_2(), "rule__Shift_expression__RightAssignment_1_2");
 					put(grammarAccess.getRelational_expressionAccess().getOpAssignment_1_1(), "rule__Relational_expression__OpAssignment_1_1");

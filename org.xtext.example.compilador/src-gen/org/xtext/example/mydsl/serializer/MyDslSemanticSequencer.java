@@ -21,6 +21,7 @@ import org.xtext.example.mydsl.myDsl.EXC_OR;
 import org.xtext.example.mydsl.myDsl.INC_OR;
 import org.xtext.example.mydsl.myDsl.LOG_AND;
 import org.xtext.example.mydsl.myDsl.LOG_OR;
+import org.xtext.example.mydsl.myDsl.MINUS;
 import org.xtext.example.mydsl.myDsl.MUL;
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
@@ -154,6 +155,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.LOG_OR:
 				sequence_logical_or_expression(context, (LOG_OR) semanticObject); 
 				return; 
+			case MyDslPackage.MINUS:
+				sequence_additive_expression(context, (MINUS) semanticObject); 
+				return; 
 			case MyDslPackage.MUL:
 				sequence_multiplicative_expression(context, (MUL) semanticObject); 
 				return; 
@@ -193,7 +197,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 						|| rule == grammarAccess.getMultiplicative_expressionRule()
 						|| action == grammarAccess.getMultiplicative_expressionAccess().getMULLeftAction_1_0()
 						|| rule == grammarAccess.getAdditive_expressionRule()
-						|| action == grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0()
+						|| action == grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditive_expressionAccess().getMINUSLeftAction_1_0_1_0()
 						|| rule == grammarAccess.getShift_expressionRule()
 						|| action == grammarAccess.getShift_expressionAccess().getSHFLeftAction_1_0()
 						|| rule == grammarAccess.getRelational_expressionRule()
@@ -312,7 +317,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 						|| rule == grammarAccess.getMultiplicative_expressionRule()
 						|| action == grammarAccess.getMultiplicative_expressionAccess().getMULLeftAction_1_0()
 						|| rule == grammarAccess.getAdditive_expressionRule()
-						|| action == grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0()
+						|| action == grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditive_expressionAccess().getMINUSLeftAction_1_0_1_0()
 						|| rule == grammarAccess.getShift_expressionRule()
 						|| action == grammarAccess.getShift_expressionAccess().getSHFLeftAction_1_0()
 						|| rule == grammarAccess.getRelational_expressionRule()
@@ -386,7 +392,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 						|| rule == grammarAccess.getMultiplicative_expressionRule()
 						|| action == grammarAccess.getMultiplicative_expressionAccess().getMULLeftAction_1_0()
 						|| rule == grammarAccess.getAdditive_expressionRule()
-						|| action == grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0()
+						|| action == grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditive_expressionAccess().getMINUSLeftAction_1_0_1_0()
 						|| rule == grammarAccess.getShift_expressionRule()
 						|| action == grammarAccess.getShift_expressionAccess().getSHFLeftAction_1_0()
 						|| rule == grammarAccess.getRelational_expressionRule()
@@ -568,7 +575,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns ADD
 	 *     multiplicative_expression.MUL_1_0 returns ADD
 	 *     additive_expression returns ADD
-	 *     additive_expression.ADD_1_0 returns ADD
+	 *     additive_expression.ADD_1_0_0_0 returns ADD
+	 *     additive_expression.MINUS_1_0_1_0 returns ADD
 	 *     shift_expression returns ADD
 	 *     shift_expression.SHF_1_0 returns ADD
 	 *     relational_expression returns ADD
@@ -588,10 +596,62 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     simple_expression returns ADD
 	 *
 	 * Constraint:
-	 *     (left=additive_expression_ADD_1_0 (op='+' | op='-') right=multiplicative_expression)
+	 *     (left=additive_expression_ADD_1_0_0_0 right=multiplicative_expression)
 	 */
 	protected void sequence_additive_expression(ISerializationContext context, ADD semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD__LEFT));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAdditive_expressionAccess().getRightMultiplicative_expressionParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     primary_expression returns MINUS
+	 *     multiplicative_expression returns MINUS
+	 *     multiplicative_expression.MUL_1_0 returns MINUS
+	 *     additive_expression returns MINUS
+	 *     additive_expression.ADD_1_0_0_0 returns MINUS
+	 *     additive_expression.MINUS_1_0_1_0 returns MINUS
+	 *     shift_expression returns MINUS
+	 *     shift_expression.SHF_1_0 returns MINUS
+	 *     relational_expression returns MINUS
+	 *     relational_expression.REL_1_0 returns MINUS
+	 *     equality_expression returns MINUS
+	 *     equality_expression.EQL_1_0 returns MINUS
+	 *     and_expression returns MINUS
+	 *     and_expression.AND_1_0 returns MINUS
+	 *     exclusive_or_expression returns MINUS
+	 *     exclusive_or_expression.EXC_OR_1_0 returns MINUS
+	 *     inclusive_or_expression returns MINUS
+	 *     inclusive_or_expression.INC_OR_1_0 returns MINUS
+	 *     logical_and_expression returns MINUS
+	 *     logical_and_expression.LOG_AND_1_0 returns MINUS
+	 *     logical_or_expression returns MINUS
+	 *     logical_or_expression.LOG_OR_1_0 returns MINUS
+	 *     simple_expression returns MINUS
+	 *
+	 * Constraint:
+	 *     (left=additive_expression_MINUS_1_0_1_0 right=multiplicative_expression)
+	 */
+	protected void sequence_additive_expression(ISerializationContext context, MINUS semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.MINUS__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.MINUS__LEFT));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.MINUS__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.MINUS__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAdditive_expressionAccess().getMINUSLeftAction_1_0_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAdditive_expressionAccess().getRightMultiplicative_expressionParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
@@ -613,7 +673,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns AND
 	 *     multiplicative_expression.MUL_1_0 returns AND
 	 *     additive_expression returns AND
-	 *     additive_expression.ADD_1_0 returns AND
+	 *     additive_expression.ADD_1_0_0_0 returns AND
+	 *     additive_expression.MINUS_1_0_1_0 returns AND
 	 *     shift_expression returns AND
 	 *     shift_expression.SHF_1_0 returns AND
 	 *     relational_expression returns AND
@@ -707,7 +768,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns booleanType
 	 *     multiplicative_expression.MUL_1_0 returns booleanType
 	 *     additive_expression returns booleanType
-	 *     additive_expression.ADD_1_0 returns booleanType
+	 *     additive_expression.ADD_1_0_0_0 returns booleanType
+	 *     additive_expression.MINUS_1_0_1_0 returns booleanType
 	 *     shift_expression returns booleanType
 	 *     shift_expression.SHF_1_0 returns booleanType
 	 *     relational_expression returns booleanType
@@ -741,7 +803,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns floatType
 	 *     multiplicative_expression.MUL_1_0 returns floatType
 	 *     additive_expression returns floatType
-	 *     additive_expression.ADD_1_0 returns floatType
+	 *     additive_expression.ADD_1_0_0_0 returns floatType
+	 *     additive_expression.MINUS_1_0_1_0 returns floatType
 	 *     shift_expression returns floatType
 	 *     shift_expression.SHF_1_0 returns floatType
 	 *     relational_expression returns floatType
@@ -781,7 +844,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns intType
 	 *     multiplicative_expression.MUL_1_0 returns intType
 	 *     additive_expression returns intType
-	 *     additive_expression.ADD_1_0 returns intType
+	 *     additive_expression.ADD_1_0_0_0 returns intType
+	 *     additive_expression.MINUS_1_0_1_0 returns intType
 	 *     shift_expression returns intType
 	 *     shift_expression.SHF_1_0 returns intType
 	 *     relational_expression returns intType
@@ -821,7 +885,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns stringType
 	 *     multiplicative_expression.MUL_1_0 returns stringType
 	 *     additive_expression returns stringType
-	 *     additive_expression.ADD_1_0 returns stringType
+	 *     additive_expression.ADD_1_0_0_0 returns stringType
+	 *     additive_expression.MINUS_1_0_1_0 returns stringType
 	 *     shift_expression returns stringType
 	 *     shift_expression.SHF_1_0 returns stringType
 	 *     relational_expression returns stringType
@@ -861,7 +926,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns variableRef
 	 *     multiplicative_expression.MUL_1_0 returns variableRef
 	 *     additive_expression returns variableRef
-	 *     additive_expression.ADD_1_0 returns variableRef
+	 *     additive_expression.ADD_1_0_0_0 returns variableRef
+	 *     additive_expression.MINUS_1_0_1_0 returns variableRef
 	 *     shift_expression returns variableRef
 	 *     shift_expression.SHF_1_0 returns variableRef
 	 *     relational_expression returns variableRef
@@ -1314,7 +1380,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns EQL
 	 *     multiplicative_expression.MUL_1_0 returns EQL
 	 *     additive_expression returns EQL
-	 *     additive_expression.ADD_1_0 returns EQL
+	 *     additive_expression.ADD_1_0_0_0 returns EQL
+	 *     additive_expression.MINUS_1_0_1_0 returns EQL
 	 *     shift_expression returns EQL
 	 *     shift_expression.SHF_1_0 returns EQL
 	 *     relational_expression returns EQL
@@ -1347,7 +1414,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns EXC_OR
 	 *     multiplicative_expression.MUL_1_0 returns EXC_OR
 	 *     additive_expression returns EXC_OR
-	 *     additive_expression.ADD_1_0 returns EXC_OR
+	 *     additive_expression.ADD_1_0_0_0 returns EXC_OR
+	 *     additive_expression.MINUS_1_0_1_0 returns EXC_OR
 	 *     shift_expression returns EXC_OR
 	 *     shift_expression.SHF_1_0 returns EXC_OR
 	 *     relational_expression returns EXC_OR
@@ -1561,7 +1629,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns INC_OR
 	 *     multiplicative_expression.MUL_1_0 returns INC_OR
 	 *     additive_expression returns INC_OR
-	 *     additive_expression.ADD_1_0 returns INC_OR
+	 *     additive_expression.ADD_1_0_0_0 returns INC_OR
+	 *     additive_expression.MINUS_1_0_1_0 returns INC_OR
 	 *     shift_expression returns INC_OR
 	 *     shift_expression.SHF_1_0 returns INC_OR
 	 *     relational_expression returns INC_OR
@@ -1737,7 +1806,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns LOG_AND
 	 *     multiplicative_expression.MUL_1_0 returns LOG_AND
 	 *     additive_expression returns LOG_AND
-	 *     additive_expression.ADD_1_0 returns LOG_AND
+	 *     additive_expression.ADD_1_0_0_0 returns LOG_AND
+	 *     additive_expression.MINUS_1_0_1_0 returns LOG_AND
 	 *     shift_expression returns LOG_AND
 	 *     shift_expression.SHF_1_0 returns LOG_AND
 	 *     relational_expression returns LOG_AND
@@ -1779,7 +1849,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns LOG_OR
 	 *     multiplicative_expression.MUL_1_0 returns LOG_OR
 	 *     additive_expression returns LOG_OR
-	 *     additive_expression.ADD_1_0 returns LOG_OR
+	 *     additive_expression.ADD_1_0_0_0 returns LOG_OR
+	 *     additive_expression.MINUS_1_0_1_0 returns LOG_OR
 	 *     shift_expression returns LOG_OR
 	 *     shift_expression.SHF_1_0 returns LOG_OR
 	 *     relational_expression returns LOG_OR
@@ -1821,7 +1892,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns MUL
 	 *     multiplicative_expression.MUL_1_0 returns MUL
 	 *     additive_expression returns MUL
-	 *     additive_expression.ADD_1_0 returns MUL
+	 *     additive_expression.ADD_1_0_0_0 returns MUL
+	 *     additive_expression.MINUS_1_0_1_0 returns MUL
 	 *     shift_expression returns MUL
 	 *     shift_expression.SHF_1_0 returns MUL
 	 *     relational_expression returns MUL
@@ -1955,7 +2027,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns REL
 	 *     multiplicative_expression.MUL_1_0 returns REL
 	 *     additive_expression returns REL
-	 *     additive_expression.ADD_1_0 returns REL
+	 *     additive_expression.ADD_1_0_0_0 returns REL
+	 *     additive_expression.MINUS_1_0_1_0 returns REL
 	 *     shift_expression returns REL
 	 *     shift_expression.SHF_1_0 returns REL
 	 *     relational_expression returns REL
@@ -2016,7 +2089,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     multiplicative_expression returns SHF
 	 *     multiplicative_expression.MUL_1_0 returns SHF
 	 *     additive_expression returns SHF
-	 *     additive_expression.ADD_1_0 returns SHF
+	 *     additive_expression.ADD_1_0_0_0 returns SHF
+	 *     additive_expression.MINUS_1_0_1_0 returns SHF
 	 *     shift_expression returns SHF
 	 *     shift_expression.SHF_1_0 returns SHF
 	 *     relational_expression returns SHF
@@ -2139,7 +2213,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     string_nova returns string_nova
 	 *
 	 * Constraint:
-	 *     (string_literal=STRING_LITERAL | func_name=FUNC_NAME)
+	 *     (string_literal=STRING | func_name=FUNC_NAME)
 	 */
 	protected void sequence_string_nova(ISerializationContext context, string_nova semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

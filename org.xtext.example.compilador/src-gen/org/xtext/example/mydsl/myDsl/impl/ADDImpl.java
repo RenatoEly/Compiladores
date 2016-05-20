@@ -24,7 +24,6 @@ import org.xtext.example.mydsl.myDsl.simple_expression;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ADDImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ADDImpl#getOp <em>Op</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ADDImpl#getRight <em>Right</em>}</li>
  * </ul>
  *
@@ -41,26 +40,6 @@ public class ADDImpl extends simple_expressionImpl implements ADD
    * @ordered
    */
   protected simple_expression left;
-
-  /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected static final String OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected String op = OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -146,29 +125,6 @@ public class ADDImpl extends simple_expressionImpl implements ADD
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOp()
-  {
-    return op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOp(String newOp)
-  {
-    String oldOp = op;
-    op = newOp;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ADD__OP, oldOp, op));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public simple_expression getRight()
   {
     return right;
@@ -242,8 +198,6 @@ public class ADDImpl extends simple_expressionImpl implements ADD
     {
       case MyDslPackage.ADD__LEFT:
         return getLeft();
-      case MyDslPackage.ADD__OP:
-        return getOp();
       case MyDslPackage.ADD__RIGHT:
         return getRight();
     }
@@ -262,9 +216,6 @@ public class ADDImpl extends simple_expressionImpl implements ADD
     {
       case MyDslPackage.ADD__LEFT:
         setLeft((simple_expression)newValue);
-        return;
-      case MyDslPackage.ADD__OP:
-        setOp((String)newValue);
         return;
       case MyDslPackage.ADD__RIGHT:
         setRight((simple_expression)newValue);
@@ -286,9 +237,6 @@ public class ADDImpl extends simple_expressionImpl implements ADD
       case MyDslPackage.ADD__LEFT:
         setLeft((simple_expression)null);
         return;
-      case MyDslPackage.ADD__OP:
-        setOp(OP_EDEFAULT);
-        return;
       case MyDslPackage.ADD__RIGHT:
         setRight((simple_expression)null);
         return;
@@ -308,29 +256,10 @@ public class ADDImpl extends simple_expressionImpl implements ADD
     {
       case MyDslPackage.ADD__LEFT:
         return left != null;
-      case MyDslPackage.ADD__OP:
-        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
       case MyDslPackage.ADD__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (op: ");
-    result.append(op);
-    result.append(')');
-    return result.toString();
   }
 
 } //ADDImpl

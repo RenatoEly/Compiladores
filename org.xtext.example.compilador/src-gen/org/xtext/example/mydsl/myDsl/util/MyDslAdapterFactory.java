@@ -506,6 +506,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createADDAdapter();
       }
       @Override
+      public Adapter caseMINUS(MINUS object)
+      {
+        return createMINUSAdapter();
+      }
+      @Override
       public Adapter caseSHF(SHF object)
       {
         return createSHFAdapter();
@@ -1898,6 +1903,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createADDAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.MINUS <em>MINUS</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.MINUS
+   * @generated
+   */
+  public Adapter createMINUSAdapter()
   {
     return null;
   }

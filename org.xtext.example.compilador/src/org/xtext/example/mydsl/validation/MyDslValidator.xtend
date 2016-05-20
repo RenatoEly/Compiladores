@@ -7,8 +7,6 @@ import org.eclipse.xtext.validation.Check
 
 
 import org.xtext.example.mydsl.myDsl.declaration
-import org.xtext.example.mydsl.myDsl.intType
-import org.xtext.example.mydsl.myDsl.MyDslPackage
 import org.xtext.example.mydsl.myDsl.simple_expression
 import org.eclipse.emf.ecore.EReference
 import org.xtext.example.mydsl.typing.ExpressionsTypeProvider
@@ -56,11 +54,23 @@ class MyDslValidator extends AbstractMyDslValidator {
 		if (leftType == ExpressionsTypeProvider::intType
 				|| rightType == ExpressionsTypeProvider::intType
 				|| (leftType != ExpressionsTypeProvider::stringType && 
-					rightType != ExpressionsTypeProvider::stringType
-				)) {
-					
+					rightType != ExpressionsTypeProvider::stringType)
+					){
 			checkNotBoolean(leftType, null)
 			checkNotBoolean(rightType, null)
+		}
+	}
+	
+	@Check
+	def checaAtribuicao(declaration dec){
+		var tipo = dec.declaration_specifiers.type_specifier.typeFor
+		var expression = dec.init_declarator_list.init_declarator.initializer
+		if (expression != null){
+			var expressiontype = getTypeAndCheckNotNull(dec.init_declarator_list.init_declarator.initializer,null)
+			if (tipo != expressiontype){
+				if(!(tipo == ExpressionsTypeProvider::floatType && expression.typeFor == ExpressionsTypeProvider::intType))
+				error("Tipo da expressão é diferente do tipo da variável", null)
+			}
 		}
 	}
 	
@@ -91,7 +101,7 @@ class MyDslValidator extends AbstractMyDslValidator {
 			EReference reference) {
 		var type = exp?.typeFor
 		if (type == null)
-			error("null type", reference, "erro.deu.erro")
+			error("Operação não suportada", reference, "erro.deu.erro")
 		return type;
 	}
 

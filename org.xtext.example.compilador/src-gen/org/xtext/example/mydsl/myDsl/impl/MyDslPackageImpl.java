@@ -721,6 +721,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass minusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass shfEClass = null;
 
   /**
@@ -4083,9 +4090,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getADD_Op()
+  public EReference getADD_Right()
   {
-    return (EAttribute)addEClass.getEStructuralFeatures().get(1);
+    return (EReference)addEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -4093,9 +4100,29 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getADD_Right()
+  public EClass getMINUS()
   {
-    return (EReference)addEClass.getEStructuralFeatures().get(2);
+    return minusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMINUS_Left()
+  {
+    return (EReference)minusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMINUS_Right()
+  {
+    return (EReference)minusEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -4981,8 +5008,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     addEClass = createEClass(ADD);
     createEReference(addEClass, ADD__LEFT);
-    createEAttribute(addEClass, ADD__OP);
     createEReference(addEClass, ADD__RIGHT);
+
+    minusEClass = createEClass(MINUS);
+    createEReference(minusEClass, MINUS__LEFT);
+    createEReference(minusEClass, MINUS__RIGHT);
 
     shfEClass = createEClass(SHF);
     createEReference(shfEClass, SHF__LEFT);
@@ -5090,6 +5120,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     booleanTypeEClass.getESuperTypes().add(this.gettype_specifier());
     mulEClass.getESuperTypes().add(this.getsimple_expression());
     addEClass.getESuperTypes().add(this.getsimple_expression());
+    minusEClass.getESuperTypes().add(this.getsimple_expression());
     shfEClass.getESuperTypes().add(this.getsimple_expression());
     relEClass.getESuperTypes().add(this.getsimple_expression());
     eqlEClass.getESuperTypes().add(this.getsimple_expression());
@@ -5512,8 +5543,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(addEClass, org.xtext.example.mydsl.myDsl.ADD.class, "ADD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getADD_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.ADD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getADD_Op(), ecorePackage.getEString(), "op", null, 0, 1, org.xtext.example.mydsl.myDsl.ADD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getADD_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.ADD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(minusEClass, org.xtext.example.mydsl.myDsl.MINUS.class, "MINUS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMINUS_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.MINUS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMINUS_Right(), this.getsimple_expression(), null, "right", null, 0, 1, org.xtext.example.mydsl.myDsl.MINUS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(shfEClass, org.xtext.example.mydsl.myDsl.SHF.class, "SHF", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSHF_Left(), this.getsimple_expression(), null, "left", null, 0, 1, org.xtext.example.mydsl.myDsl.SHF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

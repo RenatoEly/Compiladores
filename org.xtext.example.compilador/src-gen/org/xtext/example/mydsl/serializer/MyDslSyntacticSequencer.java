@@ -205,6 +205,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {INC_OR.left=}
 	 *     (rule start) (ambiguity) {LOG_AND.left=}
 	 *     (rule start) (ambiguity) {LOG_OR.left=}
+	 *     (rule start) (ambiguity) {MINUS.left=}
 	 *     (rule start) (ambiguity) {MUL.left=}
 	 *     (rule start) (ambiguity) {REL.left=}
 	 *     (rule start) (ambiguity) {SHF.left=}
@@ -225,6 +226,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {INC_OR.left=}
 	 *     (rule start) (ambiguity) {LOG_AND.left=}
 	 *     (rule start) (ambiguity) {LOG_OR.left=}
+	 *     (rule start) (ambiguity) {MINUS.left=}
 	 *     (rule start) (ambiguity) {MUL.left=}
 	 *     (rule start) (ambiguity) {REL.left=}
 	 *     (rule start) (ambiguity) {SHF.left=}

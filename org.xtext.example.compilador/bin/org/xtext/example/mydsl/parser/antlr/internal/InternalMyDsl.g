@@ -388,9 +388,9 @@ rulestring_nova returns [EObject current=null]
 	(
 		(
 			(
-				lv_string_literal_0_0=RULE_STRING_LITERAL
+				lv_string_literal_0_0=RULE_STRING
 				{
-					newLeafNode(lv_string_literal_0_0, grammarAccess.getString_novaAccess().getString_literalSTRING_LITERALTerminalRuleCall_0_0());
+					newLeafNode(lv_string_literal_0_0, grammarAccess.getString_novaAccess().getString_literalSTRINGTerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
@@ -400,7 +400,7 @@ rulestring_nova returns [EObject current=null]
 						$current,
 						"string_literal",
 						lv_string_literal_0_0,
-						"org.xtext.example.mydsl.MyDsl.STRING_LITERAL");
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -1557,48 +1557,46 @@ ruleadditive_expression returns [EObject current=null]
 		}
 		(
 			(
-				{
-					/* */
-				}
-				{
-					$current = forceCreateModelElementAndSet(
-						grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0(),
-						$current);
-				}
-			)
-			(
 				(
 					(
-						lv_op_2_1='+'
 						{
-							newLeafNode(lv_op_2_1, grammarAccess.getAdditive_expressionAccess().getOpPlusSignKeyword_1_1_0_0());
+							/* */
 						}
 						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getAdditive_expressionRule());
-							}
-							setWithLastConsumed($current, "op", lv_op_2_1, null);
-						}
-						    |
-						lv_op_2_2='-'
-						{
-							newLeafNode(lv_op_2_2, grammarAccess.getAdditive_expressionAccess().getOpHyphenMinusKeyword_1_1_0_1());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getAdditive_expressionRule());
-							}
-							setWithLastConsumed($current, "op", lv_op_2_2, null);
+							$current = forceCreateModelElementAndSet(
+								grammarAccess.getAdditive_expressionAccess().getADDLeftAction_1_0_0_0(),
+								$current);
 						}
 					)
+					otherlv_2='+'
+					{
+						newLeafNode(otherlv_2, grammarAccess.getAdditive_expressionAccess().getPlusSignKeyword_1_0_0_1());
+					}
+				)
+				    |
+				(
+					(
+						{
+							/* */
+						}
+						{
+							$current = forceCreateModelElementAndSet(
+								grammarAccess.getAdditive_expressionAccess().getMINUSLeftAction_1_0_1_0(),
+								$current);
+						}
+					)
+					otherlv_4='-'
+					{
+						newLeafNode(otherlv_4, grammarAccess.getAdditive_expressionAccess().getHyphenMinusKeyword_1_0_1_1());
+					}
 				)
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getAdditive_expressionAccess().getRightMultiplicative_expressionParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getAdditive_expressionAccess().getRightMultiplicative_expressionParserRuleCall_1_1_0());
 					}
-					lv_right_3_0=rulemultiplicative_expression
+					lv_right_5_0=rulemultiplicative_expression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getAdditive_expressionRule());
@@ -1606,7 +1604,7 @@ ruleadditive_expression returns [EObject current=null]
 						set(
 							$current,
 							"right",
-							lv_right_3_0,
+							lv_right_5_0,
 							"org.xtext.example.mydsl.MyDsl.multiplicative_expression");
 						afterParserOrEnumRuleCall();
 					}
